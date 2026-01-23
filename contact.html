@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contact - Anna Harrison's Portfolio" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Contact - Anna Harrison</title>
+    <link rel="stylesheet" href="/styles/main.css">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">Anna Harrison</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1 class="hero-headline">Let's Connect</h1>
+        <p class="hero-subtext">
+          I'd love to hear from you! Whether you have a project in mind, a job opportunity, or just want to chat about development.
+        </p>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container">
+        <div class="contact-content">
+          <div class="contact-intro">
+            <p class="contact-text">
+              I'm currently looking for new opportunities in the Middletown, OH or Mason, OH area. 
+              I'm also open to remote positions and have previous experience working remotely.
+            </p>
+            <p class="contact-text" style="margin-bottom: 0;">
+              Feel free to reach out through any of the channels below, or use the contact form to send me a message.
+            </p>
+          </div>
+
+          <div class="contact-links">
+            <a href="mailto:anna.harri.89@gmail.com?Subject=Job%20Opportunity" class="contact-link">📧 Email</a>
+            <a href="https://github.com/annaharri89" target="_blank" rel="noopener noreferrer" class="contact-link">💻 GitHub</a>
+            <a href="https://www.linkedin.com/in/anna-harrison-software-developer" target="_blank" rel="noopener noreferrer" class="contact-link">💼 LinkedIn</a>
+          </div>
+
+          <div class="contact-form">
+            <h3 style="margin-bottom: var(--spacing-md); text-align: center;">Send a Message</h3>
+            <form action="mailto:anna.harri.89@gmail.com" method="post" enctype="text/plain">
+              <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" class="form-textarea" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">&copy; 2026 Anna Harrison. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/scripts/main.ts"></script>
+  </body>
+</html>

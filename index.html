@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Anna Harrison's Portfolio - Cross-platform front-end developer specializing in web and mobile applications" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Anna Harrison - Cross-Platform Developer</title>
+    <link rel="stylesheet" href="/styles/main.css">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+      <div class="nav-container">
+        <a href="index.html" class="nav-logo">Anna Harrison</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="projects.html" class="nav-link">Projects</a></li>
+          <li><a href="skills.html" class="nav-link">Skills</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-headline">Welcome!<br><span class="hero-text-smaller">I'm</span> Anna Harrison</h1>
+            <p class="hero-subtext">I build cross-platform web & mobile applications.</p>
+          </div>
+          <div class="hero-graphic">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="graphicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:rgba(255,255,255,0.3);stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:rgba(255,255,255,0.15);stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <circle cx="200" cy="200" r="150" fill="url(#graphicGradient)" opacity="0.5"/>
+              <circle cx="200" cy="200" r="100" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="3" opacity="0.6"/>
+              <circle cx="200" cy="200" r="50" fill="rgba(255,255,255,0.25)" opacity="0.7"/>
+              <path d="M 150 200 L 200 150 L 250 200 L 200 250 Z" fill="rgba(255,255,255,0.3)" opacity="0.6"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Cards -->
+    <section class="container">
+      <div class="nav-cards">
+        <a href="projects.html" class="nav-card nav-card-projects">
+          <span class="nav-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <h3 class="nav-card-title">Projects</h3>
+          <p class="nav-card-description">Explore my portfolio of cross-platform applications and web projects</p>
+        </a>
+        <a href="skills.html" class="nav-card nav-card-skills">
+          <span class="nav-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 21H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 17V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 8L12 13L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <h3 class="nav-card-title">Skills</h3>
+          <p class="nav-card-description">Discover the technologies and tools I work with</p>
+        </a>
+        <a href="contact.html" class="nav-card nav-card-contact">
+          <span class="nav-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <h3 class="nav-card-title">Contact</h3>
+          <p class="nav-card-description">Let's connect and discuss your next project</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">&copy; 2026 Anna Harrison. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/scripts/main.ts"></script>
+  </body>
+</html>
