@@ -336,7 +336,9 @@ a:focus-visible {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: clamp(3rem, 12vh, 8rem);
 }
 
 .hero-content {
@@ -366,7 +368,7 @@ a:focus-visible {
   margin-bottom: clamp(0.5rem, 1.5vh, var(--spacing-lg));
   color: white;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-size: clamp(2rem, 6vh, clamp(3rem, 7vw, 4.5rem));
+  font-size: clamp(3rem, 8vh, clamp(4rem, 9vw, 6rem));
   line-height: 1.1;
 }
 
@@ -376,10 +378,14 @@ a:focus-visible {
 }
 
 .hero-subtext {
-  font-size: clamp(0.875rem, 2vh, 1.25rem);
+  font-size: clamp(1rem, 2.5vh, 1.25rem);
   margin-bottom: 0;
-  line-height: 1.6;
+  margin-top: clamp(0.5rem, 1vh, var(--spacing-sm));
+  line-height: 1.4;
   color: rgba(255, 255, 255, 0.95);
+  max-width: 600px;
+  text-align: left;
+  white-space: normal;
 }
 
 .hero-graphic {
@@ -434,18 +440,27 @@ a:focus-visible {
   grid-template-columns: 1fr;
   gap: var(--spacing-sm);
   margin-top: -23vh;
-  padding: var(--spacing-2xl) 0;
+  padding: var(--spacing-2xl) var(--spacing-md);
   position: relative;
   z-index: 2;
   justify-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
   .nav-cards {
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
     justify-content: center;
     margin-top: -28vh;
     gap: var(--spacing-md);
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-cards {
+    grid-template-columns: repeat(3, minmax(240px, 280px));
   }
 }
 
@@ -459,12 +474,24 @@ a:focus-visible {
   border: none;
   text-decoration: none;
   display: block;
+  width: 100%;
   max-width: 260px;
+  min-width: 200px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
   .nav-card {
+    max-width: 100%;
+    min-width: 200px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .nav-card {
+    min-width: 240px;
     max-width: 280px;
   }
 }
@@ -510,20 +537,20 @@ a:focus-visible {
 }
 
 .nav-card-skills {
-  background: #ffd689;
+  background: #ffbc7d;
 }
 
 .nav-card-skills .nav-card-title {
-  color: #2d2d2d;
+  color: #1a1a1a;
 }
 
 .nav-card-skills .nav-card-description {
-  color: rgba(45, 45, 45, 0.8);
+  color: rgba(26, 26, 26, 0.85);
   font-weight: 500;
 }
 
 .nav-card-skills .nav-card-icon {
-  color: #2d2d2d;
+  color: #1a1a1a;
   font-family: var(--font-mono);
   font-size: 36px;
   font-weight: 700;
@@ -535,7 +562,7 @@ a:focus-visible {
 }
 
 .nav-card-skills:hover .nav-card-icon {
-  color: #2d2d2d;
+  color: #1a1a1a;
   transform: scale(1.1);
 }
 
@@ -562,7 +589,7 @@ a:focus-visible {
 }
 
 .nav-card-projects {
-  background: #FFFBFE;
+  background: #F0EDE8;
 }
 
 .nav-card-projects .nav-card-title {
@@ -790,8 +817,20 @@ a:focus-visible {
    Skills Section
    ============================================ */
 
+.hero + .skills {
+  position: relative;
+  z-index: 2;
+}
+
 .skills {
   padding: var(--spacing-3xl) 0;
+  margin-top: -25vh;
+}
+
+@media (min-width: 768px) {
+  .skills {
+    margin-top: -35vh;
+  }
 }
 
 .skills-grid {
