@@ -433,7 +433,7 @@ a:focus-visible {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-sm);
-  margin-top: -22vh;
+  margin-top: -23vh;
   padding: var(--spacing-2xl) 0;
   position: relative;
   z-index: 2;
@@ -444,7 +444,7 @@ a:focus-visible {
   .nav-cards {
     grid-template-columns: repeat(3, max-content);
     justify-content: center;
-    margin-top: -27vh;
+    margin-top: -28vh;
     gap: var(--spacing-md);
   }
 }
@@ -456,7 +456,7 @@ a:focus-visible {
   text-align: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all var(--transition-base);
-  border: 1px solid var(--color-border);
+  border: none;
   text-decoration: none;
   display: block;
   max-width: 260px;
@@ -510,8 +510,7 @@ a:focus-visible {
 }
 
 .nav-card-skills {
-  background: linear-gradient(135deg, #FCD34D 10%, #F9A8D4 100%);
-  border-color: black;
+  background: #ffd689;
 }
 
 .nav-card-skills .nav-card-title {
@@ -525,6 +524,14 @@ a:focus-visible {
 
 .nav-card-skills .nav-card-icon {
   color: #2d2d2d;
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  width: auto;
+  min-width: 48px;
+  letter-spacing: -0.35em;
 }
 
 .nav-card-skills:hover .nav-card-icon {
@@ -533,8 +540,7 @@ a:focus-visible {
 }
 
 .nav-card-contact {
-  background: linear-gradient(135deg, #C4B5FD  50%, #ff8dcc 100%);
-  border-color: black;
+  background: #C4B5FD;
 }
 
 .nav-card-contact .nav-card-title {
@@ -556,8 +562,7 @@ a:focus-visible {
 }
 
 .nav-card-projects {
-  background: linear-gradient(135deg, #F9A8D4 70%, #C4B5FD 100%);
-  border-color: black;
+  background: #FFFBFE;
 }
 
 .nav-card-projects .nav-card-title {
