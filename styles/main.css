@@ -338,7 +338,6 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: clamp(3rem, 12vh, 8rem);
 }
 
 .hero-content {
@@ -347,6 +346,7 @@ a:focus-visible {
   gap: clamp(1rem, 2vh, var(--spacing-2xl));
   align-items: center;
   width: 100%;
+  flex: 1;
   min-height: 0;
   overflow: visible;
 }
@@ -886,8 +886,20 @@ a:focus-visible {
    About Section
    ============================================ */
 
+.hero + .about {
+  position: relative;
+  z-index: 2;
+}
+
 .about {
   padding: var(--spacing-3xl) 0;
+  margin-top: -25vh;
+}
+
+@media (min-width: 768px) {
+  .about {
+    margin-top: -35vh;
+  }
 }
 
 .about-content {
