@@ -676,8 +676,30 @@ a:focus-visible {
    Projects Section
    ============================================ */
 
+.hero + .projects {
+  position: relative;
+  z-index: 2;
+}
+
 .projects {
   padding: var(--spacing-3xl) 0;
+  margin-top: -25vh;
+}
+
+@media (min-width: 768px) {
+  .projects {
+    margin-top: -35vh;
+  }
+}
+
+.projects .card {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.projects .card:hover {
+  transform: none;
+  box-shadow: var(--shadow-md);
 }
 
 .projects-grid {
@@ -686,15 +708,27 @@ a:focus-visible {
   gap: var(--spacing-xl);
 }
 
+.projects .projects-grid {
+  grid-template-columns: 1fr;
+}
+
 @media (min-width: 768px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .projects .projects-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (min-width: 1024px) {
   .projects-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .projects .projects-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -766,9 +800,17 @@ a:focus-visible {
   flex-direction: column;
 }
 
+.project-content h4 {
+  padding-bottom: var(--spacing-md);
+}
+
 .project-title {
   margin-bottom: var(--spacing-sm);
   font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
 }
 
 .project-description {
@@ -1339,6 +1381,42 @@ a:focus-visible {
 
 .archived-projects .section-title {
   margin-bottom: var(--spacing-xl);
+}
+
+.archived-projects .project-image {
+  padding: var(--spacing-xl);
+  justify-content: center;
+}
+
+.archived-projects .project-mockup-mobile {
+  max-width: none;
+  width: auto;
+  aspect-ratio: auto;
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.archived-projects .project-mockup img {
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 200px;
+}
+
+.year-chip {
+  display: inline-block;
+  padding: 0.375rem 0.875rem;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: white;
+  color: #1E1B4B;
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-left: var(--spacing-xs);
 }
 
 /* ============================================

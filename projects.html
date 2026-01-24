@@ -30,11 +30,42 @@
       </div>
     </nav>
 
-    <!-- Current Projects -->
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-headline">Projects</h1>
+            <p class="hero-subtext">
+              A showcase of my current work and past projects, demonstrating my skills in mobile and web development
+            </p>
+          </div>
+          <div class="hero-graphic">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="graphicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:rgba(255,255,255,0.3);stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:rgba(255,255,255,0.15);stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <path d="M 200 50 Q 250 150 350 200 Q 250 250 200 350 Q 150 250 50 200 Q 150 150 200 50 Z" fill="url(#graphicGradient)" opacity="0.5"/>
+              <circle cx="200" cy="200" r="100" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="3" opacity="0.6"/>
+              <circle cx="200" cy="200" r="50" fill="rgba(255,255,255,0.25)" opacity="0.7"/>
+              <path d="M 150 200 L 200 150 L 250 200 L 200 250 Z" fill="rgba(255,255,255,0.8)" opacity="0.6"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Work -->
     <section class="projects">
       <div class="container">
-        <h2 class="section-title">Current Projects</h2>
-        <div class="projects-grid">
+        <div class="card">
+          <div style="display: flex; align-items: center; gap: var(--spacing-md); margin-bottom: var(--spacing-2xl);">
+            <h3 style="margin-bottom: 0; flex-shrink: 0;">Featured Work</h3>
+          </div>
+          <div class="projects-grid">
           <!-- Stitch Tracker -->
           <article class="project-card">
             <div class="project-image">
@@ -46,18 +77,23 @@
               </div>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Stitch Tracker</h3>
+              <h3 class="project-title">Stitch Counter (V2)</h3>
               <p class="project-description">
-                The next generation of stitch counting - an evolution of Stitch Counter with enhanced features and a modern user experience.
+                The next generation of stitch counting - an evolution of <a href="#stitch-counter">Stitch Counter</a> with enhanced features and a modern user experience.
               </p>
               <div class="project-tags">
-                <span class="tech-tag">Kotlin Multiplatform</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">HTML/CSS</span>
-                <span class="tech-tag">Cross-Platform</span>
+                <span class="tech-tag">Native Android</span>
+                <span class="tech-tag">Kotlin</span>
+                <span class="tech-tag">Jetpack Compose</span>
+              </div>
+              <h4>Coming Soon</h4>
+              <div class="project-tags">
+                <span class="tech-tag">Native iOS</span>
+                <span class="tech-tag">Swift</span>
+                <span class="tech-tag">SwiftUI</span>
               </div>
               <div class="project-links">
-                <a href="#stitch-tracker" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Learn More</a>
+                <a href="stitch-tracker.html" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Learn More</a>
               </div>
             </div>
           </article>
@@ -78,133 +114,16 @@
                 A collaborative checklist application that enables teams to work together efficiently and stay organized.
               </p>
               <div class="project-tags">
-                <span class="tech-tag">Kotlin Multiplatform</span>
-                <span class="tech-tag">TypeScript</span>
-                <span class="tech-tag">HTML/CSS</span>
                 <span class="tech-tag">Cross-Platform</span>
+                <span class="tech-tag">Kotlin Multiplatform</span>
+                <span class="tech-tag">Compose Multiplatform</span>
               </div>
               <div class="project-links">
-                <a href="#collab-checklists" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Learn More</a>
+                <a href="collab-checklists.html" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Learn More</a>
               </div>
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- Project Details -->
-    <!-- Stitch Tracker -->
-    <section class="project-detail-hero" id="stitch-tracker">
-      <div class="container">
-        <div>
-          <div class="inline-block mb-8">
-            <div class="project-detail-icon" style="display: flex; align-items: center; justify-content: center; font-size: 3rem;">
-              🧶
-            </div>
-          </div>
-          <h2>Stitch Tracker</h2>
-          <p class="hero-subtext">
-            The next generation of stitch counting - an evolution of Stitch Counter with enhanced features and a modern user experience.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="container project-section">
-      <div class="project-detail-content">
-        <div class="project-detail-section">
-          <h3>About the Project</h3>
-          <p class="text-neutral-700 leading-relaxed text-base">
-            Stitch Tracker is the evolution of Stitch Counter, bringing enhanced features and a modern user experience. 
-            Built with cross-platform technologies to provide a seamless experience across web and mobile platforms.
-          </p>
-        </div>
-
-        <div class="project-detail-section">
-          <h3>Features</h3>
-          <ul>
-            <li>Enhanced stitch and row tracking</li>
-            <li>Cross-platform compatibility (web and mobile)</li>
-            <li>Modern, intuitive user interface</li>
-            <li>Project management and organization</li>
-            <li>Shared business logic across platforms</li>
-          </ul>
-        </div>
-
-        <div class="project-detail-section">
-          <h3>Technologies</h3>
-          <div class="project-tags" style="margin-top: var(--spacing-sm);">
-            <span class="tech-tag">Kotlin Multiplatform</span>
-            <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">HTML/CSS</span>
-            <span class="tech-tag">Cross-Platform</span>
-          </div>
-        </div>
-
-        <div class="project-detail-section">
-          <div class="project-links">
-            <div class="project-link disabled">
-              Coming Soon
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Collab Checklists -->
-    <section class="project-detail-hero" id="collab-checklists">
-      <div class="container">
-        <div>
-          <div class="inline-block mb-8">
-            <div class="project-detail-icon" style="display: flex; align-items: center; justify-content: center; font-size: 3rem;">
-              ✓
-            </div>
-          </div>
-          <h2>Collab Checklists</h2>
-          <p class="hero-subtext">
-            A collaborative checklist application that enables teams to work together efficiently and stay organized.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="container project-section">
-      <div class="project-detail-content">
-        <div class="project-detail-section">
-          <h3>About the Project</h3>
-          <p class="text-neutral-700 leading-relaxed text-base">
-            Collab Checklists is a collaborative checklist application that enables teams to work together efficiently. 
-            Built with cross-platform technologies to ensure seamless collaboration across devices and platforms.
-          </p>
-        </div>
-
-        <div class="project-detail-section">
-          <h3>Features</h3>
-          <ul>
-            <li>Real-time collaboration</li>
-            <li>Shared checklists across team members</li>
-            <li>Cross-platform access (web and mobile)</li>
-            <li>Task assignment and tracking</li>
-            <li>Clean, intuitive interface</li>
-          </ul>
-        </div>
-
-        <div class="project-detail-section">
-          <h3>Technologies</h3>
-          <div class="project-tags" style="margin-top: var(--spacing-sm);">
-            <span class="tech-tag">Kotlin Multiplatform</span>
-            <span class="tech-tag">TypeScript</span>
-            <span class="tech-tag">HTML/CSS</span>
-            <span class="tech-tag">Cross-Platform</span>
-          </div>
-        </div>
-
-        <div class="project-detail-section">
-          <div class="project-links">
-            <div class="project-link disabled">
-              Coming Soon
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -213,7 +132,7 @@
     <section class="archived-projects">
       <div class="container">
         <h2 class="section-title">Archived Projects</h2>
-        <p class="hero-subtext hero-subtext-centered" style="margin-bottom: var(--spacing-xl);">
+        <p class="hero-subtext hero-subtext-centered" style="margin-bottom: var(--spacing-xl); color: var(--color-text-primary);">
           A collection of my earlier projects that showcase my growth and evolution as a developer
         </p>
         <div class="projects-grid">
@@ -225,56 +144,61 @@
               </div>
             </div>
             <div class="project-content">
-              <h3 class="project-title">HPF Pulse</h3>
+              <h3 class="project-title">
+                HPF Pulse
+                <span class="year-chip">2018</span>
+              </h3>
               <p class="project-description">
-                Android app developed for The Humanity Preservation Foundation to provide a directory for finding services in all 50 states.
+                Android and iOS app developed for <a href="https://humanitypreservationfoundation.org" target="_blank" rel="noopener noreferrer">The Humanity Preservation Foundation</a> to provide a directory for finding services to combat bullying, domestic violence, and child abuse in all 50 states.
               </p>
               <div class="project-tags">
-                <span class="tech-tag">Android</span>
+                <span class="tech-tag">Native Android</span>
                 <span class="tech-tag">Java</span>
-                <span class="tech-tag">2018</span>
+                <span class="tech-tag">XML</span>
+              </div>
+              <div class="project-tags">
+                <span class="tech-tag">Native iOS</span>
+                <span class="tech-tag">Swift</span>
+                <span class="tech-tag">UIKit</span>
               </div>
               <div class="project-links">
-                <a href="https://play.google.com/store/apps/details?id=org.humanitypreservationfoundation.pulse" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.19,15.53L15.24,13.58L17.69,12L15.24,10.42L17.19,8.47L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                  </svg>
-                  Google Play
-                </a>
                 <a href="https://github.com/annaharri89/HPFPulse" target="_blank" rel="noopener noreferrer" class="project-link">
                   <svg fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                   </svg>
-                  GitHub
+                  GitHub - Android
+                </a>
+                <a href="https://github.com/annaharri89/HPFPulse_iOS" target="_blank" rel="noopener noreferrer" class="project-link">
+                  <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  GitHub - iOS
                 </a>
               </div>
             </div>
           </article>
 
           <!-- Stitch Counter (v1) -->
-          <article class="project-card">
+          <article class="project-card" id="stitch-counter">
             <div class="project-image">
               <div class="project-mockup project-mockup-mobile">
                 <img src="/images/application_icon_stitch_counter.png" alt="Stitch Counter" />
               </div>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Stitch Counter</h3>
+              <h3 class="project-title">
+                Stitch Counter
+                <span class="year-chip">2017</span>
+              </h3>
               <p class="project-description">
                 Android app for tracking knitting or crochet projects with single or double counters, library system, and customizable themes.
               </p>
               <div class="project-tags">
-                <span class="tech-tag">Android</span>
+                <span class="tech-tag">Native Android</span>
                 <span class="tech-tag">Java</span>
-                <span class="tech-tag">2017</span>
+                <span class="tech-tag">XML</span>
               </div>
               <div class="project-links">
-                <a href="https://play.google.com/store/apps/details?id=io.github.annaharri89.stitchcounter" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.19,15.53L15.24,13.58L17.69,12L15.24,10.42L17.19,8.47L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                  </svg>
-                  Google Play
-                </a>
                 <a href="https://github.com/annaharri89/stitchCounter" target="_blank" rel="noopener noreferrer" class="project-link">
                   <svg fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
@@ -293,14 +217,16 @@
               </div>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Crochet Central</h3>
+              <h3 class="project-title">
+                Crochet Central
+                <span class="year-chip">2016</span>
+              </h3>
               <p class="project-description">
                 iPad app created for Student Capstone Project at Indiana University East, demonstrating experience with Objective-C and iOS development.
               </p>
               <div class="project-tags">
                 <span class="tech-tag">iOS</span>
                 <span class="tech-tag">Objective-C</span>
-                <span class="tech-tag">2016</span>
               </div>
               <div class="project-links">
                 <a href="https://github.com/annaharri89/crochet-central" target="_blank" rel="noopener noreferrer" class="project-link">

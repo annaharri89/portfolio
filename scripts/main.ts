@@ -36,8 +36,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       e.preventDefault();
       const target = document.querySelector(href);
       if (target) {
+        // Save reference to the clicked link element
+        const clickedLink = this as HTMLElement;
+        const linkSelector = Array.from(document.querySelectorAll('a[href^="#"]')).indexOf(clickedLink);
+        const linkId = clickedLink.id || `anchor-${linkSelector}`;
+        if (!clickedLink.id) {
+          clickedLink.id = linkId;
+        }
+        
         const navHeight = document.querySelector('.nav')?.clientHeight || 0;
         const targetPosition = (target as HTMLElement).offsetTop - navHeight;
+        
+        // Push state with link ID to restore position later
+        history.pushState({ linkId: linkId }, '', href);
+        
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
@@ -45,4 +57,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       }
     }
   });
+});
+
+// Handle back button to restore scroll position to the clicked link
+window.addEventListener('popstate', (e) => {
+  if (e.state && e.state.linkId) {
+    const linkElement = document.getElementById(e.state.linkId);
+    if (linkElement) {
+      const navHeight = document.querySelector('.nav')?.clientHeight || 0;
+      const linkPosition = linkElement.offsetTop - navHeight;
+      window.scrollTo({
+        top: linkPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
 });
