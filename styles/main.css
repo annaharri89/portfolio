@@ -918,6 +918,10 @@ a:focus-visible {
   border: 1px solid var(--color-border);
 }
 
+.about-card h3 {
+  margin-bottom: var(--spacing-md);
+}
+
 .about-text {
   margin-bottom: var(--spacing-md);
   font-size: 1.0625rem;
