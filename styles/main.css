@@ -682,7 +682,8 @@ a:focus-visible {
 }
 
 .projects {
-  padding: var(--spacing-3xl) 0;
+  padding-top: var(--spacing-3xl);
+  padding-bottom: var(--spacing-lg);
   margin-top: -25vh;
 }
 
@@ -718,7 +719,7 @@ a:focus-visible {
   }
   
   .projects .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -728,7 +729,7 @@ a:focus-visible {
   }
   
   .projects .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -748,12 +749,46 @@ a:focus-visible {
   box-shadow: var(--shadow-xl);
 }
 
+.project-card-active {
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card-active:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.project-card-coming-soon {
+  opacity: 0.85;
+  border: 2px solid var(--color-border);
+  position: relative;
+  filter: grayscale(60%) saturate(70%);
+}
+
+.project-card-coming-soon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.project-card-coming-soon:hover {
+  opacity: 0.9;
+  transform: translateY(-4px);
+}
+
 .project-image {
   display: flex;
   gap: var(--spacing-sm);
   padding: var(--spacing-md);
   background: var(--gradient-soft);
   border-bottom: 1px solid var(--color-border);
+  position: relative;
+  z-index: 1;
 }
 
 .project-mockup {
@@ -798,6 +833,8 @@ a:focus-visible {
   flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .project-content h4 {
@@ -813,10 +850,30 @@ a:focus-visible {
   flex-wrap: wrap;
 }
 
+.project-title-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.project-title-icon-placeholder {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-soft);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+
 .project-description {
   margin-bottom: var(--spacing-md);
   font-size: 0.9375rem;
-  flex: 1;
 }
 
 .project-tags {
@@ -824,6 +881,10 @@ a:focus-visible {
   flex-wrap: wrap;
   gap: var(--spacing-xs);
   margin-bottom: var(--spacing-md);
+}
+
+.project-tags .year-chip:first-child {
+  margin-left: 0;
 }
 
 .project-links {
@@ -1142,6 +1203,8 @@ a:focus-visible {
 
 .carousel {
   width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
   position: relative;
 }
 
@@ -1155,7 +1218,7 @@ a:focus-visible {
 
 .carousel-track {
   display: flex;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
@@ -1166,19 +1229,23 @@ a:focus-visible {
   flex-direction: column;
   align-items: center;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  pointer-events: none;
 }
 
 .carousel-slide.active {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .carousel-slide img {
   width: 100%;
-  max-width: 600px;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
+  object-position: center;
   border-radius: var(--radius-md);
+  display: block;
 }
 
 .carousel-slide-text {
@@ -1374,8 +1441,8 @@ a:focus-visible {
 
 /* Archived Projects Section */
 .archived-projects {
-  margin-top: var(--spacing-3xl);
-  padding-top: var(--spacing-3xl);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
   border-top: 2px solid var(--color-border);
 }
 
@@ -1408,15 +1475,21 @@ a:focus-visible {
 
 .year-chip {
   display: inline-block;
-  padding: 0.375rem 0.875rem;
+  padding: 0.5rem 1rem;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  font-weight: 600;
-  background: white;
-  color: #1E1B4B;
+  font-weight: 500;
+  background: var(--color-accent-tag-text);
+  color: white;
   border-radius: var(--radius-full);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-base);
   margin-left: var(--spacing-xs);
+}
+
+.year-chip:hover {
+  background: var(--color-accent);
+  color: white;
+  transform: scale(1.05);
 }
 
 /* ============================================

@@ -61,33 +61,26 @@
     <!-- Featured Work -->
     <section class="projects">
       <div class="container">
-        <div class="card">
-          <div style="display: flex; align-items: center; gap: var(--spacing-md); margin-bottom: var(--spacing-2xl);">
-            <h3 style="margin-bottom: 0; flex-shrink: 0;">Featured Work</h3>
-          </div>
-          <div class="projects-grid">
+        <div class="projects-grid">
           <!-- Stitch Tracker -->
-          <article class="project-card">
-            <div class="project-image">
-              <div class="project-mockup project-mockup-mobile">
-                <div class="mockup-placeholder">🧶</div>
-              </div>
-              <div class="project-mockup project-mockup-desktop">
-                <div class="mockup-placeholder">Web View</div>
-              </div>
-            </div>
+          <article class="project-card project-card-active">
             <div class="project-content">
-              <h3 class="project-title">Stitch Counter (V2)</h3>
+              <h3 class="project-title">
+                <img src="/images/application_icon_stitch_counter.png" alt="Stitch Counter" class="project-title-icon" />
+                Stitch Counter (V2)
+              </h3>
               <p class="project-description">
                 The next generation of stitch counting - an evolution of <a href="#stitch-counter">Stitch Counter</a> with enhanced features and a modern user experience.
               </p>
               <div class="project-tags">
+                <span class="year-chip">2025</span>
                 <span class="tech-tag">Native Android</span>
                 <span class="tech-tag">Kotlin</span>
                 <span class="tech-tag">Jetpack Compose</span>
               </div>
               <h4>Coming Soon</h4>
               <div class="project-tags">
+                <span class="year-chip">2026</span>
                 <span class="tech-tag">Native iOS</span>
                 <span class="tech-tag">Swift</span>
                 <span class="tech-tag">SwiftUI</span>
@@ -98,32 +91,54 @@
             </div>
           </article>
 
-          <!-- Collab Checklists -->
-          <article class="project-card">
-            <div class="project-image">
-              <div class="project-mockup project-mockup-mobile">
-                <div class="mockup-placeholder">✓</div>
-              </div>
-              <div class="project-mockup project-mockup-desktop">
-                <div class="mockup-placeholder">Web View</div>
-              </div>
-            </div>
+          <!-- Share My Brand -->
+          <article class="project-card project-card-coming-soon">
             <div class="project-content">
-              <h3 class="project-title">Collab Checklists</h3>
+              <h3 class="project-title">
+                <span class="project-title-icon project-title-icon-placeholder">✓</span>
+                Share My Brand
+              </h3>
               <p class="project-description">
-                A collaborative checklist application that enables teams to work together efficiently and stay organized.
+                A package of SDKs for Android, iOS, and Web that allows you to easily share content 
+                from your app to social media with your brand logo added. It has the benefit of 
+                not showing the brand logo until the user has tapped the share button and the content 
+                has been generated. This will keep your app UI decluttered, which leads to better UX.
               </p>
               <div class="project-tags">
+                <span class="year-chip">2026</span>
                 <span class="tech-tag">Cross-Platform</span>
+                <span class="tech-tag">WASM</span>
                 <span class="tech-tag">Kotlin Multiplatform</span>
                 <span class="tech-tag">Compose Multiplatform</span>
               </div>
               <div class="project-links">
-                <a href="collab-checklists.html" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Learn More</a>
+                <button disabled class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem; opacity: 0.5; cursor: not-allowed;">Coming Soon</button>
               </div>
             </div>
           </article>
-        </div>
+
+          <!-- Collab Checklists -->
+          <article class="project-card project-card-coming-soon">
+            <div class="project-content">
+              <h3 class="project-title">
+                <span class="project-title-icon project-title-icon-placeholder">✓</span>
+                Collab Checklists
+              </h3>
+              <p class="project-description">
+                A collaborative checklist application that enables teams to work together efficiently and stay organized.
+              </p>
+              <div class="project-tags">
+                <span class="year-chip">2026</span>
+                <span class="tech-tag">Cross-Platform</span>
+                <span class="tech-tag">WASM</span>
+                <span class="tech-tag">Kotlin Multiplatform</span>
+                <span class="tech-tag">Compose Multiplatform</span>
+              </div>
+              <div class="project-links">
+                <button disabled class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem; opacity: 0.5; cursor: not-allowed;">Coming Soon</button>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -137,104 +152,72 @@
         </p>
         <div class="projects-grid">
           <!-- HPF Pulse -->
-          <article class="project-card">
-            <div class="project-image">
-              <div class="project-mockup project-mockup-mobile">
-                <img src="/images/hpf_pulse_google_play_icon.png" alt="HPF Pulse" />
-              </div>
-            </div>
+          <article class="project-card project-card-active">
             <div class="project-content">
               <h3 class="project-title">
+                <img src="/images/hpf_pulse_google_play_icon.png" alt="HPF Pulse" class="project-title-icon" />
                 HPF Pulse
-                <span class="year-chip">2018</span>
               </h3>
               <p class="project-description">
                 Android and iOS app developed for <a href="https://humanitypreservationfoundation.org" target="_blank" rel="noopener noreferrer">The Humanity Preservation Foundation</a> to provide a directory for finding services to combat bullying, domestic violence, and child abuse in all 50 states.
               </p>
               <div class="project-tags">
+                <span class="year-chip">2017</span>
                 <span class="tech-tag">Native Android</span>
                 <span class="tech-tag">Java</span>
                 <span class="tech-tag">XML</span>
               </div>
               <div class="project-tags">
+                <span class="year-chip">2017</span>
                 <span class="tech-tag">Native iOS</span>
                 <span class="tech-tag">Swift</span>
                 <span class="tech-tag">UIKit</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/annaharri89/HPFPulse" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
-                  GitHub - Android
-                </a>
-                <a href="https://github.com/annaharri89/HPFPulse_iOS" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
-                  GitHub - iOS
-                </a>
+                <a href="hpf-pulse.html" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Learn More</a>
               </div>
             </div>
           </article>
 
           <!-- Stitch Counter (v1) -->
-          <article class="project-card" id="stitch-counter">
-            <div class="project-image">
-              <div class="project-mockup project-mockup-mobile">
-                <img src="/images/application_icon_stitch_counter.png" alt="Stitch Counter" />
-              </div>
-            </div>
+          <article class="project-card project-card-active" id="stitch-counter">
             <div class="project-content">
               <h3 class="project-title">
+                <img src="/images/application_icon_stitch_counter.png" alt="Stitch Counter" class="project-title-icon" />
                 Stitch Counter
-                <span class="year-chip">2017</span>
               </h3>
               <p class="project-description">
                 Android app for tracking knitting or crochet projects with single or double counters, library system, and customizable themes.
               </p>
               <div class="project-tags">
+                <span class="year-chip">2017</span>
                 <span class="tech-tag">Native Android</span>
                 <span class="tech-tag">Java</span>
                 <span class="tech-tag">XML</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/annaharri89/stitchCounter" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
-                  GitHub
-                </a>
+                <a href="stitch-counter.html" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Learn More</a>
               </div>
             </div>
           </article>
 
           <!-- Crochet Central -->
-          <article class="project-card">
-            <div class="project-image">
-              <div class="project-mockup project-mockup-mobile">
-                <div class="mockup-placeholder">🧶</div>
-              </div>
-            </div>
+          <article class="project-card project-card-active">
             <div class="project-content">
               <h3 class="project-title">
+                <span class="project-title-icon project-title-icon-placeholder">🧶</span>
                 Crochet Central
-                <span class="year-chip">2016</span>
               </h3>
               <p class="project-description">
                 iPad app created for Student Capstone Project at Indiana University East, demonstrating experience with Objective-C and iOS development.
               </p>
               <div class="project-tags">
+                <span class="year-chip">2016</span>
                 <span class="tech-tag">iOS</span>
                 <span class="tech-tag">Objective-C</span>
               </div>
               <div class="project-links">
-                <a href="https://github.com/annaharri89/crochet-central" target="_blank" rel="noopener noreferrer" class="project-link">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                  </svg>
-                  GitHub
-                </a>
+                <a href="crochet-central.html" class="btn btn-secondary" style="font-size: 0.875rem; padding: 0.625rem 1.25rem;">Learn More</a>
               </div>
             </div>
           </article>
