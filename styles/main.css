@@ -353,7 +353,7 @@ a:focus-visible {
 
 @media (min-width: 768px) {
   .hero-content {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr minmax(300px, 1fr);
     gap: var(--spacing-3xl);
   }
 }
@@ -393,25 +393,25 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: -4rem auto 0 auto;
   overflow: visible;
 }
 
 .hero-graphic svg {
   width: 100%;
   height: auto;
-  max-width: min(600px, 37.5vh);
-  max-height: 37.5vh;
+  max-width: min(600px, 35vh);
+  max-height: 35vh;
   filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.1));
 }
 
 @media (min-width: 768px) {
   .hero-graphic {
-    margin: 0;
-    max-width: 100%;
+    margin: -4rem 0 0 clamp(-8%, -4rem, -3rem);
+    max-width: 60%;
   }
-  
+
   .hero-graphic svg {
     max-width: 100%;
   }
