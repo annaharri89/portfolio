@@ -931,14 +931,38 @@ a:focus-visible {
    Contact Section
    ============================================ */
 
+.hero + .contact {
+  position: relative;
+  z-index: 2;
+}
+
 .contact {
   padding: var(--spacing-3xl) 0;
+  margin-top: -25vh;
+}
+
+@media (min-width: 768px) {
+  .contact {
+    margin-top: -35vh;
+  }
 }
 
 .contact-content {
   text-align: center;
-  max-width: 700px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
 .contact-intro {
@@ -956,11 +980,27 @@ a:focus-visible {
   color: var(--color-text-secondary);
 }
 
+.contact-links-column {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.contact-links-card {
+  background: var(--gradient-card);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  width: 100%;
+  max-width: 320px;
+}
+
 .contact-links {
   display: flex;
+  flex-direction: column;
   gap: var(--spacing-md);
-  justify-content: center;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .contact-link {
@@ -972,13 +1012,16 @@ a:focus-visible {
   box-shadow: var(--shadow-md);
   border: 2px solid var(--color-border);
   transition: all var(--transition-base);
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--color-text-primary);
 }
 
 .contact-link:hover {
-  background: var(--gradient-primary);
-  color: white;
-  border-color: transparent;
+  color: var(--color-accent);
+  background: var(--color-accent-light);
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
 }
