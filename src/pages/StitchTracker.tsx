@@ -10,7 +10,7 @@ export default function StitchTracker() {
             </div>
           </div>
           <h2 className="text-4xl md:text-5xl font-semibold mb-4 text-neutral-900 tracking-tight">
-            Stitch Tracker
+            Stitch Counter v2
           </h2>
           <p className="text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed">
             The next generation of stitch counting - coming soon
@@ -23,7 +23,7 @@ export default function StitchTracker() {
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-neutral-900">About the Project</h3>
               <p className="text-neutral-700 leading-relaxed text-base">
-                Stitch Tracker is the evolution of Stitch Counter, bringing enhanced features and a modern user
+                Stitch Counter v2 is the evolution of Stitch Counter, bringing enhanced features and a modern user
                 experience. More information coming soon.
               </p>
             </div>

@@ -7,7 +7,7 @@ export default function Navigation() {
 
   const navItems = [
     { path: '/', label: 'Home' },
-    { path: '/stitch-tracker', label: 'Stitch Tracker' },
+    { path: '/stitch-counter-v2', label: 'Stitch Counter v2' },
     { path: '/collab-check-lists', label: 'Collab Check Lists' },
     { path: '/archive', label: 'Archive' },
     { path: '/about', label: 'About' },

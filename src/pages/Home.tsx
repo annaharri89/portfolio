@@ -20,14 +20,14 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {/* Stitch Tracker */}
             <Link
-              to="/stitch-tracker"
+              to="/stitch-counter-v2"
               className="card card-hover p-8 md:p-10 block transition-all duration-200"
             >
               <div className="flex flex-col items-center text-center">
                 <div className="w-24 h-24 rounded-2xl shadow-lg bg-neutral-100 flex items-center justify-center mb-6">
                   <span className="text-neutral-400 text-5xl">🧶</span>
                 </div>
-                <h3 className="text-2xl font-semibold mb-3 text-neutral-900">Stitch Tracker</h3>
+                <h3 className="text-2xl font-semibold mb-3 text-neutral-900">Stitch Counter v2</h3>
                 <p className="text-neutral-600 leading-relaxed">
                   The next generation of stitch counting - an evolution of Stitch Counter with enhanced features
                   and a modern user experience.

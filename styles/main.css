@@ -1203,7 +1203,7 @@ a:focus-visible {
 
 .carousel {
   width: 100%;
-  max-width: 500px;
+  max-width: 360px;
   margin: 0 auto;
   position: relative;
 }
@@ -1211,14 +1211,16 @@ a:focus-visible {
 .carousel-viewport {
   width: 100%;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   background: var(--gradient-soft);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  position: relative;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
@@ -1228,8 +1230,9 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
@@ -1244,46 +1247,62 @@ a:focus-visible {
   height: auto;
   object-fit: contain;
   object-position: center;
-  border-radius: var(--radius-md);
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .carousel-slide-text {
-  margin-top: var(--spacing-sm);
-  font-size: 0.875rem;
-  color: var(--color-text-secondary);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 0.8125rem;
+  color: white;
   text-align: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  font-weight: 500;
+  backdrop-filter: blur(4px);
 }
 
 .carousel-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-sm);
   margin-top: var(--spacing-md);
+  padding: 0 var(--spacing-xs);
 }
 
 .carousel-btn {
-  background: var(--gradient-card);
-  border: 2px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
   border-radius: var(--radius-full);
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all var(--transition-base);
   color: var(--color-text-primary);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.15);
+  flex-shrink: 0;
 }
 
 .carousel-btn:hover {
   background: var(--gradient-primary);
   color: white;
   border-color: transparent;
-  transform: scale(1.1);
-  box-shadow: var(--shadow-md);
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.carousel-btn:active {
+  transform: scale(0.95);
 }
 
 .carousel-btn:focus-visible {
@@ -1291,30 +1310,52 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+.carousel-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.5;
+}
+
 .carousel-indicators {
   display: flex;
-  gap: var(--spacing-xs);
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0 var(--spacing-sm);
 }
 
 .carousel-indicator {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: var(--radius-full);
   border: none;
-  background: var(--color-border);
+  background: rgba(139, 92, 246, 0.3);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0;
+  position: relative;
+}
+
+.carousel-indicator::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.carousel-indicator:hover::before {
+  background: rgba(139, 92, 246, 0.1);
 }
 
 .carousel-indicator.active {
   background: var(--color-accent);
-  width: 32px;
-  border-radius: var(--radius-full);
+  width: 24px;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
 }
 
 .carousel-indicator:hover {
-  background: var(--color-accent-hover);
+  background: rgba(139, 92, 246, 0.5);
 }
 
 .carousel-indicator.active:hover {
@@ -1537,6 +1578,26 @@ a:focus-visible {
 
 .project-detail-hero + .project-section {
   padding-top: var(--spacing-xl);
+}
+
+/* ============================================
+   Project Detail Section
+   ============================================ */
+
+.hero + .project-detail {
+  position: relative;
+  z-index: 2;
+}
+
+.project-detail {
+  padding: var(--spacing-3xl) 0;
+  margin-top: -25vh;
+}
+
+@media (min-width: 768px) {
+  .project-detail {
+    margin-top: -35vh;
+  }
 }
 
 /* Text utilities */
