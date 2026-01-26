@@ -1203,13 +1203,13 @@ a:focus-visible {
 
 .carousel {
   width: 100%;
-  max-width: 360px;
   margin: 0 auto;
   position: relative;
 }
 
 .carousel-viewport {
   width: 100%;
+  max-height: 300px;
   overflow: hidden;
   border-radius: var(--radius-xl);
   background: var(--gradient-soft);
@@ -1230,10 +1230,12 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
   opacity: 0;
   transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
+  padding-bottom: 2.5rem;
 }
 
 .carousel-slide.active {
@@ -1244,12 +1246,24 @@ a:focus-visible {
 .carousel-slide img {
   width: 100%;
   max-width: 100%;
+  max-height: 300px;
   height: auto;
   object-fit: contain;
   object-position: center;
   display: block;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+}
+
+.carousel-slide img[src*="landscape"] {
+  max-width: 40%;
+  max-height: 300px;
+}
+
+@media (max-width: 767px) {
+  .carousel-slide img[src*="landscape"] {
+    max-width: 60%;
+  }
 }
 
 .carousel-slide-text {
@@ -1261,10 +1275,14 @@ a:focus-visible {
   font-size: 0.8125rem;
   color: white;
   text-align: center;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
   border-radius: 0 0 var(--radius-xl) var(--radius-xl);
   font-weight: 500;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carousel-controls {
@@ -1277,10 +1295,9 @@ a:focus-visible {
 }
 
 .carousel-btn {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  border-radius: var(--radius-full);
+  background: var(--gradient-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
   width: 40px;
   height: 40px;
   display: flex;
@@ -1289,16 +1306,15 @@ a:focus-visible {
   cursor: pointer;
   transition: all var(--transition-base);
   color: var(--color-text-primary);
-  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.15);
+  box-shadow: var(--shadow-md);
   flex-shrink: 0;
 }
 
 .carousel-btn:hover {
-  background: var(--gradient-primary);
-  color: white;
-  border-color: transparent;
-  transform: scale(1.08);
-  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
 .carousel-btn:active {
