@@ -71,10 +71,18 @@
               </div>
             </div>
             <p class="text-neutral-700 leading-relaxed text-base">
-              HPF Pulse is an Android app I developed on behalf of <a href="http://humanitypreservationfoundation.org/" target="_blank" rel="noopener noreferrer">The Humanity Preservation Foundation</a>.
+              HPF Pulse is an Android app and an iOS app I developed on behalf of <a href="http://humanitypreservationfoundation.org/" target="_blank" rel="noopener noreferrer">The Humanity Preservation Foundation</a>.
               The project was created to provide victims, heroes, caregivers and volunteers a directory for
               finding services in all 50 states. Pulse lets you know who is out there and willing to help with
               a form of violence that you may have experienced.
+            </p>
+            <h4>Functionality</h4>
+            <p class="text-neutral-700 leading-relaxed text-base">
+              On iOS the way to find the resources by state was to tap a an area on the map grouped by time zones. It would highlight 
+              that area and show results by hitting a PHP server that held the data. The map was able to highlight
+              because I used an SVG that had tags for each state. I programatically accessed those tags in order to 
+              highlight the appropriate groups of states when tapped. Android worked similarly, except it used a drop down menu 
+              to select the time zone which triggered the search and highlighted the map.
             </p>
             <div class="project-links">
               <a href="https://github.com/annaharri89/HPFPulse" target="_blank" rel="noopener noreferrer" class="project-link">
@@ -89,7 +97,6 @@
                 </svg>
                 View on GitHub - iOS
               </a>
-              
             </div>
           </div>
           <div id="hpfPulseCarousel"></div>

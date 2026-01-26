@@ -1485,6 +1485,20 @@ a:focus-visible {
   height: 18px;
 }
 
+.btn svg,
+.btn-secondary svg,
+.project-link svg,
+.contact-link svg {
+  fill: black;
+}
+
+.btn:hover svg,
+.btn-secondary:hover svg,
+.project-link:hover svg,
+.contact-link:hover svg {
+  fill: black;
+}
+
 .project-link.disabled {
   opacity: 0.5;
   cursor: not-allowed;
