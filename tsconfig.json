@@ -13,8 +13,11 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["scripts", "vite.config.ts"],
+  "include": ["src", "vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
