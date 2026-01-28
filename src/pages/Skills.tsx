@@ -80,7 +80,7 @@ export default function Skills() {
                   <span className="tech-tag">TypeScript</span>
                 </li>
                 <li>
-                  <span className="tech-tag">React</span>
+                  <span className="tech-tag">ReactJS</span>
                 </li>
                 <li>
                   <span className="tech-tag">Tailwind CSS</span>
