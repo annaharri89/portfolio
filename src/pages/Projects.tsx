@@ -28,7 +28,7 @@ export default function Projects() {
           icon="🌐"
           title="Portfolio Website"
           description="This portfolio website was built with modern web technologies, showcasing my ability to work with React and create responsive, modern user interfaces."
-          tags={[[{ year: '2026', tech: 'ReactJS' }, { tech: 'TypeScript' }, { tech: 'Vite' }, { tech: 'Tailwind CSS' }]]}
+          tags={[[{ year: '2026', tech: 'React' }, { tech: 'React Router' }, { tech: 'TypeScript' }, { tech: 'Vite' }, { tech: 'Tailwind CSS' }]]}
           link={{ href: 'https://github.com/annaharri89/portfolio', label: 'View on GitHub' }}
         />
 
