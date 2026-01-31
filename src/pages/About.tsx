@@ -6,6 +6,7 @@ export default function About() {
       <Hero
         title="About Me"
         subtitle="Software developer specializing in native mobile and modern web apps"
+        variant="compact"
       />
       <section className="about">
         <div className="container">

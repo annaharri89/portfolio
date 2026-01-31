@@ -9,6 +9,7 @@ export default function StitchTracker() {
       <Hero
         title="Stitch Counter (V2)"
         subtitle="An evolution of Stitch Counter with enhanced features and a modern user experience."
+        variant="compact"
       />
       <section className="project-detail">
         <div className="container">

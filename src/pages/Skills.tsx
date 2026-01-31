@@ -6,6 +6,7 @@ export default function Skills() {
       <Hero
         title="Skills & Technologies"
         subtitle="A comprehensive overview of the technologies, tools, and practices I use to build mobile and web applications"
+        variant="compact"
       />
       <section className="skills">
         <div className="container">

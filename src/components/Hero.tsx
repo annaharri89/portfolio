@@ -4,11 +4,12 @@ interface HeroProps {
   title: string | React.ReactNode
   subtitle?: string
   showGraphic?: boolean
+  variant?: 'full' | 'compact'
 }
 
-function HeroGraphic() {
+function HeroGraphic({ isCompact = false }: { isCompact?: boolean }) {
   return (
-    <div className="hero-graphic">
+    <div className={`hero-graphic ${isCompact ? 'hero-graphic--compact' : ''}`}>
       <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="graphicGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -29,7 +30,8 @@ function HeroGraphic() {
   )
 }
 
-export default function Hero({ title, subtitle, showGraphic = true }: HeroProps) {
+export default function Hero({ title, subtitle, showGraphic = true, variant = 'full' }: HeroProps) {
+  const isCompact = variant === 'compact'
   const heroRef = useRef<HTMLElement>(null)
   const subtextRef = useRef<HTMLParagraphElement>(null)
 
@@ -57,18 +59,18 @@ export default function Hero({ title, subtitle, showGraphic = true }: HeroProps)
   }, [subtitle])
 
   return (
-    <section className="hero" ref={heroRef}>
+    <section className={`hero ${isCompact ? 'hero--compact' : ''}`} ref={heroRef}>
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
-            <h1 className="hero-headline">{title}</h1>
+            <h1 className={`hero-headline ${isCompact ? 'hero-headline--compact' : ''}`}>{title}</h1>
             {subtitle && (
-              <p className="hero-subtext" ref={subtextRef}>
+              <p className={`hero-subtext ${isCompact ? 'hero-subtext--compact' : ''}`} ref={subtextRef}>
                 {subtitle}
               </p>
             )}
           </div>
-          {showGraphic && <HeroGraphic />}
+          {showGraphic && <HeroGraphic isCompact={isCompact} />}
         </div>
       </div>
     </section>

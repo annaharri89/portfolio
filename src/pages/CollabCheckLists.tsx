@@ -8,6 +8,7 @@ export default function CollabCheckLists() {
       <Hero
         title="Collab Check Lists"
         subtitle="Collaborative checklist application - coming soon"
+        variant="compact"
       />
       <section className="project-detail">
         <div className="container">

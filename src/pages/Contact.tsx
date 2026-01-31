@@ -101,6 +101,7 @@ export default function Contact() {
       <Hero
         title="Let's Connect"
         subtitle="I'd love to hear from you! Whether you have a project in mind, a job opportunity, or just want to chat about development."
+        variant="compact"
       />
       <section className="contact">
         <div className="container">

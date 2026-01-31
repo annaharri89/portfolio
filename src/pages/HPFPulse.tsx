@@ -9,6 +9,7 @@ export default function HPFPulse() {
       <Hero
         title="HPF Pulse"
         subtitle="Android and iOS app developed for The Humanity Preservation Foundation"
+        variant="compact"
       />
       <section className="project-detail">
         <div className="container">

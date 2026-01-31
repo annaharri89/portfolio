@@ -9,6 +9,7 @@ export default function StitchCounter() {
       <Hero
         title="Stitch Counter"
         subtitle="An Android app for tracking knitting and crochet projects with customizable themes"
+        variant="compact"
       />
       <section className="project-detail">
         <div className="container">
