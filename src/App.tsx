@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import StitchTracker from './pages/StitchTracker'
 import StitchCounter from './pages/StitchCounter'
@@ -13,7 +14,8 @@ import { ROUTES } from './constants/routes'
 
 function App() {
   return (
-    <Router>
+    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
