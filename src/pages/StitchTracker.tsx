@@ -17,7 +17,7 @@ export default function StitchTracker() {
               <div className="project-header">
                 <div className="project-header-row">
                   <img
-                    src="/images/application_icon_stitch_counter.png"
+                    src="/images/stitch_counter_v2.png"
                     alt="Stitch Counter V2 Icon"
                     className="project-detail-icon project-header-icon"
                   />
@@ -33,10 +33,10 @@ export default function StitchTracker() {
                 <div>
                   <h4>Features</h4>
                   <ul className="list-disc list-inside space-y-2 text-neutral-700">
-                    <li>Single and Doublecounter mode for tracking stitches and/or rows</li>
+                    <li>Single and Double counter project modes for tracking stitches and/or rows</li>
                     <li>Library system to save counters and return to them later using Room, an abstraction layer over SQLite, for the database.</li>
-                    <li>3 different customizable color themes using Material3 and DataStore to save the theme selection.</li>
-                    <li>Responsive design for all device sizes using Jetpack Compose. Optimized for portrait and landscape modes</li>
+                    <li>Three different customizable color themes using Material3 and DataStore to save the theme selection. The theme selection changes the app icon.</li>
+                    <li>Responsive design for all device sizes using Jetpack Compose. Optimized for portrait and landscape orientations.</li>
                     <li>The user can upload a photo to each project. Photos are saved to the device's file system, and file paths are stored in Room. Images are loaded with Coil using these stored paths.</li>                 
                   </ul>
                 </div>

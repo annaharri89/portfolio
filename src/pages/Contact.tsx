@@ -1,8 +1,8 @@
-import { useState, FormEvent } from 'react'
+import { useState, useEffect, FormEvent } from 'react'
 import Hero from '../components/Hero'
 import GithubIcon from '../components/icons/GithubIcon'
 import { API_CONFIG } from '../constants/api'
-// import { fetchALTCHAChallenge, solveALTCHAChallenge } from '../utils/altcha'
+import { fetchALTCHAChallenge, solveALTCHAChallenge } from '../utils/altcha'
 
 function LinkedInIcon({ className = 'w-6 h-6' }: { className?: string }) {
   return (
@@ -19,21 +19,21 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
-  // const [altchaChallenge, setAltchaChallenge] = useState<Awaited<ReturnType<typeof fetchALTCHAChallenge>> | null>(null)
+  const [altchaChallenge, setAltchaChallenge] = useState<Awaited<ReturnType<typeof fetchALTCHAChallenge>> | null>(null)
 
-  // useEffect(() => {
-  //   async function loadChallenge() {
-  //     try {
-  //       const challenge = await fetchALTCHAChallenge(API_CONFIG.BASE_URL)
-  //       setAltchaChallenge(challenge)
-  //     } catch (error) {
-  //       console.error('[Contact] Failed to load ALTCHA challenge:', error)
-  //       setSubmitStatus('error')
-  //       setErrorMessage('Failed to initialize form. Please refresh the page.')
-  //     }
-  //   }
-  //   loadChallenge()
-  // }, [])
+  useEffect(() => {
+    async function loadChallenge() {
+      try {
+        const challenge = await fetchALTCHAChallenge(API_CONFIG.BASE_URL)
+        setAltchaChallenge(challenge)
+      } catch (error) {
+        console.error('[Contact] Failed to load ALTCHA challenge:', error)
+        setSubmitStatus('error')
+        setErrorMessage('Failed to initialize form. Please refresh the page.')
+      }
+    }
+    loadChallenge()
+  }, [])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -42,18 +42,18 @@ export default function Contact() {
       return
     }
     
-    // if (!altchaChallenge) {
-    //   setSubmitStatus('error')
-    //   setErrorMessage('Form not ready. Please refresh the page.')
-    //   return
-    // }
+    if (!altchaChallenge) {
+      setSubmitStatus('error')
+      setErrorMessage('Form not ready. Please refresh the page.')
+      return
+    }
 
     setIsSubmitting(true)
     setSubmitStatus('idle')
     setErrorMessage('')
 
     try {
-      // const altchaSolution = await solveALTCHAChallenge(altchaChallenge)
+      const altchaSolution = await solveALTCHAChallenge(altchaChallenge)
       
       const response = await fetch(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.CONTACT}`, {
         method: 'POST',
@@ -64,7 +64,7 @@ export default function Contact() {
           email,
           subject: name ? `Contact from ${name}` : 'Contact Form Submission',
           body: message,
-          // altcha: altchaSolution,
+          altcha: altchaSolution,
         }),
       })
 
@@ -85,8 +85,8 @@ export default function Contact() {
       setEmail('')
       setMessage('')
       
-      // const newChallenge = await fetchALTCHAChallenge(API_CONFIG.BASE_URL)
-      // setAltchaChallenge(newChallenge)
+      const newChallenge = await fetchALTCHAChallenge(API_CONFIG.BASE_URL)
+      setAltchaChallenge(newChallenge)
     } catch (error) {
       console.error('[Contact] Form submission error:', error)
       setSubmitStatus('error')

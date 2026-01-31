@@ -1,7 +1,6 @@
 import Hero from '../components/Hero'
 import ImageCarousel from '../components/ImageCarousel'
 import GithubIcon from '../components/icons/GithubIcon'
-import GooglePlayIcon from '../components/icons/GooglePlayIcon'
 import { STITCH_COUNTER_SLIDES } from '../constants/projects'
 
 export default function StitchCounter() {
