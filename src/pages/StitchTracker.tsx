@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
-import ImageCarousel from '../components/ImageCarousel'
+// import ImageCarousel from '../components/ImageCarousel'
 import GithubIcon from '../components/icons/GithubIcon'
-import { STITCH_COUNTER_SLIDES } from '../constants/projects'
+// import { STITCH_COUNTER_SLIDES } from '../constants/projects'
 import { ROUTES } from '../constants/routes'
 
 export default function StitchTracker() {
@@ -32,7 +32,8 @@ export default function StitchTracker() {
                   Stitch Counter V2 is the next generation of stitch counting, building upon the original <Link to={ROUTES.STITCH_COUNTER} className="text-blue-600 hover:text-blue-800 underline">Stitch Counter</Link> with enhanced features and a modern user experience. It includes all the features from the original app plus the ability to add photos to your projects and a completely redesigned UI built with Jetpack Compose.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              {/* Change md:grid-cols-1 back to md:grid-cols-2 when uncommenting carousel */}
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-8 mb-8">
                 <div>
                   <h4>Features</h4>
                   <ul className="list-disc list-inside space-y-2 text-neutral-700">
@@ -43,9 +44,9 @@ export default function StitchTracker() {
                     <li>The user can upload a photo to each project. Photos are saved to the device's file system, and file paths are stored in Room. Images are loaded with Coil using these stored paths.</li>                 
                   </ul>
                 </div>
-                <div>
+                {/* <div>
                   <ImageCarousel slides={STITCH_COUNTER_SLIDES} />
-                </div>
+                </div> */}
               </div>
               <div className="project-tags">
                 <span className="year-chip">2025</span>
