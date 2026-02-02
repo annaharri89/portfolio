@@ -1,46 +1,54 @@
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { ROUTES } from '../constants/routes'
+
+const NAV_ITEMS = [
+  { path: ROUTES.ABOUT, label: 'About' },
+  { path: ROUTES.PROJECTS, label: 'Projects' },
+  { path: ROUTES.SKILLS, label: 'Skills' },
+  { path: ROUTES.CONTACT, label: 'Contact' },
+]
 
 export default function Navigation() {
   const location = useLocation()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const isActive = (path: string) => location.pathname === path
 
-  const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/stitch-counter-v2', label: 'Stitch Counter v2' },
-    { path: '/collab-check-lists', label: 'Collab Check Lists' },
-    { path: '/archive', label: 'Archive' },
-    { path: '/about', label: 'About' },
-  ]
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-sm border-b border-neutral-200 mb-12">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between py-5">
-          <Link to="/" className="mb-4 md:mb-0">
-            <h1 className="text-2xl font-semibold text-neutral-900 tracking-tight">
-              Anna Harrison
-            </h1>
-          </Link>
-          <div className="flex flex-wrap justify-center gap-1">
-            {navItems.map((item) => (
+    <nav className="nav" id="nav">
+      <div className="nav-container">
+        <Link to={ROUTES.HOME} className="nav-logo">
+          Anna Harrison
+        </Link>
+        <button
+          className="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation"
+          aria-expanded={isMenuOpen}
+          onClick={toggleMenu}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul className="nav-menu" id="navMenu" aria-expanded={isMenuOpen}>
+          {NAV_ITEMS.map((item) => (
+            <li key={item.path}>
               <Link
-                key={item.path}
                 to={item.path}
-                className={`
-                  px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
-                  ${
-                    isActive(item.path)
-                      ? 'bg-neutral-900 text-white'
-                      : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100'
-                  }
-                `}
+                className={`nav-link ${isActive(item.path) ? 'active' : ''}`}
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </nav>
   )
