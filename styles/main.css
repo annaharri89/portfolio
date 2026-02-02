@@ -370,7 +370,7 @@ a:focus-visible {
 
 @media (min-width: 768px) {
   .hero-content {
-    grid-template-columns: 1fr minmax(300px, 1fr);
+    grid-template-columns: 1.5fr 1fr;
     gap: var(--spacing-3xl);
   }
 }
@@ -469,7 +469,7 @@ a:focus-visible {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-sm);
-  margin-top: calc(-50vh + var(--hero-subtext-bottom, 25vh) + var(--spacing-xs));
+  margin-top: calc(-40vh + var(--hero-subtext-bottom, 25vh) + var(--spacing-xs));
   padding: var(--spacing-xl) var(--spacing-md);
   position: relative;
   z-index: 2;
@@ -482,7 +482,7 @@ a:focus-visible {
   .nav-cards {
     grid-template-columns: repeat(3, minmax(200px, 1fr));
     justify-content: center;
-    margin-top: calc(-70vh + var(--hero-subtext-bottom, 30vh) + var(--spacing-xs));
+    margin-top: calc(-68vh + var(--hero-subtext-bottom, 30vh) + var(--spacing-md));
     gap: var(--spacing-md);
     padding: var(--spacing-xl) var(--spacing-lg);
   }

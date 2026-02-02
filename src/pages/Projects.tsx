@@ -9,11 +9,12 @@ export default function Projects() {
       <Hero
         title="Projects"
         subtitle="A showcase of my current work and past projects, demonstrating my skills in mobile and web development"
+        variant="compact"
       />
 
       <ProjectCardGrid>
         <ProjectCard
-          icon="/images/application_icon_stitch_counter.png"
+          icon="/images/stitch_counter_v2.png"
           title="Stitch Counter (V2)"
           description={`The next generation of stitch counting- an evolution of <a href="${ROUTES.STITCH_COUNTER}">Stitch Counter</a> with enhanced features and a modern user experience.`}
           tags={[

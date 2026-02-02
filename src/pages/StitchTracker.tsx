@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
 import ImageCarousel from '../components/ImageCarousel'
 import GithubIcon from '../components/icons/GithubIcon'
 import { STITCH_COUNTER_SLIDES } from '../constants/projects'
+import { ROUTES } from '../constants/routes'
 
 export default function StitchTracker() {
   return (
@@ -27,7 +29,7 @@ export default function StitchTracker() {
                   </div>
                 </div>
                 <p className="text-neutral-700 leading-relaxed text-base">
-                  Stitch Counter V2 is the next generation of stitch counting, building upon the original Stitch Counter with enhanced features and a modern user experience. It includes all the features from the original app plus the ability to add photos to your projects and a completely redesigned UI built with Jetpack Compose.
+                  Stitch Counter V2 is the next generation of stitch counting, building upon the original <Link to={ROUTES.STITCH_COUNTER} className="text-blue-600 hover:text-blue-800 underline">Stitch Counter</Link> with enhanced features and a modern user experience. It includes all the features from the original app plus the ability to add photos to your projects and a completely redesigned UI built with Jetpack Compose.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
