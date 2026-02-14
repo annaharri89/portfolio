@@ -72,16 +72,16 @@ export default function Skills() {
               <h3 className="skill-group-title">Web</h3>
               <ul className="skill-list">
                 <li>
-                  <span className="tech-tag">HTML5</span>
+                  <span className="tech-tag">HTML</span>
                 </li>
                 <li>
-                  <span className="tech-tag">CSS3</span>
+                  <span className="tech-tag">CSS</span>
                 </li>
                 <li>
                   <span className="tech-tag">TypeScript</span>
                 </li>
                 <li>
-                  <span className="tech-tag">ReactJS</span>
+                  <span className="tech-tag">React</span>
                 </li>
                 <li>
                   <span className="tech-tag">Tailwind CSS</span>
@@ -123,10 +123,7 @@ export default function Skills() {
               <h3 className="skill-group-title">Practices</h3>
               <ul className="skill-list">
                 <li>
-                  <span className="tech-tag">MVVM Architecture</span>
-                </li>
-                <li>
-                  <span className="tech-tag">Clean Architecture</span>
+                  <span className="tech-tag">MVVM</span>
                 </li>
                 <li>
                   <span className="tech-tag">State Management</span>

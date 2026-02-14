@@ -41,7 +41,8 @@ export default function StitchTracker() {
                     <li>Library system to save counters and return to them later using Room, an abstraction layer over SQLite, for the database.</li>
                     <li>Three different customizable color themes using Material3 and DataStore to save the theme selection. The theme selection changes the app icon.</li>
                     <li>Responsive design for all device sizes using Jetpack Compose. Optimized for portrait and landscape orientations.</li>
-                    <li>The user can upload a photo to each project. Photos are saved to the device's file system, and file paths are stored in Room. Images are loaded with Coil using these stored paths.</li>                 
+                    <li>The user can upload up to 10 photos to each project. Photos are saved to the device's file system, and file paths are stored in Room. Images are loaded with Coil using these stored paths.</li>                 
+                    <li>There is an import/export feature to save and load the project library so the user can backup their projects and restore them later. This is helpful since the project library is only local to the device.</li>                 
                   </ul>
                 </div>
                 {/* <div>
@@ -60,7 +61,7 @@ export default function StitchTracker() {
                 <span className="tech-tag">Coil</span>
                 <span className="tech-tag">Ramcosta Compose Destinations</span>
                 <div style={{ width: '100%', marginTop: 'var(--spacing-lg)', marginBottom: 'var(--spacing-sm)' }}>
-                  <h4>Coming Soon</h4>
+                  <h4>In Progress</h4>
                 </div>
                 <span className="tech-tag">Native iOS</span>
                 <span className="tech-tag">Swift</span>
@@ -68,14 +69,31 @@ export default function StitchTracker() {
               </div>
               <div className="project-links">
                 <a
-                  href="https://github.com/annaharri89/stitchCounterV3"
+                  href="https://github.com/annaharri89/stitchCounterV2"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="project-link"
                 >
                   <GithubIcon />
-                  View on GitHub
+                  View Android codebase on GitHub
                 </a>
+                <a
+                  href="https://github.com/annaharri89/stitchCounterV2.ios"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-link"
+                >
+                  <GithubIcon />
+                  View iOS codebase on GitHub
+                </a>
+              <div className="project-links">
+                <Link to={ROUTES.STITCH_COUNTER_V2_PRIVACY_POLICY} className="project-link">
+                  Privacy Policy
+                </Link>
+                <Link to={ROUTES.STITCH_COUNTER_V2_EULA} className="project-link">
+                  EULA
+                </Link>
+              </div>
               </div>
             </div>
           </div>

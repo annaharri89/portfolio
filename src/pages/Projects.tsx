@@ -21,7 +21,7 @@ export default function Projects() {
             [{ year: '2025', tech: 'Native Android' }, { tech: 'Kotlin' }, { tech: 'Jetpack Compose' }],
             [{ year: '2026', tech: 'Native iOS' }, { tech: 'Swift' }, { tech: 'SwiftUI' }],
           ]}
-          tagGroupHeaders={[undefined, 'Coming Soon']}
+          tagGroupHeaders={[undefined, 'In Progress']}
           link={{ href: ROUTES.STITCH_COUNTER_V2, label: 'Learn More' }}
         />
 
