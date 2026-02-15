@@ -10,6 +10,8 @@ import Projects from './pages/Projects'
 import About from './pages/About'
 import Skills from './pages/Skills'
 import Contact from './pages/Contact'
+import StitchTrackerEula from './pages/StitchTrackerEula'
+import StitchTrackerPrivacyPolicy from './pages/StitchTrackerPrivacyPolicy'
 import { ROUTES } from './constants/routes'
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
           <Route path={ROUTES.ABOUT} element={<About />} />
           <Route path={ROUTES.SKILLS} element={<Skills />} />
           <Route path={ROUTES.CONTACT} element={<Contact />} />
+          <Route path={ROUTES.STITCH_COUNTER_V2_EULA} element={<StitchTrackerEula />} />
+          <Route path={ROUTES.STITCH_COUNTER_V2_PRIVACY_POLICY} element={<StitchTrackerPrivacyPolicy />} />
         </Routes>
       </Layout>
     </Router>

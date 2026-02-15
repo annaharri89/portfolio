@@ -1,8 +1,7 @@
-import { useState, useEffect, FormEvent } from 'react'
+import { useState, useEffect, FormEvent, useRef } from 'react'
 import Hero from '../components/Hero'
 import GithubIcon from '../components/icons/GithubIcon'
 import { API_CONFIG } from '../constants/api'
-import { fetchALTCHAChallenge, solveALTCHAChallenge } from '../utils/altcha'
 
 function LinkedInIcon({ className = 'w-6 h-6' }: { className?: string }) {
   return (
@@ -19,20 +18,54 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
-  const [altchaChallenge, setAltchaChallenge] = useState<Awaited<ReturnType<typeof fetchALTCHAChallenge>> | null>(null)
+  const [altchaPayload, setAltchaPayload] = useState<string | null>(null)
+  const altchaWidgetRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
-    async function loadChallenge() {
-      try {
-        const challenge = await fetchALTCHAChallenge(API_CONFIG.BASE_URL)
-        setAltchaChallenge(challenge)
-      } catch (error) {
-        console.error('[Contact] Failed to load ALTCHA challenge:', error)
-        setSubmitStatus('error')
-        setErrorMessage('Failed to initialize form. Please refresh the page.')
+    const setupWidget = () => {
+      const widget = document.querySelector('altcha-widget') as HTMLElement & {
+        addEventListener: (event: string, handler: (e: CustomEvent) => void) => void
+        getState: () => string
+        reset: () => void
+      }
+      
+      if (widget) {
+        altchaWidgetRef.current = widget
+        
+        const handleVerified = (e: CustomEvent<{ payload: string }>) => {
+          setAltchaPayload(e.detail.payload)
+        }
+        
+        const handleStateChange = (e: CustomEvent<{ state: string }>) => {
+          if (e.detail.state === 'error') {
+            setSubmitStatus('error')
+            setErrorMessage('ALTCHA verification failed. Please try again.')
+            setAltchaPayload(null)
+          } else if (e.detail.state === 'verified') {
+            setSubmitStatus('idle')
+            setErrorMessage('')
+          }
+        }
+        
+        widget.addEventListener('verified', handleVerified as EventListener)
+        widget.addEventListener('statechange', handleStateChange as EventListener)
+        
+        return () => {
+          widget.removeEventListener('verified', handleVerified as EventListener)
+          widget.removeEventListener('statechange', handleStateChange as EventListener)
+        }
       }
     }
-    loadChallenge()
+    
+    const cleanup = setupWidget()
+    if (!cleanup) {
+      window.addEventListener('load', setupWidget)
+      return () => {
+        window.removeEventListener('load', setupWidget)
+      }
+    }
+    
+    return cleanup
   }, [])
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -42,9 +75,9 @@ export default function Contact() {
       return
     }
     
-    if (!altchaChallenge) {
+    if (!altchaPayload) {
       setSubmitStatus('error')
-      setErrorMessage('Form not ready. Please refresh the page.')
+      setErrorMessage('Please complete the verification before submitting.')
       return
     }
 
@@ -53,8 +86,6 @@ export default function Contact() {
     setErrorMessage('')
 
     try {
-      const altchaSolution = await solveALTCHAChallenge(altchaChallenge)
-      
       const response = await fetch(`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.CONTACT}`, {
         method: 'POST',
         headers: {
@@ -64,7 +95,7 @@ export default function Contact() {
           email,
           subject: name ? `Contact from ${name}` : 'Contact Form Submission',
           body: message,
-          altcha: altchaSolution,
+          altcha: altchaPayload,
         }),
       })
 
@@ -84,9 +115,14 @@ export default function Contact() {
       setName('')
       setEmail('')
       setMessage('')
+      setAltchaPayload(null)
       
-      const newChallenge = await fetchALTCHAChallenge(API_CONFIG.BASE_URL)
-      setAltchaChallenge(newChallenge)
+      if (altchaWidgetRef.current) {
+        const widget = altchaWidgetRef.current as HTMLElement & {
+          reset: () => void
+        }
+        widget.reset()
+      }
     } catch (error) {
       console.error('[Contact] Form submission error:', error)
       setSubmitStatus('error')
@@ -177,11 +213,16 @@ export default function Contact() {
                         disabled={isSubmitting}
                       ></textarea>
                     </div>
+                    <altcha-widget
+                      challengeurl={`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.ALTCHA_CHALLENGE}`}
+                      auto="onload"
+                      name="altcha"
+                    />
                     <button
                       type="submit"
                       className="contact-link"
-                      style={{ width: '100%', justifyContent: 'center' }}
-                      disabled={isSubmitting}
+                      style={{ width: '100%', justifyContent: 'center', marginTop: 'var(--spacing-md)' }}
+                      disabled={isSubmitting || !altchaPayload}
                     >
                       {isSubmitting ? 'Sending...' : 'Send Message'}
                     </button>
