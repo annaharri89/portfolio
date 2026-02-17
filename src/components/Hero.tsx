@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 
 interface HeroProps {
   title: string | React.ReactNode
@@ -32,40 +32,15 @@ function HeroGraphic({ isCompact = false }: { isCompact?: boolean }) {
 
 export default function Hero({ title, subtitle, showGraphic = true, variant = 'full' }: HeroProps) {
   const isCompact = variant === 'compact'
-  const heroRef = useRef<HTMLElement>(null)
-  const subtextRef = useRef<HTMLParagraphElement>(null)
-
-  useEffect(() => {
-    const updateHeroSubtextPosition = () => {
-      if (heroRef.current && subtextRef.current) {
-        const heroRect = heroRef.current.getBoundingClientRect()
-        const subtextRect = subtextRef.current.getBoundingClientRect()
-        const subtextBottom = subtextRect.bottom - heroRect.top
-        document.documentElement.style.setProperty('--hero-subtext-bottom', `${subtextBottom}px`)
-      }
-    }
-
-    updateHeroSubtextPosition()
-    window.addEventListener('resize', updateHeroSubtextPosition)
-    window.addEventListener('orientationchange', updateHeroSubtextPosition)
-
-    const timeoutId = setTimeout(updateHeroSubtextPosition, 100)
-
-    return () => {
-      window.removeEventListener('resize', updateHeroSubtextPosition)
-      window.removeEventListener('orientationchange', updateHeroSubtextPosition)
-      clearTimeout(timeoutId)
-    }
-  }, [subtitle])
 
   return (
-    <section className={`hero ${isCompact ? 'hero--compact' : ''}`} ref={heroRef}>
+    <section className={`hero ${isCompact ? 'hero--compact' : ''}`}>
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
             <h1 className={`hero-headline ${isCompact ? 'hero-headline--compact' : ''}`}>{title}</h1>
             {subtitle && (
-              <p className={`hero-subtext ${isCompact ? 'hero-subtext--compact' : ''}`} ref={subtextRef}>
+              <p className={`hero-subtext ${isCompact ? 'hero-subtext--compact' : ''}`}>
                 {subtitle}
               </p>
             )}
