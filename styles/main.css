@@ -362,6 +362,7 @@ a:focus-visible {
   grid-template-columns: 1fr;
   gap: clamp(1rem, 2vh, var(--spacing-2xl));
   align-items: center;
+  align-content: center;
   width: 100%;
   flex: 1;
   min-height: 0;
@@ -459,17 +460,66 @@ a:focus-visible {
   flex-wrap: wrap;
 }
 
-/* Navigation Cards (Home Page) */
+/* ============================================
+   Hero → Content Section Overlap
+   ============================================ */
+
+.hero + .projects,
+.hero + .skills,
+.hero + .about,
+.hero + .contact,
+.hero + .project-detail,
 .hero + section.container {
   position: relative;
   z-index: 2;
 }
 
+.projects,
+.skills,
+.about,
+.contact,
+.project-detail,
+.nav-cards {
+  margin-top: -25vh;
+}
+
+@media (min-width: 768px) {
+  .projects,
+  .skills,
+  .about,
+  .contact,
+  .project-detail,
+  .nav-cards {
+    margin-top: -23vh;
+  }
+}
+
+.hero--compact + .projects,
+.hero--compact + .skills,
+.hero--compact + .about,
+.hero--compact + .contact,
+.hero--compact + .project-detail,
+.hero--compact + section.container .nav-cards {
+  margin-top: -20vh;
+}
+
+@media (min-width: 768px) {
+  .hero--compact + .projects,
+  .hero--compact + .skills,
+  .hero--compact + .about,
+  .hero--compact + .contact,
+  .hero--compact + .project-detail,
+  .hero--compact + section.container .nav-cards {
+    margin-top: -18vh;
+  }
+}
+
+/* Navigation Cards (Home Page) */
+
 .nav-cards {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing-sm);
-  margin-top: calc(-40vh + var(--hero-subtext-bottom, 25vh) + var(--spacing-xs));
   padding: var(--spacing-xl) var(--spacing-md);
   position: relative;
   z-index: 2;
@@ -482,19 +532,8 @@ a:focus-visible {
   .nav-cards {
     grid-template-columns: repeat(3, minmax(200px, 1fr));
     justify-content: center;
-    margin-top: calc(-68vh + var(--hero-subtext-bottom, 30vh) + var(--spacing-md));
     gap: var(--spacing-md);
     padding: var(--spacing-xl) var(--spacing-lg);
-  }
-}
-
-.hero--compact + section.container .nav-cards {
-  margin-top: calc(-40vh + var(--hero-subtext-bottom, 15vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .hero--compact + section.container .nav-cards {
-    margin-top: calc(-40vh + var(--hero-subtext-bottom, 20vh) + var(--spacing-xs));
   }
 }
 
@@ -717,31 +756,9 @@ a:focus-visible {
    Projects Section
    ============================================ */
 
-.hero + .projects {
-  position: relative;
-  z-index: 2;
-}
-
 .projects {
   padding-top: var(--spacing-xl);
   padding-bottom: var(--spacing-lg);
-  margin-top: calc(-50vh + var(--hero-subtext-bottom, 25vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .projects {
-    margin-top: calc(-70vh + var(--hero-subtext-bottom, 30vh) + var(--spacing-xs));
-  }
-}
-
-.hero--compact + .projects {
-  margin-top: calc(-40vh + var(--hero-subtext-bottom, 15vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .hero--compact + .projects {
-    margin-top: calc(-40vh + var(--hero-subtext-bottom, 20vh) + var(--spacing-xs));
-  }
 }
 
 .projects .card {
@@ -971,31 +988,9 @@ a:focus-visible {
    Skills Section
    ============================================ */
 
-.hero + .skills {
-  position: relative;
-  z-index: 2;
-}
-
 .skills {
   padding-top: var(--spacing-xl);
   padding-bottom: var(--spacing-3xl);
-  margin-top: calc(-50vh + var(--hero-subtext-bottom, 25vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .skills {
-    margin-top: calc(-70vh + var(--hero-subtext-bottom, 30vh) + var(--spacing-xs));
-  }
-}
-
-.hero--compact + .skills {
-  margin-top: calc(-40vh + var(--hero-subtext-bottom, 15vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .hero--compact + .skills {
-    margin-top: calc(-40vh + var(--hero-subtext-bottom, 20vh) + var(--spacing-xs));
-  }
 }
 
 .skills-grid {
@@ -1052,31 +1047,9 @@ a:focus-visible {
    About Section
    ============================================ */
 
-.hero + .about {
-  position: relative;
-  z-index: 2;
-}
-
 .about {
   padding-top: var(--spacing-xl);
   padding-bottom: var(--spacing-3xl);
-  margin-top: calc(-50vh + var(--hero-subtext-bottom, 25vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .about {
-    margin-top: calc(-70vh + var(--hero-subtext-bottom, 30vh) + var(--spacing-xs));
-  }
-}
-
-.hero--compact + .about {
-  margin-top: calc(-40vh + var(--hero-subtext-bottom, 15vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .hero--compact + .about {
-    margin-top: calc(-40vh + var(--hero-subtext-bottom, 20vh) + var(--spacing-xs));
-  }
 }
 
 .about-content {
@@ -1113,31 +1086,9 @@ a:focus-visible {
    Contact Section
    ============================================ */
 
-.hero + .contact {
-  position: relative;
-  z-index: 2;
-}
-
 .contact {
   padding-top: var(--spacing-xl);
   padding-bottom: var(--spacing-3xl);
-  margin-top: calc(-50vh + var(--hero-subtext-bottom, 25vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .contact {
-    margin-top: calc(-70vh + var(--hero-subtext-bottom, 30vh) + var(--spacing-xs));
-  }
-}
-
-.hero--compact + .contact {
-  margin-top: calc(-40vh + var(--hero-subtext-bottom, 15vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .hero--compact + .contact {
-    margin-top: calc(-40vh + var(--hero-subtext-bottom, 20vh) + var(--spacing-xs));
-  }
 }
 
 .contact-content {
@@ -1708,31 +1659,9 @@ a:focus-visible {
    Project Detail Section
    ============================================ */
 
-.hero + .project-detail {
-  position: relative;
-  z-index: 2;
-}
-
 .project-detail {
   padding-top: var(--spacing-xl);
   padding-bottom: var(--spacing-3xl);
-  margin-top: calc(-70vh + var(--hero-subtext-bottom, 25vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .project-detail {
-    margin-top: calc(-70vh + var(--hero-subtext-bottom, 30vh) + var(--spacing-xs));
-  }
-}
-
-.hero--compact + .project-detail {
-  margin-top: calc(-40vh + var(--hero-subtext-bottom, 15vh) + var(--spacing-xs));
-}
-
-@media (min-width: 768px) {
-  .hero--compact + .project-detail {
-    margin-top: calc(-40vh + var(--hero-subtext-bottom, 20vh) + var(--spacing-xs));
-  }
 }
 
 /* Text utilities */
