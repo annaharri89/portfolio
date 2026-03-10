@@ -11,7 +11,7 @@ export default function Home() {
             <span className="hero-text-smaller">I'm</span> Anna Harrison
           </>
         }
-        subtitle="I build native and cross-platform apps for web and mobile."
+        subtitle="I build native and multiplatform apps for mobile and web."
       />
       <NavigationCards />
     </>

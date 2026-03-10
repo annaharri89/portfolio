@@ -48,7 +48,7 @@ export default function Skills() {
             </div>
 
             <div className="skill-group">
-              <h3 className="skill-group-title">Cross-Platform (Learning)</h3>
+              <h3 className="skill-group-title">Multiplatform</h3>
               <ul className="skill-list">
                 <li>
                   <span className="tech-tag">Kotlin Multiplatform</span>
@@ -60,7 +60,7 @@ export default function Skills() {
                   <span className="tech-tag">Shared Logic Concepts</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Cross-Platform UI Concepts</span>
+                  <span className="tech-tag">Multiplatform UI Concepts</span>
                 </li>
                 <li>
                   <span className="tech-tag">WASM</span>

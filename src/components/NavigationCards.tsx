@@ -32,7 +32,7 @@ export default function NavigationCards() {
             </svg>
           </span>
           <h3 className="nav-card-title">Projects</h3>
-          <p className="nav-card-description">Explore my portfolio of cross-platform applications and web projects</p>
+          <p className="nav-card-description">Explore my portfolio of native mobile applications, web projects, and multiplatform projects.</p>
         </Link>
         <Link to={ROUTES.SKILLS} className="nav-card nav-card-skills">
           <span className="nav-card-icon">&lt; / &gt;</span>
