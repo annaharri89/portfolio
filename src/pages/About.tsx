@@ -16,8 +16,7 @@ export default function About() {
               <p className="about-text">
                 I am a Software Developer with a passion for learning and creating impactful applications. I graduated from
                 Indiana University East with a degree in Informatics, and I have over 8 years of professional experience with a wide range of
-                programming technologies. My focus has been on native Android and iOS apps, but I have also worked with web
-                development and cross-platform development.
+                programming technologies. My focus has been on native Android and iOS apps, but I have also worked with web and multiplatform development.
               </p>
               <p className="about-text" style={{ marginTop: 'var(--spacing-md)' }}>
                 In my spare time, I enjoy riding my bike, taking care of my animals (cats, dogs, and chickens), house
