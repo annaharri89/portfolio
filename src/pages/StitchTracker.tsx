@@ -68,6 +68,17 @@ export default function StitchTracker() {
                 <span className="tech-tag">SwiftUI</span>
               </div>
               <div className="project-links">
+                <Link to={ROUTES.STITCH_COUNTER_V2_BETA} className="project-link">
+                  Try Stitch Counter (Android Beta)
+                </Link>
+                <div className="project-links">
+                <Link to={ROUTES.STITCH_COUNTER_V2_PRIVACY_POLICY} className="project-link">
+                  Privacy Policy
+                </Link>
+                <Link to={ROUTES.STITCH_COUNTER_V2_EULA} className="project-link">
+                  EULA
+                </Link>
+              </div>
                 <a
                   href="https://github.com/annaharri89/stitchCounterV2"
                   target="_blank"
@@ -86,14 +97,6 @@ export default function StitchTracker() {
                   <GithubIcon />
                   View iOS codebase on GitHub
                 </a>
-              <div className="project-links">
-                <Link to={ROUTES.STITCH_COUNTER_V2_PRIVACY_POLICY} className="project-link">
-                  Privacy Policy
-                </Link>
-                <Link to={ROUTES.STITCH_COUNTER_V2_EULA} className="project-link">
-                  EULA
-                </Link>
-              </div>
               </div>
             </div>
           </div>

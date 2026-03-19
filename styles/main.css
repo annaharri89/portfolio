@@ -962,6 +962,11 @@ a:focus-visible {
   margin-top: auto;
 }
 
+.project-links-vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 /* ============================================
    Tech Tags
    ============================================ */
