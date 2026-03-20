@@ -1,26 +1,55 @@
-import { useState, useEffect } from 'react'
-
-interface Slide {
-  image: string
-  text: string
-  id: number
-}
+import { useEffect, useRef, useState } from 'react'
+import type { Slide } from '../constants/projects'
 
 interface ImageCarouselProps {
   slides: Slide[]
   interval?: number
 }
 
-export default function ImageCarousel({ slides, interval = 5000 }: ImageCarouselProps) {
+function slideHasVideoSource(slide: Slide): boolean {
+  return Boolean(slide.videoSources?.webm || slide.videoSources?.mp4)
+}
+
+export default function ImageCarousel({ slides, interval = 2500 }: ImageCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0)
+  const videoElementBySlideId = useRef<Map<number, HTMLVideoElement>>(new Map())
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    slides.forEach((slide, slideIndex) => {
+      const videoElement = videoElementBySlideId.current.get(slide.id)
+      if (!videoElement) {
+        return
+      }
+
+      if (slideIndex === activeIndex) {
+        videoElement.currentTime = 0
+        void videoElement.play().catch(() => {
+          // Playback can be blocked in rare environments; the user can still navigate manually.
+        })
+        return
+      }
+
+      videoElement.pause()
+      videoElement.currentTime = 0
+    })
+  }, [activeIndex, slides])
+
+  useEffect(() => {
+    if (slides.length <= 1) {
+      return
+    }
+
+    const activeSlide = slides[activeIndex]
+    if (activeSlide && slideHasVideoSource(activeSlide)) {
+      return
+    }
+
+    const timer = window.setTimeout(() => {
       setActiveIndex((prev) => (prev + 1) % slides.length)
     }, interval)
 
-    return () => clearInterval(timer)
-  }, [slides.length, interval])
+    return () => clearTimeout(timer)
+  }, [activeIndex, interval, slides])
 
   const goToSlide = (index: number) => {
     setActiveIndex(index)
@@ -34,19 +63,46 @@ export default function ImageCarousel({ slides, interval = 5000 }: ImageCarousel
     setActiveIndex((prev) => (prev + 1) % slides.length)
   }
 
+  const handleActiveVideoPlaybackEnded = () => {
+    setActiveIndex((prev) => (prev + 1) % slides.length)
+  }
+
+  const setVideoElementForSlide = (slideId: number, videoElement: HTMLVideoElement | null) => {
+    if (videoElement) {
+      videoElementBySlideId.current.set(slideId, videoElement)
+      return
+    }
+    videoElementBySlideId.current.delete(slideId)
+  }
+
   return (
     <div className="carousel">
-      <div className="carousel-viewport" style={{ minHeight: '300px', height: '300px' }}>
+      <div className="carousel-viewport" style={{ minHeight: '570px', height: '570px' }}>
         {slides.map((slide, index) => (
           <div
             key={slide.id}
             className={`carousel-slide ${index === activeIndex ? 'active' : ''}`}
             style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, width: '100%', height: '100%' }}
           >
-            <img
-              src={slide.image}
-              alt={slide.text}
-            />
+            {slideHasVideoSource(slide) ? (
+              <video
+                ref={(videoElement) => setVideoElementForSlide(slide.id, videoElement)}
+                className="carousel-media"
+                muted
+                playsInline
+                preload="metadata"
+                onEnded={index === activeIndex ? handleActiveVideoPlaybackEnded : undefined}
+              >
+                {slide.videoSources?.webm ? <source src={slide.videoSources.webm} type="video/webm" /> : null}
+                {slide.videoSources?.mp4 ? <source src={slide.videoSources.mp4} type="video/mp4" /> : null}
+              </video>
+            ) : (
+              <img
+                className="carousel-media"
+                src={slide.image}
+                alt={slide.text}
+              />
+            )}
           </div>
         ))}
       </div>

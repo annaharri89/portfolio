@@ -12,6 +12,7 @@ import Skills from './pages/Skills'
 import Contact from './pages/Contact'
 import StitchTrackerEula from './pages/StitchTrackerEula'
 import StitchTrackerPrivacyPolicy from './pages/StitchTrackerPrivacyPolicy'
+import Beta from './pages/Beta'
 import { ROUTES } from './constants/routes'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path={ROUTES.CONTACT} element={<Contact />} />
           <Route path={ROUTES.STITCH_COUNTER_V2_EULA} element={<StitchTrackerEula />} />
           <Route path={ROUTES.STITCH_COUNTER_V2_PRIVACY_POLICY} element={<StitchTrackerPrivacyPolicy />} />
+          <Route path={ROUTES.STITCH_COUNTER_V2_BETA} element={<Beta />} />
         </Routes>
       </Layout>
     </Router>

@@ -12,7 +12,7 @@ export default function StitchTrackerEula() {
         <div className="container">
           <div className="project-detail-content">
             <div className="project-detail-section">
-              <p className="text-neutral-500 text-sm mb-6">Last updated: February 13, 2026</p>
+              <p className="text-neutral-500 text-sm mb-6">Last updated: March 16, 2026</p>
 
               <p className="text-neutral-700 leading-relaxed text-base mb-6">
                 This End-User License Agreement ("Agreement") is a legal agreement between you ("User") and{' '}
@@ -36,8 +36,9 @@ export default function StitchTrackerEula() {
 
               <h2 className="text-xl font-semibold text-neutral-900 mt-8 mb-3">3. User Data</h2>
               <p className="text-neutral-700 leading-relaxed text-base mb-6">
-                All data created within the App (projects, counters, photos, preferences) is stored locally on your device.
-                The Developer does not collect, access, or store your data.
+                During normal use, data created within the App (projects, counters, photos, preferences) is stored locally on your device.
+                If you choose to submit a bug report, you may optionally include diagnostics; this is user-controlled and can be disabled before sending.
+                Any diagnostics you send are used only for support and troubleshooting. See the Privacy Policy for details.
               </p>
 
               <h2 className="text-xl font-semibold text-neutral-900 mt-8 mb-3">4. Ownership</h2>
