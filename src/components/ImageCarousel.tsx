@@ -36,7 +36,7 @@ export default function ImageCarousel({ slides, interval = 5000 }: ImageCarousel
 
   return (
     <div className="carousel">
-      <div className="carousel-viewport" style={{ minHeight: '300px', height: '300px' }}>
+      <div className="carousel-viewport" style={{ minHeight: '570px', height: '570px' }}>
         {slides.map((slide, index) => (
           <div
             key={slide.id}

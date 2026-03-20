@@ -45,3 +45,8 @@ export const STITCH_COUNTER_SLIDES: Slide[] = [
     id: 4,
   },
 ]
+
+export const STITCH_TRACKER_SLIDES: Slide[] = [
+  { image: '/images/single-counter-gif.gif', text: 'Single Counter', id: 0 },
+  { image: '/images/double-counter-gif.gif', text: 'Double Counter', id: 2 },
+]
