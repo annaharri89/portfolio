@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import ScrollToTop from './components/ScrollToTop'
+import CanonicalLink from './components/CanonicalLink'
 import Home from './pages/Home'
 import StitchTracker from './pages/StitchTracker'
 import StitchCounter from './pages/StitchCounter'
@@ -18,6 +19,7 @@ import { ROUTES } from './constants/routes'
 function App() {
   return (
     <Router>
+      <CanonicalLink />
       <ScrollToTop />
       <Layout>
         <Routes>
