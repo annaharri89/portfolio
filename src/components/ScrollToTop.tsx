@@ -6,9 +6,32 @@ if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
 }
 
 export default function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
+    if (hash) {
+      const fragmentId = decodeURIComponent(hash.replace(/^#/, ''))
+      const scrollToFragment = () => {
+        const target = document.getElementById(fragmentId)
+        if (target) {
+          target.scrollIntoView({ behavior: 'instant', block: 'start' })
+          return true
+        }
+        return false
+      }
+      let retryTimeoutId: number | undefined
+      requestAnimationFrame(() => {
+        if (!scrollToFragment()) {
+          retryTimeoutId = window.setTimeout(() => scrollToFragment(), 120)
+        }
+      })
+      return () => {
+        if (retryTimeoutId !== undefined) {
+          window.clearTimeout(retryTimeoutId)
+        }
+      }
+    }
+
     const forceScrollToTop = () => {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
       document.documentElement.scrollTop = 0
@@ -17,16 +40,16 @@ export default function ScrollToTop() {
         window.scrollTo(0, 0)
       }
     }
-    
+
     forceScrollToTop()
     requestAnimationFrame(forceScrollToTop)
-    
+
     const scrollAfterTimeout = setTimeout(forceScrollToTop, 50)
-    
+
     return () => {
       clearTimeout(scrollAfterTimeout)
     }
-  }, [pathname])
+  }, [pathname, hash])
 
   return null
 }

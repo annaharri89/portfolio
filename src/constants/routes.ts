@@ -1,3 +1,10 @@
+/** Hash ids on {@link ROUTES.STITCH_COUNTER_V2} for in-page case studies */
+export const STITCH_COUNTER_V2_CASE_STUDY_HASHES = {
+  OVERVIEW: 'stitch-counter-case-studies',
+  FEATURE_DEVELOPMENT: 'case-study-feature-development',
+  UI_UX: 'case-study-android-ui-ux',
+} as const
+
 export const ROUTES = {
   HOME: '/',
   STITCH_COUNTER_V2: '/stitch-counter-v2',

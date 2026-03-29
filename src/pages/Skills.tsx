@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import Hero from '../components/Hero'
+import { ROUTES, STITCH_COUNTER_V2_CASE_STUDY_HASHES } from '../constants/routes'
 
 export default function Skills() {
   return (
@@ -141,6 +143,28 @@ export default function Skills() {
                   <span className="tech-tag">Code Ownership</span>
                 </li>
               </ul>
+            </div>
+
+            <div className="skill-group">
+              <h3 className="skill-group-title">Example work</h3>
+              <p className="text-neutral-700 leading-relaxed text-base" style={{ marginBottom: 'var(--spacing-md)' }}>
+                Case studies with screenshots live on the Stitch Counter (V2) project page.
+              </p>
+              <div className="case-study__skills-links">
+                <Link
+                  to={`${ROUTES.STITCH_COUNTER_V2}#${STITCH_COUNTER_V2_CASE_STUDY_HASHES.OVERVIEW}`}
+                >
+                  Case studies overview
+                </Link>
+                <Link
+                  to={`${ROUTES.STITCH_COUNTER_V2}#${STITCH_COUNTER_V2_CASE_STUDY_HASHES.FEATURE_DEVELOPMENT}`}
+                >
+                  Architecture &amp; data
+                </Link>
+                <Link to={`${ROUTES.STITCH_COUNTER_V2}#${STITCH_COUNTER_V2_CASE_STUDY_HASHES.UI_UX}`}>
+                  UI / UX
+                </Link>
+              </div>
             </div>
           </div>
         </div>
