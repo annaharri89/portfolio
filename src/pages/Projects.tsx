@@ -34,19 +34,11 @@ export default function Projects() {
         />
 
         <ProjectCard
-          icon="📤"
-          title="Share My Brand"
-          description="A package of SDKs for Android, iOS, and Web that allows you to easily share content from your app to social media with your brand logo added. It has the benefit of not showing the brand logo until the user has tapped the share button and the content has been generated. This will keep your app UI decluttered, which leads to better UX."
-          tags={[[{ year: '2026', tech: 'Kotlin Multiplatform' }, { tech: 'WASM' }, { tech: 'Compose Multiplatform' }]]}
-          comingSoon
-        />
-
-        <ProjectCard
-          icon="✓"
-          title="Collab Checklists"
-          description="A collaborative checklist application that enables teams to work together efficiently and stay organized."
-          tags={[[{ year: '2026', tech: 'Kotlin Multiplatform' }, { tech: 'WASM' }, { tech: 'Compose Multiplatform' }]]}
-          comingSoon
+          icon="🃏"
+          title="Solitaire & FreeCell (KMP)"
+          description="Kotlin Multiplatform card game domain (Solitaire and FreeCell rules) shared across targets, with a KorGE client for desktop, web, Android, and iOS."
+          tags={[[{ year: '2026', tech: 'Kotlin Multiplatform' }, { tech: 'Kotlin' }, { tech: 'KorGE' }]]}
+          link={{ href: ROUTES.SOLITAIRE, label: 'Learn More' }}
         />
       </ProjectCardGrid>
 

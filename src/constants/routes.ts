@@ -11,7 +11,7 @@ export const ROUTES = {
   STITCH_COUNTER_V2_BETA: '/beta',
   STITCH_COUNTER: '/stitch-counter',
   HPF_PULSE: '/hpf-pulse',
-  COLLAB_CHECK_LISTS: '/collab-check-lists',
+  SOLITAIRE: '/solitaire',
   PROJECTS: '/projects',
   ABOUT: '/about',
   SKILLS: '/skills',

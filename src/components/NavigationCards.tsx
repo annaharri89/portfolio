@@ -32,7 +32,7 @@ export default function NavigationCards() {
             </svg>
           </span>
           <h3 className="nav-card-title">Projects</h3>
-          <p className="nav-card-description">Explore my portfolio of native mobile applications, web projects, and multiplatform projects.</p>
+          <p className="nav-card-description">Android, Kotlin Multiplatform, and shipped apps—Compose, shared modules, and supporting web work.</p>
         </Link>
         <Link to={ROUTES.SKILLS} className="nav-card nav-card-skills">
           <span className="nav-card-icon">&lt; / &gt;</span>
