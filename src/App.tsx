@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import StitchTracker from './pages/StitchTracker'
 import StitchCounter from './pages/StitchCounter'
 import HPFPulse from './pages/HPFPulse'
-import CollabCheckLists from './pages/CollabCheckLists'
+import Solitaire from './pages/Solitaire'
 import Projects from './pages/Projects'
 import About from './pages/About'
 import Skills from './pages/Skills'
@@ -27,7 +27,7 @@ function App() {
           <Route path={ROUTES.STITCH_COUNTER_V2} element={<StitchTracker />} />
           <Route path={ROUTES.STITCH_COUNTER} element={<StitchCounter />} />
           <Route path={ROUTES.HPF_PULSE} element={<HPFPulse />} />
-          <Route path={ROUTES.COLLAB_CHECK_LISTS} element={<CollabCheckLists />} />
+          <Route path={ROUTES.SOLITAIRE} element={<Solitaire />} />
           <Route path={ROUTES.PROJECTS} element={<Projects />} />
           <Route path={ROUTES.ABOUT} element={<About />} />
           <Route path={ROUTES.SKILLS} element={<Skills />} />
