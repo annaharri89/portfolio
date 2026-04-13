@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { ROUTES } from '../constants/routes'
+import { createSignal, For } from 'solid-js'
+import { A, useLocation } from '@solidjs/router'
+import { ROUTES } from '@consts/routes'
 
 const NAV_ITEMS = [
   { path: ROUTES.ABOUT, label: 'About' },
@@ -11,43 +11,39 @@ const NAV_ITEMS = [
 
 export default function Navigation() {
   const location = useLocation()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = createSignal(false)
 
   const isActive = (path: string) => location.pathname === path
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
   return (
-    <nav className="nav" id="nav">
-      <div className="nav-container">
-        <Link to={ROUTES.HOME} className="nav-logo">
+    <nav class="nav" id="nav">
+      <div class="nav-container">
+        <A href={ROUTES.HOME} class="nav-logo">
           Anna Harrison
-        </Link>
+        </A>
         <button
-          className="nav-toggle"
+          class="nav-toggle"
           id="navToggle"
           aria-label="Toggle navigation"
-          aria-expanded={isMenuOpen}
-          onClick={toggleMenu}
+          aria-expanded={isMenuOpen()}
+          onClick={() => setIsMenuOpen(!isMenuOpen())}
         >
           <span></span>
           <span></span>
           <span></span>
         </button>
-        <ul className="nav-menu" id="navMenu" aria-expanded={isMenuOpen}>
-          {NAV_ITEMS.map((item) => (
-            <li key={item.path}>
-              <Link
-                to={item.path}
-                className={`nav-link ${isActive(item.path) ? 'active' : ''}`}
+        <ul class="nav-menu" id="navMenu" aria-expanded={isMenuOpen()}>
+          <For each={NAV_ITEMS}>{(item) => (
+            <li>
+              <A
+                href={item.path}
+                class={`nav-link ${isActive(item.path) ? 'active' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
-              </Link>
+              </A>
             </li>
-          ))}
+          )}</For>
         </ul>
       </div>
     </nav>
