@@ -1,28 +1,25 @@
 {
-  "name": "anna-portfolio",
-  "version": "0.9.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "altcha": "^2.3.0",
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.0"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.18",
-    "@types/react": "^19.2.9",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.23",
-    "postcss": "^8.5.6",
-    "sharp": "^0.34.5",
-    "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.1"
-  }
+	"name": "anna-portfolio",
+	"version": "0.9.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsgo --noEmit && vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"altcha": "^2.3.0",
+		"@solidjs/router": "^0.16.1",
+		"solid-js": "^1.9.11"
+	},
+	"devDependencies": {
+		"@tailwindcss/postcss": "^4.2.2",
+		"@typescript/native-preview": "^7.0.0-dev.20260321.1",
+		"autoprefixer": "^10.4.27",
+		"postcss": "^8.5.8",
+		"tailwindcss": "^4.2.2",
+		"typescript": "^5.9.3",
+		"vite": "^8.0.1",
+		"vite-plugin-solid": "^2.11.10"
+	}
 }
