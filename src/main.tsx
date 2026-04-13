@@ -1,11 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
+import { render } from 'solid-js/web'
 import 'altcha'
-import './index.css'
+import App from '@app'
+import '@styles/index.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+render(() => <App />, document.getElementById('root')!)

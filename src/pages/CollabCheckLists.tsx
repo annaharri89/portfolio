@@ -1,6 +1,6 @@
-import Hero from '../components/Hero'
-import ProjectDetailsCard from '../components/ProjectDetailsCard'
-import ComingSoonBadge from '../components/ComingSoonBadge'
+import Hero from '@components/Hero'
+import ProjectDetailsCard from '@components/ProjectDetailsCard'
+import ComingSoonBadge from '@components/ComingSoonBadge'
 
 export default function CollabCheckLists() {
   return (
@@ -10,12 +10,12 @@ export default function CollabCheckLists() {
         subtitle="Collaborative checklist application - coming soon"
         variant="compact"
       />
-      <section className="project-detail">
-        <div className="container">
-          <div className="project-detail-content">
+      <section class="project-detail">
+        <div class="container">
+          <div class="project-detail-content">
             <ProjectDetailsCard
               about="Collab Check Lists is a collaborative checklist application that enables teams to work together efficiently. More information coming soon."
-              features={<p className="text-neutral-500 italic">Details to be added...</p>}
+              features={<p class="text-neutral-500 italic">Details to be added...</p>}
               tags={<ComingSoonBadge />}
             />
           </div>

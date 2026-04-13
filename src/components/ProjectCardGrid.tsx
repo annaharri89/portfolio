@@ -1,142 +1,116 @@
-import React, { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { Show, For } from 'solid-js'
+import type { JSX, ParentProps } from 'solid-js'
+import { A } from '@solidjs/router'
 
-interface ProjectCardGridProps {
-  children: ReactNode
-}
-
-export function ProjectCardGrid({ children }: ProjectCardGridProps) {
+export function ProjectCardGrid(props: ParentProps) {
   return (
-    <section className="projects">
-      <div className="container">
-        <div className="projects-grid">{children}</div>
+    <section class="projects">
+      <div class="container">
+        <div class="projects-grid">{props.children}</div>
       </div>
     </section>
   )
 }
 
+interface LinkItem {
+  href: string
+  label: string
+  icon?: JSX.Element
+}
+
 interface ProjectCardProps {
-  icon: string | ReactNode
+  icon: string | JSX.Element
   title: string
   description: string
   tags: Array<{ year?: string; tech: string }[]>
-  link?: { href: string; label: string; icon?: ReactNode } | Array<{ href: string; label: string; icon?: ReactNode }>
+  link?: LinkItem | LinkItem[]
   comingSoon?: boolean
   tagGroupHeaders?: (string | undefined)[]
 }
 
-export function ProjectCard({
-  icon,
-  title,
-  description,
-  tags,
-  link,
-  comingSoon = false,
-  tagGroupHeaders,
-}: ProjectCardProps) {
-  const cardClasses = comingSoon
+function ProjectLinkButton(props: { link: LinkItem; style?: JSX.CSSProperties }) {
+  const isExternal = () => props.link.href.startsWith('http://') || props.link.href.startsWith('https://')
+
+  return (
+    <Show
+      when={isExternal()}
+      fallback={
+        <A href={props.link.href} class="btn btn-secondary" style={props.style}>
+          {props.link.icon}
+          {props.link.label}
+        </A>
+      }
+    >
+      <a href={props.link.href} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style={props.style}>
+        {props.link.icon}
+        {props.link.label}
+      </a>
+    </Show>
+  )
+}
+
+export function ProjectCard(props: ProjectCardProps) {
+  const cardClasses = () => props.comingSoon
     ? 'project-card project-card-coming-soon'
     : 'project-card project-card-active'
 
+  const buildLinkStyle = (linkItem: LinkItem, hasMarginRight = false): JSX.CSSProperties => ({
+    "font-size": '0.875rem',
+    padding: '0.625rem 1.25rem',
+    ...(hasMarginRight ? { "margin-right": '0.5rem' } : {}),
+    ...(linkItem.icon ? { display: 'inline-flex', "align-items": 'center', gap: '0.5rem' } : {}),
+  })
+
   return (
-    <article className={cardClasses}>
-      <div className="project-content">
-        <h3 className="project-title">
-          {typeof icon === 'string' && icon.startsWith('/') ? (
-            <img src={icon} alt={title} className="project-title-icon" />
-          ) : typeof icon === 'string' ? (
-            <span className="project-title-icon project-title-icon-placeholder">{icon}</span>
+    <article class={cardClasses()}>
+      <div class="project-content">
+        <h3 class="project-title">
+          {typeof props.icon === 'string' && props.icon.startsWith('/') ? (
+            <img src={props.icon} alt={props.title} class="project-title-icon" />
+          ) : typeof props.icon === 'string' ? (
+            <span class="project-title-icon project-title-icon-placeholder">{props.icon}</span>
           ) : (
-            icon
+            props.icon
           )}
-          {title}
+          {props.title}
         </h3>
-        <p className="project-description" dangerouslySetInnerHTML={{ __html: description }} />
-        {tags.map((tagGroup, groupIndex) => (
-          <div key={groupIndex}>
-            {tagGroupHeaders && tagGroupHeaders[groupIndex] && (
-              <h4 className="text-lg font-semibold mb-2 text-neutral-900">{tagGroupHeaders[groupIndex]}</h4>
-            )}
-            <div className="project-tags">
-              {tagGroup.map((tag, tagIndex) => (
-                <React.Fragment key={tagIndex}>
-                  {tag.year && <span className="year-chip">{tag.year}</span>}
-                  <span className="tech-tag">{tag.tech}</span>
-                </React.Fragment>
-              ))}
+        <p class="project-description" innerHTML={props.description} />
+        <For each={props.tags}>{(tagGroup, groupIndex) => (
+          <div>
+            <Show when={props.tagGroupHeaders && props.tagGroupHeaders[groupIndex()]}>
+              <h4 class="text-lg font-semibold mb-2 text-neutral-900">{props.tagGroupHeaders![groupIndex()]}</h4>
+            </Show>
+            <div class="project-tags">
+              <For each={tagGroup}>{(tag) => (
+                <>
+                  <Show when={tag.year}>
+                    <span class="year-chip">{tag.year}</span>
+                  </Show>
+                  <span class="tech-tag">{tag.tech}</span>
+                </>
+              )}</For>
             </div>
           </div>
-        ))}
-        <div className="project-links">
-          {comingSoon ? (
+        )}</For>
+        <div class="project-links">
+          {props.comingSoon ? (
             <button
               disabled
-              className="btn btn-secondary"
-              style={{ fontSize: '0.875rem', padding: '0.625rem 1.25rem', opacity: 0.5, cursor: 'not-allowed' }}
+              class="btn btn-secondary"
+              style={{ "font-size": '0.875rem', padding: '0.625rem 1.25rem', opacity: 0.5, cursor: 'not-allowed' }}
             >
               Coming Soon
             </button>
-          ) : link ? (
-            Array.isArray(link) ? (
-              link.map((linkItem, index) => {
-                const isExternal = linkItem.href.startsWith('http://') || linkItem.href.startsWith('https://')
-                const linkContent = (
-                  <>
-                    {linkItem.icon}
-                    {linkItem.label}
-                  </>
-                )
-                const linkStyle = {
-                  fontSize: '0.875rem',
-                  padding: '0.625rem 1.25rem',
-                  ...(index < link.length - 1 ? { marginRight: '0.5rem' } : {}),
-                  ...(linkItem.icon ? { display: 'inline-flex', alignItems: 'center', gap: '0.5rem' } : {}),
-                }
-                return isExternal ? (
-                  <a
-                    key={index}
-                    href={linkItem.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-secondary"
-                    style={linkStyle}
-                  >
-                    {linkContent}
-                  </a>
-                ) : (
-                  <Link key={index} to={linkItem.href} className="btn btn-secondary" style={linkStyle}>
-                    {linkContent}
-                  </Link>
-                )
-              })
-            ) : link.href.startsWith('http://') || link.href.startsWith('https://') ? (
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-                style={{
-                  fontSize: '0.875rem',
-                  padding: '0.625rem 1.25rem',
-                  ...(link.icon ? { display: 'inline-flex', alignItems: 'center', gap: '0.5rem' } : {}),
-                }}
-              >
-                {link.icon}
-                {link.label}
-              </a>
+          ) : props.link ? (
+            Array.isArray(props.link) ? (
+              <For each={props.link}>{(linkItem, index) => (
+                <ProjectLinkButton
+                  link={linkItem}
+                  style={buildLinkStyle(linkItem, index() < (props.link as LinkItem[]).length - 1)}
+                />
+              )}</For>
             ) : (
-              <Link
-                to={link.href}
-                className="btn btn-secondary"
-                style={{
-                  fontSize: '0.875rem',
-                  padding: '0.625rem 1.25rem',
-                  ...(link.icon ? { display: 'inline-flex', alignItems: 'center', gap: '0.5rem' } : {}),
-                }}
-              >
-                {link.icon}
-                {link.label}
-              </Link>
+              <ProjectLinkButton link={props.link as LinkItem} style={buildLinkStyle(props.link as LinkItem)} />
             )
           ) : null}
         </div>

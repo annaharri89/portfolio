@@ -1,14 +1,16 @@
-import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { createEffect, onCleanup } from 'solid-js'
+import { useLocation } from '@solidjs/router'
 
 if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual'
 }
 
 export default function ScrollToTop() {
-  const { pathname } = useLocation()
+  const location = useLocation()
 
-  useEffect(() => {
+  createEffect(() => {
+    location.pathname
+
     const forceScrollToTop = () => {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
       document.documentElement.scrollTop = 0
@@ -23,10 +25,10 @@ export default function ScrollToTop() {
     
     const scrollAfterTimeout = setTimeout(forceScrollToTop, 50)
     
-    return () => {
+    onCleanup(() => {
       clearTimeout(scrollAfterTimeout)
-    }
-  }, [pathname])
+    })
+  })
 
   return null
 }
