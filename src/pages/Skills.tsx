@@ -1,4 +1,4 @@
-import Hero from '../components/Hero'
+import Hero from '@components/Hero'
 
 export default function Skills() {
   return (
@@ -8,137 +8,137 @@ export default function Skills() {
         subtitle="A comprehensive overview of the technologies, tools, and practices I use to build mobile and web applications"
         variant="compact"
       />
-      <section className="skills">
-        <div className="container">
-          <div className="skills-grid">
-            <div className="skill-group">
-              <h3 className="skill-group-title">Mobile</h3>
-              <ul className="skill-list">
+      <section class="skills">
+        <div class="container">
+          <div class="skills-grid">
+            <div class="skill-group">
+              <h3 class="skill-group-title">Mobile</h3>
+              <ul class="skill-list">
                 <li>
-                  <span className="tech-tag">Kotlin</span>
+                  <span class="tech-tag">Kotlin</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Swift</span>
+                  <span class="tech-tag">Swift</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Java</span>
+                  <span class="tech-tag">Java</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Jetpack Compose</span>
+                  <span class="tech-tag">Jetpack Compose</span>
                 </li>
                 <li>
-                  <span className="tech-tag">XML</span>
+                  <span class="tech-tag">XML</span>
                 </li>
                 <li>
-                  <span className="tech-tag">SwiftUI</span>
+                  <span class="tech-tag">SwiftUI</span>
                 </li>
                 <li>
-                  <span className="tech-tag">UIKit</span>
+                  <span class="tech-tag">UIKit</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Native Android</span>
+                  <span class="tech-tag">Native Android</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Native iOS</span>
+                  <span class="tech-tag">Native iOS</span>
                 </li>
                 <li>
-                  <span className="tech-tag">DI</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="skill-group">
-              <h3 className="skill-group-title">Multiplatform</h3>
-              <ul className="skill-list">
-                <li>
-                  <span className="tech-tag">Kotlin Multiplatform</span>
-                </li>
-                <li>
-                  <span className="tech-tag">Compose Multiplatform</span>
-                </li>
-                <li>
-                  <span className="tech-tag">Shared Logic Concepts</span>
-                </li>
-                <li>
-                  <span className="tech-tag">Multiplatform UI Concepts</span>
-                </li>
-                <li>
-                  <span className="tech-tag">WASM</span>
+                  <span class="tech-tag">DI</span>
                 </li>
               </ul>
             </div>
 
-            <div className="skill-group">
-              <h3 className="skill-group-title">Web</h3>
-              <ul className="skill-list">
+            <div class="skill-group">
+              <h3 class="skill-group-title">Multiplatform</h3>
+              <ul class="skill-list">
                 <li>
-                  <span className="tech-tag">HTML</span>
+                  <span class="tech-tag">Kotlin Multiplatform</span>
                 </li>
                 <li>
-                  <span className="tech-tag">CSS</span>
+                  <span class="tech-tag">Compose Multiplatform</span>
                 </li>
                 <li>
-                  <span className="tech-tag">TypeScript</span>
+                  <span class="tech-tag">Shared Logic Concepts</span>
                 </li>
                 <li>
-                  <span className="tech-tag">React</span>
+                  <span class="tech-tag">Multiplatform UI Concepts</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Tailwind CSS</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="skill-group">
-              <h3 className="skill-group-title">Tools & Platforms</h3>
-              <ul className="skill-list">
-                <li>
-                  <span className="tech-tag">Android Studio</span>
-                </li>
-                <li>
-                  <span className="tech-tag">Xcode</span>
-                </li>
-                <li>
-                  <span className="tech-tag">VS Code</span>
-                </li>
-                <li>
-                  <span className="tech-tag">Git</span>
-                </li>
-                <li>
-                  <span className="tech-tag">GitHub</span>
-                </li>
-                <li>
-                  <span className="tech-tag">Bitrise</span>
-                </li>
-                <li>
-                  <span className="tech-tag">Gradle</span>
-                </li>
-                <li>
-                  <span className="tech-tag">Vite</span>
+                  <span class="tech-tag">WASM</span>
                 </li>
               </ul>
             </div>
 
-            <div className="skill-group">
-              <h3 className="skill-group-title">Practices</h3>
-              <ul className="skill-list">
+            <div class="skill-group">
+              <h3 class="skill-group-title">Web</h3>
+              <ul class="skill-list">
                 <li>
-                  <span className="tech-tag">MVVM</span>
+                  <span class="tech-tag">HTML</span>
                 </li>
                 <li>
-                  <span className="tech-tag">State Management</span>
+                  <span class="tech-tag">CSS</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Build Configuration</span>
+                  <span class="tech-tag">TypeScript</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Release Management</span>
+                  <span class="tech-tag">SolidJS</span>
                 </li>
                 <li>
-                  <span className="tech-tag">CI/CD</span>
+                  <span class="tech-tag">Tailwind CSS</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="skill-group-title">Tools & Platforms</h3>
+              <ul class="skill-list">
+                <li>
+                  <span class="tech-tag">Android Studio</span>
                 </li>
                 <li>
-                  <span className="tech-tag">Code Ownership</span>
+                  <span class="tech-tag">Xcode</span>
+                </li>
+                <li>
+                  <span class="tech-tag">VS Code</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Git</span>
+                </li>
+                <li>
+                  <span class="tech-tag">GitHub</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Bitrise</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Gradle</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Vite</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="skill-group-title">Practices</h3>
+              <ul class="skill-list">
+                <li>
+                  <span class="tech-tag">MVVM</span>
+                </li>
+                <li>
+                  <span class="tech-tag">State Management</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Build Configuration</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Release Management</span>
+                </li>
+                <li>
+                  <span class="tech-tag">CI/CD</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Code Ownership</span>
                 </li>
               </ul>
             </div>

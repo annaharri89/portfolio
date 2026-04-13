@@ -1,81 +1,85 @@
-import { useState, useEffect, FormEvent, useRef } from 'react'
-import Hero from '../components/Hero'
-import GithubIcon from '../components/icons/GithubIcon'
-import { API_CONFIG } from '../constants/api'
+import { createSignal, onMount, onCleanup, Show } from 'solid-js'
+import Hero from '@components/Hero'
+import GithubIcon from '@components/icons/GithubIcon'
+import { API_CONFIG } from '@consts/api'
 
-function LinkedInIcon({ className = 'w-6 h-6' }: { className?: string }) {
+declare module "solid-js" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "altcha-widget": globalThis.JSX.IntrinsicElements['altcha-widget']
+    }
+  }
+}
+
+function LinkedInIcon(props: { class?: string }) {
   return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="#0077B5" className={className}>
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="#0077B5" class={props.class ?? 'w-6 h-6'}>
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
   )
 }
 
 export default function Contact() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [message, setMessage] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
-  const [errorMessage, setErrorMessage] = useState('')
-  const [altchaPayload, setAltchaPayload] = useState<string | null>(null)
-  const altchaWidgetRef = useRef<HTMLElement | null>(null)
+  const [name, setName] = createSignal('')
+  const [email, setEmail] = createSignal('')
+  const [message, setMessage] = createSignal('')
+  const [isSubmitting, setIsSubmitting] = createSignal(false)
+  const [submitStatus, setSubmitStatus] = createSignal<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = createSignal('')
+  const [altchaPayload, setAltchaPayload] = createSignal<string | null>(null)
+  let altchaWidgetRef: HTMLElement | undefined
 
-  useEffect(() => {
-    const setupWidget = () => {
-      const widget = document.querySelector('altcha-widget') as HTMLElement & {
+  onMount(() => {
+    const setupWidgetFromDOM = () => {
+      const widget = document.querySelector('altcha-widget') as (HTMLElement & {
         addEventListener: (event: string, handler: (e: CustomEvent) => void) => void
         getState: () => string
         reset: () => void
-      }
-      
-      if (widget) {
-        altchaWidgetRef.current = widget
-        
-        const handleVerified = (e: CustomEvent<{ payload: string }>) => {
-          setAltchaPayload(e.detail.payload)
-        }
-        
-        const handleStateChange = (e: CustomEvent<{ state: string }>) => {
-          if (e.detail.state === 'error') {
-            setSubmitStatus('error')
-            setErrorMessage('ALTCHA verification failed. Please try again.')
-            setAltchaPayload(null)
-          } else if (e.detail.state === 'verified') {
-            setSubmitStatus('idle')
-            setErrorMessage('')
-          }
-        }
-        
-        widget.addEventListener('verified', handleVerified as EventListener)
-        widget.addEventListener('statechange', handleStateChange as EventListener)
-        
-        return () => {
-          widget.removeEventListener('verified', handleVerified as EventListener)
-          widget.removeEventListener('statechange', handleStateChange as EventListener)
-        }
-      }
-    }
-    
-    const cleanup = setupWidget()
-    if (!cleanup) {
-      window.addEventListener('load', setupWidget)
-      return () => {
-        window.removeEventListener('load', setupWidget)
-      }
-    }
-    
-    return cleanup
-  }, [])
+      }) | null
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    
-    if (isSubmitting) {
-      return
+      if (!widget) return false
+
+      altchaWidgetRef = widget
+
+      const handleVerified = (e: CustomEvent<{ payload: string }>) => {
+        setAltchaPayload(e.detail.payload)
+      }
+
+      const handleStateChange = (e: CustomEvent<{ state: string }>) => {
+        if (e.detail.state === 'error') {
+          setSubmitStatus('error')
+          setErrorMessage('ALTCHA verification failed. Please try again.')
+          setAltchaPayload(null)
+        } else if (e.detail.state === 'verified') {
+          setSubmitStatus('idle')
+          setErrorMessage('')
+        }
+      }
+
+      widget.addEventListener('verified', handleVerified as EventListener)
+      widget.addEventListener('statechange', handleStateChange as EventListener)
+
+      onCleanup(() => {
+        widget.removeEventListener('verified', handleVerified as EventListener)
+        widget.removeEventListener('statechange', handleStateChange as EventListener)
+      })
+
+      return true
     }
-    
-    if (!altchaPayload) {
+
+    if (!setupWidgetFromDOM()) {
+      const onLoad = () => setupWidgetFromDOM()
+      window.addEventListener('load', onLoad)
+      onCleanup(() => window.removeEventListener('load', onLoad))
+    }
+  })
+
+  const handleSubmit = async (e: SubmitEvent) => {
+    e.preventDefault()
+
+    if (isSubmitting()) return
+
+    if (!altchaPayload()) {
       setSubmitStatus('error')
       setErrorMessage('Please complete the verification before submitting.')
       return
@@ -92,10 +96,10 @@ export default function Contact() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email,
-          subject: name ? `Contact from ${name}` : 'Contact Form Submission',
-          body: message,
-          altcha: altchaPayload,
+          email: email(),
+          subject: name() ? `Contact from ${name()}` : 'Contact Form Submission',
+          body: message(),
+          altcha: altchaPayload(),
         }),
       })
 
@@ -116,12 +120,9 @@ export default function Contact() {
       setEmail('')
       setMessage('')
       setAltchaPayload(null)
-      
-      if (altchaWidgetRef.current) {
-        const widget = altchaWidgetRef.current as HTMLElement & {
-          reset: () => void
-        }
-        widget.reset()
+
+      if (altchaWidgetRef) {
+        (altchaWidgetRef as HTMLElement & { reset: () => void }).reset()
       }
     } catch (error) {
       console.error('[Contact] Form submission error:', error)
@@ -139,78 +140,78 @@ export default function Contact() {
         subtitle="I'd love to hear from you! Whether you have a project in mind, a job opportunity, or just want to chat about development."
         variant="compact"
       />
-      <section className="contact">
-        <div className="container">
-          <div className="contact-content">
-            <div className="contact-grid">
-              <div className="contact-form-column">
-                <div className="contact-form">
-                  <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Send a Message</h3>
-                  {submitStatus === 'success' && (
-                    <div style={{ 
-                      padding: 'var(--spacing-md)', 
-                      marginBottom: 'var(--spacing-md)', 
-                      backgroundColor: '#d4edda', 
-                      color: '#155724', 
-                      borderRadius: '4px' 
+      <section class="contact">
+        <div class="container">
+          <div class="contact-content">
+            <div class="contact-grid">
+              <div class="contact-form-column">
+                <div class="contact-form">
+                  <h3 style={{ "margin-bottom": 'var(--spacing-md)' }}>Send a Message</h3>
+                  <Show when={submitStatus() === 'success'}>
+                    <div style={{
+                      padding: 'var(--spacing-md)',
+                      "margin-bottom": 'var(--spacing-md)',
+                      "background-color": '#d4edda',
+                      color: '#155724',
+                      "border-radius": '4px'
                     }}>
                       Thank you for your message! We will get back to you soon.
                     </div>
-                  )}
-                  {submitStatus === 'error' && (
-                    <div style={{ 
-                      padding: 'var(--spacing-md)', 
-                      marginBottom: 'var(--spacing-md)', 
-                      backgroundColor: '#f8d7da', 
-                      color: '#721c24', 
-                      borderRadius: '4px' 
+                  </Show>
+                  <Show when={submitStatus() === 'error'}>
+                    <div style={{
+                      padding: 'var(--spacing-md)',
+                      "margin-bottom": 'var(--spacing-md)',
+                      "background-color": '#f8d7da',
+                      color: '#721c24',
+                      "border-radius": '4px'
                     }}>
-                      {errorMessage}
+                      {errorMessage()}
                     </div>
-                  )}
+                  </Show>
                   <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="name" className="form-label">
+                    <div class="form-group">
+                      <label for="name" class="form-label">
                         Name
                       </label>
                       <input
                         type="text"
                         id="name"
                         name="name"
-                        className="form-input"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        class="form-input"
+                        value={name()}
+                        onInput={(e) => setName(e.currentTarget.value)}
                         required
-                        disabled={isSubmitting}
+                        disabled={isSubmitting()}
                       />
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="email" className="form-label">
+                    <div class="form-group">
+                      <label for="email" class="form-label">
                         Email
                       </label>
                       <input
                         type="email"
                         id="email"
                         name="email"
-                        className="form-input"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        class="form-input"
+                        value={email()}
+                        onInput={(e) => setEmail(e.currentTarget.value)}
                         required
-                        disabled={isSubmitting}
+                        disabled={isSubmitting()}
                       />
                     </div>
-                    <div className="form-group">
-                      <label htmlFor="message" className="form-label">
+                    <div class="form-group">
+                      <label for="message" class="form-label">
                         Message
                       </label>
                       <textarea
                         id="message"
                         name="message"
-                        className="form-textarea"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        class="form-textarea"
+                        value={message()}
+                        onInput={(e) => setMessage(e.currentTarget.value)}
                         required
-                        disabled={isSubmitting}
+                        disabled={isSubmitting()}
                       ></textarea>
                     </div>
                     <altcha-widget
@@ -220,23 +221,23 @@ export default function Contact() {
                     />
                     <button
                       type="submit"
-                      className="contact-link"
-                      style={{ width: '100%', justifyContent: 'center', marginTop: 'var(--spacing-md)' }}
-                      disabled={isSubmitting || !altchaPayload}
+                      class="contact-link"
+                      style={{ width: '100%', "justify-content": 'center', "margin-top": 'var(--spacing-md)' }}
+                      disabled={isSubmitting() || !altchaPayload()}
                     >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      {isSubmitting() ? 'Sending...' : 'Send Message'}
                     </button>
                   </form>
                 </div>
               </div>
 
-              <div className="contact-links-column">
-                <div className="contact-links-card">
-                  <h3 style={{ marginBottom: 'var(--spacing-md)' }}>Find Me Online</h3>
-                  <div className="contact-links">
+              <div class="contact-links-column">
+                <div class="contact-links-card">
+                  <h3 style={{ "margin-bottom": 'var(--spacing-md)' }}>Find Me Online</h3>
+                  <div class="contact-links">
                     <a
                       href="https://www.linkedin.com/in/anna-harrison-83a38628"
-                      className="contact-link"
+                      class="contact-link"
                     >
                       <LinkedInIcon />
                       LinkedIn
@@ -245,9 +246,9 @@ export default function Contact() {
                       href="https://github.com/annaharri89"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="contact-link"
+                      class="contact-link"
                     >
-                      <GithubIcon className="w-6 h-6" />
+                      <GithubIcon class="w-6 h-6" />
                       GitHub
                     </a>
                   </div>
