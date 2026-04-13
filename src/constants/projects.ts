@@ -1,81 +1,112 @@
+import screenShotMain from '@images/hpf/screen_shot_main.png';
+import screenShotMap from '@images/hpf/screen_shot_map.png';
+import screenShotAllResources from '@images/hpf/screen_shot_all_resources.png';
+import screenShotDomesticViolence from '@images/hpf/screen_shot_domestic_violence.png';
+import singleCounter from '@images/stitch_counter/single_counter.png';
+import doubleCounter from '@images/stitch_counter/double_counter.png';
+import doubleCounter7Inch from '@images/stitch_counter/double_counter_tablet_7_inch.png';
+import singleCounterLandscape from '@images/stitch_counter/single_counter_landscape.png';
+import doubleCounterLandscape from '@images/stitch_counter/double_counter_landscape.png';
+import libraryDefault from '@images/stitch_tracker/library_screen.jpg';
+import libraryDark from '@images/stitch_tracker/dark_mode_library_screen.jpg';
+import doubleCounterDefault from '@images/stitch_tracker/double_counter.jpg';
+import doubleCounterDarkMode from '@images/stitch_tracker/double_counter_dark_mode.jpg';
+import doubleCounterSea from '@images/stitch_tracker/double_counter_sea_cottage.png';
+import doubleCounterGolden from '@images/stitch_tracker/double_counter_golden_earth.png';
+import singleCounterGolden from '@images/stitch_tracker/single_counter_golden_earth.png';
+import singleCounterSea from '@images/stitch_tracker/single_counter_sea_cottage.png';
+import doubleCounterThemedLandscape from '@images/stitch_tracker/double_counter_landscape.png';
+import backupRestore from '@images/stitch_tracker/backup_restore.png';
+import themeSettings from '@images/stitch_tracker/theme_settings.png';
+import singleCounterWebm from '@videos/stitch_tracker/single_counter.webm';
+import singleCounterMp4 from '@videos/stitch_tracker/single_counter.mp4';
+import doubleCounterWebm from '@videos/stitch_tracker/double_counter.webm';
+import doubleCounterMp4 from '@videos/stitch_tracker/double_counter.mp4';
+
 export interface Slide {
-  image?: string
-  videoSources?: {
-    webm?: string
-    mp4?: string
-  }
-  text: string
-  id: number
+	id: number
+	text: string
+	image?: string
+	videoSources?: {
+		webm?: string
+		mp4?: string
+	}
+}
+
+type SlideMap = Map<Project, Slide[]>;
+
+export enum IconType {
+	GITHUB = 'github',
+	PLAY = 'google-play'
 }
 
 export interface ProjectLink {
-  href: string
-  label: string
-  icon?: 'github' | 'google-play'
+	href: string
+	label: string
+	icon?: IconType
 }
 
 export interface ArchiveProject {
-  icon: string
-  title: string
-  year: string
-  description: string
-  links: ProjectLink[]
-  slides?: Slide[]
+	icon: string
+	title: string
+	year: string
+	description: string
+	links: ProjectLink[]
+	slides?: Slide[]
 }
 
-export const HPF_PULSE_SLIDES: Slide[] = [
-  { image: '/images/screen_shot_main.PNG', text: 'Main Page', id: 0 },
-  { image: '/images/screen_shot_map.PNG', text: 'Map Page', id: 1 },
-  { image: '/images/screen_shot_all_resources.PNG', text: 'All Resources', id: 2 },
-  { image: '/images/screen_shot_domestic_violence.PNG', text: 'Category Resources', id: 3 },
-]
+export enum Project {
+	HPF_PULSE = 'HPF_PULSE',
+	STITCH_COUNTER = 'STITCH_COUNTER',
+	STITCH_TRACKER = 'STITCH_TRACKER'
+}
 
-export const STITCH_COUNTER_SLIDES: Slide[] = [
-  { image: '/images/stitch_counter_single_counter.png', text: 'Single Counter', id: 0 },
-  { image: '/images/stitch_counter_double_counter.png', text: 'Double Counter', id: 1 },
-  {
-    image: '/images/stitch_counter_double_counter_tablet_7_inch.png',
-    text: 'Themed Tablet',
-    id: 2,
-  },
-  {
-    image: '/images/stitch_counter_single_counter_landscape.png',
-    text: 'Themed Single Counter Landscape',
-    id: 3,
-  },
-  {
-    image: '/images/stitch_counter_double_counter_landscape.png',
-    text: 'Themed Double Counter Landscape',
-    id: 4,
-  },
-]
+export const getProjectSlides = (project: Project): Slide[] => {
+	return SLIDES.get(project) ?? [];
+}
 
-export const STITCH_TRACKER_SLIDES: Slide[] = [
-  { image: '/images/library_screen.default_theme.jpg', text: 'Library - Default Theme', id: 0 },
-  { image: '/images/library_screen.default_theme_dark_mode.jpg', text: 'Library - Dark Mode', id: 1 },
-  {
-    videoSources: {
-      webm: '/images/single_counter.webm',
-      mp4: '/images/single_counter.mp4',
-    },
-    text: 'Single Counter',
-    id: 2,
-  },
-  { image: '/images/double_counter_default_screen.jpg', text: 'Double Counter - Default Theme', id: 3 },
-  { image: '/images/double_counter_default_screen_dark_mode.jpg', text: 'Double Counter - Dark Mode', id: 4 },
-  {
-    videoSources: {
-      webm: '/images/double_counter.webm',
-      mp4: '/images/double_counter.mp4',
-    },
-    text: 'Double Counter',
-    id: 5,
-  },
-  { image: '/images/double_counter_sea_cottage_theme.png', text: 'Double Counter - Sea Cottage Theme', id: 6 },
-  { image: '/images/double_counter_golden_earth_theme.png', text: 'Double Counter - Golden Earth Theme', id: 7 },
-  { image: '/images/single_counter_golden_earth_theme.png', text: 'Single Counter - Golden Earth Theme', id: 8 },
-  { image: '/images/single_counter_sea_cottage_theme.png', text: 'Single Counter - Sea Cottage Theme', id: 9 },
-  { image: '/images/double_counter_landscape_theme.png', text: 'Double Counter - Landscape Theme', id: 10 },
-  { image: '/images/stitch_tracker_backup_restore_support.png', text: 'Backup Restore and Support', id: 11 },
-  { image: '/images/stitch_tracker_theme_settings.png', text: 'Theme Settings', id: 12 },
-]
+const SLIDES: SlideMap = new Map();
+SLIDES.set(Project.HPF_PULSE, [
+	{ id: 0, text: 'Main Page', image: screenShotMain },
+	{ id: 1, text: 'Map Page', image: screenShotMap },
+	{ id: 2, text: 'All Resources', image: screenShotAllResources },
+	{ id: 3, text: 'Category Resources', image: screenShotDomesticViolence },
+]);
+
+SLIDES.set(Project.STITCH_COUNTER, [
+	{ id: 0, text: 'Single Counter', image: singleCounter },
+	{ id: 1, text: 'Double Counter', image: doubleCounter },
+	{ id: 2, text: 'Themed Tablet', image: doubleCounter7Inch },
+	{ id: 3, text: 'Themed Single Counter Landscape', image: singleCounterLandscape },
+	{ id: 4, text: 'Themed Double Counter Landscape', image: doubleCounterLandscape },
+]);
+
+SLIDES.set(Project.STITCH_TRACKER, [
+	{ id: 0, text: 'Library - Default Theme', image: libraryDefault },
+	{ id: 1, text: 'Library - Dark Mode', image: libraryDark },
+	{
+		id: 2,
+		text: 'Single Counter',
+		videoSources: {
+			webm: singleCounterWebm,
+			mp4: singleCounterMp4,
+		},
+	},
+	{ id: 3, text: 'Double Counter - Default Theme', image: doubleCounterDefault },
+	{ id: 4, text: 'Double Counter - Dark Mode', image: doubleCounterDarkMode },
+	{
+		id: 5,
+		text: 'Double Counter',
+		videoSources: {
+			webm: doubleCounterWebm,
+			mp4: doubleCounterMp4,
+		},
+	},
+	{ id: 6, text: 'Double Counter - Sea Cottage Theme', image: doubleCounterSea },
+	{ id: 7, text: 'Double Counter - Golden Earth Theme', image: doubleCounterGolden },
+	{ id: 8, text: 'Single Counter - Golden Earth Theme', image: singleCounterGolden },
+	{ id: 9, text: 'Single Counter - Sea Cottage Theme', image: singleCounterSea },
+	{ id: 10, text: 'Double Counter - Landscape Theme', image: doubleCounterThemedLandscape },
+	{ id: 11, text: 'Backup Restore and Support', image: backupRestore },
+	{ id: 12, text: 'Theme Settings', image: themeSettings },
+]);
