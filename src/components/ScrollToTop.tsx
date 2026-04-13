@@ -1,36 +1,15 @@
-import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { createEffect, onCleanup } from 'solid-js'
+import { useLocation } from '@solidjs/router'
 
 if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
   window.history.scrollRestoration = 'manual'
 }
 
 export default function ScrollToTop() {
-  const { pathname, hash } = useLocation()
+  const location = useLocation()
 
-  useEffect(() => {
-    if (hash) {
-      const fragmentId = decodeURIComponent(hash.replace(/^#/, ''))
-      const scrollToFragment = () => {
-        const target = document.getElementById(fragmentId)
-        if (target) {
-          target.scrollIntoView({ behavior: 'instant', block: 'start' })
-          return true
-        }
-        return false
-      }
-      let retryTimeoutId: number | undefined
-      requestAnimationFrame(() => {
-        if (!scrollToFragment()) {
-          retryTimeoutId = window.setTimeout(() => scrollToFragment(), 120)
-        }
-      })
-      return () => {
-        if (retryTimeoutId !== undefined) {
-          window.clearTimeout(retryTimeoutId)
-        }
-      }
-    }
+  createEffect(() => {
+    location.pathname
 
     const forceScrollToTop = () => {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
@@ -45,11 +24,11 @@ export default function ScrollToTop() {
     requestAnimationFrame(forceScrollToTop)
 
     const scrollAfterTimeout = setTimeout(forceScrollToTop, 50)
-
-    return () => {
+    
+    onCleanup(() => {
       clearTimeout(scrollAfterTimeout)
-    }
-  }, [pathname, hash])
+    })
+  })
 
   return null
 }

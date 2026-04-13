@@ -1,24 +1,23 @@
-import { Link } from 'react-router-dom'
-import { ROUTES } from '../constants/routes'
-import { SOCIAL_LINKS } from '../constants/social'
+import { ROUTES } from '@consts/routes'
+import { SOCIAL_LINKS } from '@consts/social'
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="container footer-inner">
-        <p className="footer-text">&copy; 2026 Anna Harrison. All rights reserved.</p>
-        <nav className="footer-links" aria-label="Social and contact">
-          <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="footer-link">
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">&copy; 2026 Anna Harrison. All rights reserved.</p>
+        <nav class="footer-links" aria-label="Social and contact">
+          <a href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" class="footer-link">
             LinkedIn
           </a>
-          <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="footer-link">
+          <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" class="footer-link">
             GitHub
           </a>
-          <Link to={ROUTES.CONTACT} className="footer-link">
+          <a href={ROUTES.CONTACT} class="footer-link">
             Contact
-          </Link>
+          </a>
         </nav>
-      </div>
+        </div>
     </footer>
   )
 }

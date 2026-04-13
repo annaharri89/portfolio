@@ -1,23 +1,63 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "jsx": "react-jsx",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+	"compilerOptions": {
+		"paths": {
+			"@images/*": [
+				"./images/*"
+			],
+			"@videos/*": [
+				"./videos/*"
+			],
+			"@components/*": [
+				"./src/components/*"
+			],
+			"@consts/*": [
+				"./src/constants/*"
+			],
+			"@pages/*": [
+				"./src/pages/*"
+			],
+			"@styles/*": [
+				"./styles/*"
+			],
+			"@icons/*": [
+				"./src/components/icons/*"
+			],
+			"@app": [
+				"./src/app"
+			],
+			"@main": [
+				"./src/main"
+			]
+		},
+		"target": "esnext",
+		"useDefineForClassFields": true,
+		"lib": [
+			"ES2020",
+			"DOM",
+			"DOM.Iterable"
+		],
+		"module": "ESNext",
+		"skipLibCheck": true,
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"include": [
+		"src"
+	],
+	"references": [
+		{
+			"path": "./tsconfig.node.json"
+		}
+	]
 }

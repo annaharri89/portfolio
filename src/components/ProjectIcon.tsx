@@ -15,10 +15,11 @@ const emojiClasses = {
   lg: 'text-6xl',
 }
 
-export default function ProjectIcon({ emoji, size = 'md' }: ProjectIconProps) {
+export default function ProjectIcon(props: ProjectIconProps) {
+  const size = () => props.size ?? 'md'
   return (
-    <div className={`${containerClasses[size]} rounded-2xl shadow-lg bg-neutral-100 flex items-center justify-center`}>
-      <span className={`text-neutral-400 ${emojiClasses[size]}`}>{emoji}</span>
+    <div class={`${containerClasses[size()]} rounded-2xl shadow-lg bg-neutral-100 flex items-center justify-center`}>
+      <span class={`text-neutral-400 ${emojiClasses[size()]}`}>{props.emoji}</span>
     </div>
   )
 }

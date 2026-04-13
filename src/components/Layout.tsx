@@ -1,16 +1,12 @@
-import { ReactNode } from 'react'
-import Navigation from './Navigation'
-import Footer from './Footer'
+import type { ParentProps } from 'solid-js'
+import Navigation from '@components/Navigation'
+import Footer from '@components/Footer'
 
-interface LayoutProps {
-  children: ReactNode
-}
-
-export default function Layout({ children }: LayoutProps) {
+export default function Layout(props: ParentProps) {
   return (
-    <div className="min-h-screen">
+    <div class="min-h-screen">
       <Navigation />
-      <main>{children}</main>
+      <main>{props.children}</main>
       <Footer />
     </div>
   )
