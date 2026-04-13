@@ -3,8 +3,8 @@ import { A } from '@solidjs/router'
 import { ROUTES } from '@consts/routes'
 
 export default function Beta() {
-  const playOptInUrl = 'https://play.google.com/apps/testing/dev.harrisonsoftware.stitchCounter'
-  const playInstallUrl = 'https://play.google.com/store/apps/details?id=dev.harrisonsoftware.stitchCounter'
+  const playBetaTestingUrl =
+    'https://play.google.com/apps/testing/dev.harrisonsoftware.stitchCounter'
 
   return (
     <>
@@ -38,22 +38,33 @@ export default function Beta() {
               </ul>
 
               <p class="text-neutral-700 leading-relaxed text-base mb-6">
-                If you&apos;d like early access and want to share feedback, you can join in 3 quick steps.
+                If you&apos;d like early access and want to share feedback, use the link below and follow Google
+                Play&apos;s prompts to install Stitch Counter.
               </p>
 
-              <h4 class="mb-6">How to Join</h4>
+              <h4 class="mb-6">How to join</h4>
               <div class="project-links project-links-vertical mb-6">
-                <a href={playOptInUrl} target="_blank" rel="noopener noreferrer" class="project-link">
-                  Step 1: Join Beta on Google Play
-                </a>
-                <a href={playInstallUrl} target="_blank" rel="noopener noreferrer" class="project-link">
-                  Step 2: Install App
+                <a href={playBetaTestingUrl} target="_blank" rel="noopener noreferrer" class="project-link">
+                  Join the Stitch Counter beta on Google Play
                 </a>
               </div>
 
-              <p class="text-neutral-700 leading-relaxed text-base mb-6">
-                If Play says the app isn&apos;t available yet, wait 5-15 minutes after Step 1 and try again.
-              </p>
+              <ul class="list-disc list-inside space-y-2 text-neutral-700 mb-6">
+                <li>
+                  Sign in with the Google account you will use to install the app—the testing page often asks for
+                  sign-in.
+                </li>
+                <li>
+                  Complete the flow on an Android phone or tablet with the Play Store. Do not expect a desktop-only web
+                  install to work.
+                </li>
+                <li>After your first install, updates come through Play like any other app—you do not need this link again.</li>
+                <li>
+                  If Play says the app isn&apos;t available yet, wait 5-15 minutes after enrolling and try opening the
+                  link again from your device.
+                </li>
+              </ul>
+
               <h4>Beta stability note</h4>
               <p class="text-neutral-700 leading-relaxed text-base mb-6">
                 You may run into bugs, and data loss is possible while features are being tested.
