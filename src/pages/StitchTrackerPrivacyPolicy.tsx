@@ -9,9 +9,8 @@ export default function StitchTrackerPrivacyPolicy() {
         variant="compact"
       />
       <section class="project-detail">
-        <div class="container">
-          <div class="project-detail-content">
-            <div class="project-detail-section">
+        <div class="site-container">
+          <div class="project-detail-section">
               <p class="text-neutral-500 text-sm mb-6">Last updated: March 16, 2026</p>
               <p class="text-neutral-700 leading-relaxed text-base mb-6">
                 This Privacy Policy describes how version 2 of <strong>Stitch Counter</strong> ("App") handles information.
@@ -83,7 +82,6 @@ export default function StitchTrackerPrivacyPolicy() {
                 <strong>Email:</strong> <a href="mailto:support@harrisonsoftware.dev">support@harrisonsoftware.dev</a>
               </p>
             </div>
-          </div>
         </div>
       </section>
     </>

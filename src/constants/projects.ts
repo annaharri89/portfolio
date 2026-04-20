@@ -18,10 +18,6 @@ import singleCounterSea from '@images/stitch_tracker/single_counter_sea_cottage.
 import doubleCounterThemedLandscape from '@images/stitch_tracker/double_counter_landscape.png';
 import backupRestore from '@images/stitch_tracker/backup_restore.png';
 import themeSettings from '@images/stitch_tracker/theme_settings.png';
-import singleCounterWebm from '@videos/stitch_tracker/single_counter.webm';
-import singleCounterMp4 from '@videos/stitch_tracker/single_counter.mp4';
-import doubleCounterWebm from '@videos/stitch_tracker/double_counter.webm';
-import doubleCounterMp4 from '@videos/stitch_tracker/double_counter.mp4';
 
 export interface Slide {
 	id: number
@@ -84,29 +80,13 @@ SLIDES.set(Project.STITCH_COUNTER, [
 SLIDES.set(Project.STITCH_TRACKER, [
 	{ id: 0, text: 'Library - Default Theme', image: libraryDefault },
 	{ id: 1, text: 'Library - Dark Mode', image: libraryDark },
-	{
-		id: 2,
-		text: 'Single Counter',
-		videoSources: {
-			webm: singleCounterWebm,
-			mp4: singleCounterMp4,
-		},
-	},
-	{ id: 3, text: 'Double Counter - Default Theme', image: doubleCounterDefault },
-	{ id: 4, text: 'Double Counter - Dark Mode', image: doubleCounterDarkMode },
-	{
-		id: 5,
-		text: 'Double Counter',
-		videoSources: {
-			webm: doubleCounterWebm,
-			mp4: doubleCounterMp4,
-		},
-	},
-	{ id: 6, text: 'Double Counter - Sea Cottage Theme', image: doubleCounterSea },
-	{ id: 7, text: 'Double Counter - Golden Earth Theme', image: doubleCounterGolden },
-	{ id: 8, text: 'Single Counter - Golden Earth Theme', image: singleCounterGolden },
-	{ id: 9, text: 'Single Counter - Sea Cottage Theme', image: singleCounterSea },
-	{ id: 10, text: 'Double Counter - Landscape Theme', image: doubleCounterThemedLandscape },
-	{ id: 11, text: 'Backup Restore and Support', image: backupRestore },
-	{ id: 12, text: 'Theme Settings', image: themeSettings },
+	{ id: 2, text: 'Double Counter - Default Theme', image: doubleCounterDefault },
+	{ id: 3, text: 'Double Counter - Dark Mode', image: doubleCounterDarkMode },
+	{ id: 4, text: 'Double Counter - Sea Cottage Theme', image: doubleCounterSea },
+	{ id: 5, text: 'Double Counter - Golden Earth Theme', image: doubleCounterGolden },
+	{ id: 6, text: 'Single Counter - Golden Earth Theme', image: singleCounterGolden },
+	{ id: 7, text: 'Single Counter - Sea Cottage Theme', image: singleCounterSea },
+	{ id: 8, text: 'Double Counter - Landscape Theme', image: doubleCounterThemedLandscape },
+	{ id: 9, text: 'Backup Restore and Support', image: backupRestore },
+	{ id: 10, text: 'Theme Settings', image: themeSettings },
 ]);

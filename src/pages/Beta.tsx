@@ -14,12 +14,12 @@ export default function Beta() {
         variant="compact"
       />
       <section class="project-detail">
-        <div class="container">
-          <div class="project-detail-content">
-            <div class="project-detail-section">
+        <div class="site-container">
+          <div class="project-detail-section">
               <h3>Help shape Stitch Counter before launch</h3>
               <p class="text-neutral-700 leading-relaxed text-base mb-6">
-                I&apos;m opening a beta for knitters and crocheters who want a simple offline row and stitch counter.
+                I&apos;m opening a beta for knitters and crocheters who want a simple row and stitch counter that is
+                local-first: data stays on your device, with no cloud sync or accounts.
               </p>
               <p class="text-neutral-700 leading-relaxed text-base mb-6">
                 Availability: Android only via Google Play beta.
@@ -33,7 +33,7 @@ export default function Beta() {
                 <li>Choose from multiple themes with light/dark mode support</li>
                 <li>Import/export local backups (including project photos) for device transfer</li>
                 <li>Privacy-first: no account, no analytics, all data stays on your device</li>
-                <li>Works offline</li>
+                <li>No cloud: counting and your library work without internet; nothing syncs to the cloud</li>
                 <li>Free and ad-free</li>
               </ul>
 
@@ -97,7 +97,6 @@ export default function Beta() {
                 </A>
               </div>
             </div>
-          </div>
         </div>
       </section>
     </>

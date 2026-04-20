@@ -2,6 +2,7 @@ import { createSignal, onMount, onCleanup, Show } from 'solid-js'
 import Hero from '@components/Hero'
 import GithubIcon from '@components/icons/GithubIcon'
 import { API_CONFIG } from '@consts/api'
+import { SOCIAL_LINKS } from '../constants/social'
 
 declare module "solid-js" {
   namespace JSX {
@@ -140,34 +141,21 @@ export default function Contact() {
         subtitle="I'd love to hear from you! Whether you have a project in mind, a job opportunity, or just want to chat about development."
         variant="compact"
       />
+
       <section class="contact">
-        <div class="container">
+        <div class="site-container">
           <div class="contact-content">
             <div class="contact-grid">
               <div class="contact-form-column">
                 <div class="contact-form">
                   <h3 style={{ "margin-bottom": 'var(--spacing-md)' }}>Send a Message</h3>
                   <Show when={submitStatus() === 'success'}>
-                    <div style={{
-                      padding: 'var(--spacing-md)',
-                      "margin-bottom": 'var(--spacing-md)',
-                      "background-color": '#d4edda',
-                      color: '#155724',
-                      "border-radius": '4px'
-                    }}>
+                    <div class="contact-form-alert contact-form-alert--success">
                       Thank you for your message! We will get back to you soon.
                     </div>
                   </Show>
                   <Show when={submitStatus() === 'error'}>
-                    <div style={{
-                      padding: 'var(--spacing-md)',
-                      "margin-bottom": 'var(--spacing-md)',
-                      "background-color": '#f8d7da',
-                      color: '#721c24',
-                      "border-radius": '4px'
-                    }}>
-                      {errorMessage()}
-                    </div>
+                    <div class="contact-form-alert contact-form-alert--error">{errorMessage()}</div>
                   </Show>
                   <form onSubmit={handleSubmit}>
                     <div class="form-group">
@@ -221,7 +209,7 @@ export default function Contact() {
                     />
                     <button
                       type="submit"
-                      class="contact-link"
+                      class="contact-link contact-link--cta"
                       style={{ width: '100%', "justify-content": 'center', "margin-top": 'var(--spacing-md)' }}
                       disabled={isSubmitting() || !altchaPayload()}
                     >
@@ -235,18 +223,15 @@ export default function Contact() {
                 <div class="contact-links-card">
                   <h3 style={{ "margin-bottom": 'var(--spacing-md)' }}>Find Me Online</h3>
                   <div class="contact-links">
-                    <a
-                      href="https://www.linkedin.com/in/anna-harrison-83a38628"
-                      class="contact-link"
-                    >
+                    <a href={SOCIAL_LINKS.linkedin} class="contact-link" target="_blank" rel="noopener noreferrer">
                       <LinkedInIcon />
                       LinkedIn
                     </a>
                     <a
-                      href="https://github.com/annaharri89"
+                      href={SOCIAL_LINKS.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="contact-link"
+                      class="contact-link contact-link--github"
                     >
                       <GithubIcon class="w-6 h-6" />
                       GitHub

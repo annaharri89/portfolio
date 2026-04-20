@@ -23,7 +23,7 @@
 				"./src/components/icons/*"
 			],
 			"@app": [
-				"./src/app"
+				"./src/App"
 			],
 			"@main": [
 				"./src/main"

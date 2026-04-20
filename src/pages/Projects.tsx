@@ -29,24 +29,24 @@ export default function Projects() {
         />
 
         <ProjectCard
+          icon="/korge-solitaire/kmp-solitaire-app-icon.png"
+          title="KMP Card Games"
+          description="Kotlin Multiplatform sample: Solitaire and FreeCell rules and tests in a shared module, with a lightweight KorGE client exercising the same logic on desktop, web, Android, and iOS."
+          tags={[[{ year: '2026', tech: 'Kotlin Multiplatform' }, { tech: 'Kotlin' }, { tech: 'KorGE' }]]}
+          link={{ href: ROUTES.SOLITAIRE, label: 'Learn More' }}
+        />
+
+        <ProjectCard
           icon="🌐"
           title="Portfolio Website"
           description="This portfolio website was built with modern web technologies, showcasing my ability to work with SolidJS and create responsive, modern user interfaces."
           tags={[[{ year: '2026', tech: 'SolidJS' }, { tech: 'SolidJS Router' }, { tech: 'TypeScript' }, { tech: 'Vite' }, { tech: 'Tailwind CSS' }]]}
           link={{ href: 'https://github.com/annaharri89/portfolio', label: 'View on GitHub' }}
         />
-
-        <ProjectCard
-          icon="🃏"
-          title="Solitaire & FreeCell (KMP)"
-          description="Kotlin Multiplatform card game domain (Solitaire and FreeCell rules) shared across targets, with a KorGE client for desktop, web, Android, and iOS."
-          tags={[[{ year: '2026', tech: 'Kotlin Multiplatform' }, { tech: 'Kotlin' }, { tech: 'KorGE' }]]}
-          link={{ href: ROUTES.SOLITAIRE, label: 'Learn More' }}
-        />
       </ProjectCardGrid>
 
       <section class="archived-projects">
-        <div class="container">
+        <div class="site-container">
           <h2 class="section-title">Archived Projects</h2>
           <p class="hero-subtext hero-subtext-centered" style={{ "margin-bottom": 'var(--spacing-xl)', color: 'var(--color-text-primary)' }}>
             Early projects that mark the starting point of my journey into software development.

@@ -10,23 +10,14 @@ export default function StitchCounter() {
       <Hero
         title="Stitch Counter"
         subtitle="An Android app for tracking knitting and crochet projects with customizable themes"
+        leadingIconSrc={stitchCounterIcon}
+        leadingIconAlt="Stitch Counter Icon"
         variant="compact"
       />
       <section class="project-detail">
-        <div class="container">
-          <div class="project-detail-content">
-            <div class="project-detail-section">
+        <div class="site-container">
+          <div class="project-detail-section">
               <div class="project-header">
-                <div class="project-header-row">
-                  <img
-                    src={stitchCounterIcon}
-                    alt="Stitch Counter Icon"
-                    class="project-detail-icon project-header-icon"
-                  />
-                  <div style={{ display: 'flex', "align-items": 'center' }}>
-                    <h3 class="project-header-title">Stitch Counter</h3>
-                  </div>
-                </div>
                 <p class="text-neutral-700 leading-relaxed text-base">
                   Stitch Counter is an Android app that allows users to keep track of their knitting or crochet projects in two ways: through a single counter for tracking stitches or rows, or through a double counter with separate counters for stitches and rows.
                 </p>
@@ -67,7 +58,6 @@ export default function StitchCounter() {
                 </a>
               </div>
             </div>
-          </div>
         </div>
       </section>
     </>

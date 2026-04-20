@@ -1,3 +1,4 @@
+import hpfPulseIcon from '@images/icons/hpf_pulse_google_play_icon.png'
 import Hero from '@components/Hero'
 import ImageCarousel from '@components/Carousel'
 import GithubIcon from '@icons/GithubIcon'
@@ -9,23 +10,14 @@ export default function HPFPulse() {
       <Hero
         title="HPF Pulse"
         subtitle="Android and iOS app developed for The Humanity Preservation Foundation"
+        leadingIconSrc={hpfPulseIcon}
+        leadingIconAlt="HPF Pulse Icon"
         variant="compact"
       />
       <section class="project-detail">
-        <div class="container">
-          <div class="project-detail-content">
-            <div class="project-detail-section">
+        <div class="site-container">
+          <div class="project-detail-section">
               <div class="project-header">
-                <div class="project-header-row">
-                  <img
-                    src="/images/icons/hpf_pulse_google_play_icon.png"
-                    alt="HPF Pulse Icon"
-                    class="project-detail-icon project-header-icon"
-                  />
-                  <div style={{ display: 'flex', "align-items": 'center' }}>
-                    <h3 class="project-header-title">HPF Pulse</h3>
-                  </div>
-                </div>
                 <p class="text-neutral-700 leading-relaxed text-base">
                   HPF Pulse is an Android app and an iOS app I developed on behalf of{' '}
                   <a
@@ -101,7 +93,6 @@ export default function HPFPulse() {
                 </a>
               </div>
             </div>
-          </div>
         </div>
       </section>
     </>

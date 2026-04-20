@@ -1,11 +1,12 @@
 import { Show, For } from 'solid-js'
 import type { JSX, ParentProps } from 'solid-js'
 import { A } from '@solidjs/router'
+import { classStringToClassList } from '../utils/classStringToClassList'
 
 export function ProjectCardGrid(props: ParentProps) {
   return (
     <section class="projects">
-      <div class="container">
+      <div class="site-container">
         <div class="projects-grid">{props.children}</div>
       </div>
     </section>
@@ -35,7 +36,7 @@ function ProjectLinkButton(props: { link: LinkItem; style?: JSX.CSSProperties })
     <Show
       when={isExternal()}
       fallback={
-        <A href={props.link.href} class="btn btn-secondary" style={props.style}>
+        <A href={props.link.href} classList={classStringToClassList('btn btn-secondary')} style={props.style}>
           {props.link.icon}
           {props.link.label}
         </A>

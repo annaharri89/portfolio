@@ -25,13 +25,13 @@ export default function CaseStudyImage({
   const openLightbox = useCaseStudyLightboxOpen()
 
   return (
-    <div className="case-study__thumb-wrap">
-      <div className="case-study__label-pill">{caption}</div>
+    <div class="case-study__thumb-wrap">
+      <div class="case-study__label-pill">{caption}</div>
       <button
         type="button"
-        className={`case-study__thumb-btn ${variantClass[variant]}`}
+        class={`case-study__thumb-btn ${variantClass[variant]}`}
         aria-label={`View larger: ${enlargedDescription}`}
-        onClick={() => openLightbox({ src, enlargedDescription })}
+        onClick={() => openLightbox({ kind: 'image', src, enlargedDescription })}
       >
         <img src={src} alt="" decoding="async" />
       </button>

@@ -1,4 +1,3 @@
-
 import { Router, Route } from '@solidjs/router'
 import type { ParentProps } from 'solid-js'
 import Layout from '@components/Layout'
@@ -26,7 +25,7 @@ function AppShell(props: ParentProps) {
   )
 }
 
-function App() {
+export default function App() {
   return (
     <Router root={AppShell}>
       <Route path={ROUTES.HOME} component={Home} />
@@ -44,5 +43,3 @@ function App() {
     </Router>
   )
 }
-
-export default App

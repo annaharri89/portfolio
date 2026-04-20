@@ -7,29 +7,47 @@ export default function Skills() {
     <>
       <Hero
         title="Skills & Technologies"
-        subtitle="A comprehensive overview of the technologies, tools, and practices I use to build mobile and web applications"
+        subtitle="Android-first strengths, plus professional iOS delivery and hands-on Kotlin Multiplatform learning."
         variant="compact"
       />
       <section class="skills">
-        <div class="container">
+        <div class="site-container">
           <div class="skills-grid">
             <div class="skill-group">
-              <h3 class="skill-group-title">Mobile</h3>
+              <h3 class="skill-group-title">Android</h3>
               <ul class="skill-list">
                 <li>
+                  <span class="tech-tag">Android</span>
+                </li>
+                <li>
                   <span class="tech-tag">Kotlin</span>
-                </li>
-                <li>
-                  <span class="tech-tag">Swift</span>
-                </li>
-                <li>
-                  <span class="tech-tag">Java</span>
                 </li>
                 <li>
                   <span class="tech-tag">Jetpack Compose</span>
                 </li>
                 <li>
-                  <span class="tech-tag">XML</span>
+                  <span class="tech-tag">Coroutines/Flow</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Architecture</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Testing</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Release</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="skill-group">
+              <h3 class="skill-group-title">iOS</h3>
+              <ul class="skill-list">
+                <li>
+                  <span class="tech-tag">iOS</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Swift</span>
                 </li>
                 <li>
                   <span class="tech-tag">SwiftUI</span>
@@ -38,19 +56,18 @@ export default function Skills() {
                   <span class="tech-tag">UIKit</span>
                 </li>
                 <li>
-                  <span class="tech-tag">Native Android</span>
-                </li>
-                <li>
                   <span class="tech-tag">Native iOS</span>
                 </li>
                 <li>
-                  <span class="tech-tag">DI</span>
+                  <span class="tech-tag">Xcode</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Release workflows</span>
                 </li>
               </ul>
             </div>
-
             <div class="skill-group">
-              <h3 class="skill-group-title">Multiplatform</h3>
+              <h3 class="skill-group-title">Kotlin Multiplatform</h3>
               <ul class="skill-list">
                 <li>
                   <span class="tech-tag">Kotlin Multiplatform</span>
@@ -59,13 +76,16 @@ export default function Skills() {
                   <span class="tech-tag">Compose Multiplatform</span>
                 </li>
                 <li>
-                  <span class="tech-tag">Shared Logic Concepts</span>
+                  <span class="tech-tag">Shared domain/data layers</span>
                 </li>
                 <li>
-                  <span class="tech-tag">Multiplatform UI Concepts</span>
+                  <span class="tech-tag">Cross-platform architecture</span>
                 </li>
                 <li>
-                  <span class="tech-tag">WASM</span>
+                  <span class="tech-tag">Android + iOS + desktop + web targets</span>
+                </li>
+                <li>
+                  <span class="tech-tag">Personal project implementation</span>
                 </li>
               </ul>
             </div>
