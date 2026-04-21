@@ -6,7 +6,6 @@ const NAV_ITEMS = [
   { path: ROUTES.ABOUT, label: 'About' },
   { path: ROUTES.PROJECTS, label: 'Projects' },
   { path: ROUTES.SKILLS, label: 'Skills' },
-  { path: ROUTES.CONTACT, label: 'Contact' },
 ]
 
 export default function Navigation() {
@@ -18,9 +17,9 @@ export default function Navigation() {
   return (
     <nav class="nav" id="nav">
       <div class="nav-container">
-        <A href={ROUTES.HOME} class="nav-logo">
+        <a href={ROUTES.HOME} class="nav-logo">
           Anna Harrison
-        </A>
+        </a>
         <button
           class="nav-toggle"
           id="navToggle"
@@ -33,17 +32,24 @@ export default function Navigation() {
           <span></span>
         </button>
         <ul class="nav-menu" id="navMenu" aria-expanded={isMenuOpen()}>
-          <For each={NAV_ITEMS}>{(item) => (
-            <li>
-              <A
-                href={item.path}
-                class={`nav-link ${isActive(item.path) ? 'active' : ''}`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </A>
-            </li>
-          )}</For>
+          <For each={NAV_ITEMS}>
+            {(item) => (
+              <li>
+                <A
+                  href={item.path}
+                  class={`nav-link ${isActive(item.path) ? 'active' : ''}`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </A>
+              </li>
+            )}
+          </For>
+          <li class="nav-cta-item">
+            <a href={ROUTES.CONTACT} class="nav-cta" onClick={() => setIsMenuOpen(false)}>
+              Get in touch
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

@@ -19,10 +19,10 @@ export default function ScrollToTop() {
         window.scrollTo(0, 0)
       }
     }
-    
+
     forceScrollToTop()
     requestAnimationFrame(forceScrollToTop)
-    
+
     const scrollAfterTimeout = setTimeout(forceScrollToTop, 50)
     
     onCleanup(() => {

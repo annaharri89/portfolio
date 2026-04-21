@@ -1,11 +1,10 @@
-import { A } from '@solidjs/router'
 import { ROUTES } from '@consts/routes'
 
 export default function NavigationCards() {
   return (
     <section class="container">
       <div class="nav-cards">
-        <A href={ROUTES.PROJECTS} class="nav-card nav-card-projects">
+        <a href={ROUTES.PROJECTS} class="nav-card nav-card-projects">
           <span class="nav-card-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -32,14 +31,14 @@ export default function NavigationCards() {
             </svg>
           </span>
           <h3 class="nav-card-title">Projects</h3>
-          <p class="nav-card-description">Explore my portfolio of native mobile applications, web projects, and multiplatform projects.</p>
-        </A>
-        <A href={ROUTES.SKILLS} class="nav-card nav-card-skills">
+          <p class="nav-card-description">Android, Kotlin Multiplatform, and shipped apps—Compose, shared modules, and supporting web work.</p>
+        </a>
+        <a href={ROUTES.SKILLS} class="nav-card nav-card-skills">
           <span class="nav-card-icon">&lt; / &gt;</span>
           <h3 class="nav-card-title">Skills</h3>
           <p class="nav-card-description">Discover the technologies and tools I work with</p>
-        </A>
-        <A href={ROUTES.CONTACT} class="nav-card nav-card-contact">
+        </a>
+        <a href={ROUTES.CONTACT} class="nav-card nav-card-contact">
           <span class="nav-card-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -60,7 +59,7 @@ export default function NavigationCards() {
           </span>
           <h3 class="nav-card-title">Contact</h3>
           <p class="nav-card-description">Let's connect and discuss your next project</p>
-        </A>
+        </a>
       </div>
     </section>
   )
