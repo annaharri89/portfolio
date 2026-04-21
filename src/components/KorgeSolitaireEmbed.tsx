@@ -12,7 +12,7 @@ export default function KorgeSolitaireEmbed() {
 
   return (
     <div class="mt-6 mb-8">
-      <h4 class="mb-3 text-lg font-semibold text-neutral-900">Play in browser</h4>
+      <h3 class="mb-3 text-lg font-semibold text-neutral-900">Solitaire Interactive Demo - FreeCell Coming Soon</h3>
       <div class="korge-solitaire-embed-shell relative mx-auto w-full max-w-full overflow-hidden rounded-lg border border-neutral-200 bg-neutral-900 shadow-md">
         <div class="korge-solitaire-embed-ratio">
           <iframe

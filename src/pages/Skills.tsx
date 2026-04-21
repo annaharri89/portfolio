@@ -1,5 +1,5 @@
 
-import { ROUTES, STITCH_COUNTER_V2_CASE_STUDY_HASHES } from '../constants/routes'
+import { ROUTES } from '../constants/routes'
 import Hero from '@components/Hero'
 
 export default function Skills() {
@@ -168,22 +168,12 @@ export default function Skills() {
             <div class="skill-group">
               <h3 class="skill-group-title">Example work</h3>
               <p class="text-neutral-700 leading-relaxed text-base" style={{ "margin-bottom": 'var(--spacing-md)' }}>
-                Case studies with screenshots live on the Stitch Counter (V2) project page.
+                Case studies with screenshots live on the Stitch Counter (V2) project page; Kotlin Multiplatform
+                architecture and a playable demo are on the Solitaire page.
               </p>
               <div class="case-study__skills-links">
-                <a href
-                 ={`${ROUTES.STITCH_COUNTER_V2}#${STITCH_COUNTER_V2_CASE_STUDY_HASHES.OVERVIEW}`}
-                >
-                  Case studies overview
-                </a>
-                <a
-                  href={`${ROUTES.STITCH_COUNTER_V2}#${STITCH_COUNTER_V2_CASE_STUDY_HASHES.FEATURE_DEVELOPMENT}`}
-                >
-                  Architecture &amp; data
-                </a>
-                <a href={`${ROUTES.STITCH_COUNTER_V2}#${STITCH_COUNTER_V2_CASE_STUDY_HASHES.UI_UX}`}>
-                  UI / UX
-                </a>
+                <a href={ROUTES.STITCH_COUNTER_V2}>Stitch Counter (V2)</a>
+                <a href={ROUTES.SOLITAIRE}>Solitaire</a>
               </div>
             </div>
           </div>

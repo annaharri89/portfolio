@@ -1,7 +1,9 @@
 import stitchCounterV2Icon from '@images/icons/stitch_counter_v2.png'
-import { onCleanup, onMount } from 'solid-js'
+import GithubActionsWorkflowBadge from '../components/GithubActionsWorkflowBadge'
 import Hero from '../components/Hero'
 import ImageCarousel from '@components/Carousel'
+import ProjectDetailMetricGrid from '../components/ProjectDetailMetricGrid'
+import ProjectDetailStatTile from '../components/ProjectDetailStatTile'
 import GithubIcon from '../components/icons/GithubIcon'
 import {
   CaseStudyLightboxProvider,
@@ -14,30 +16,6 @@ import StitchTrackerCaseStudies from './StitchTrackerCaseStudies'
 
 function StitchTrackerPage() {
   const openLightbox = useCaseStudyLightboxOpen()
-
-  onMount(() => {
-    const previousTitle = document.title
-    const previousDescription = document
-      .querySelector('meta[name="description"]')
-      ?.getAttribute('content')
-
-    document.title = 'Stitch Counter V2 Case Study | Android Kotlin Compose CI/CD'
-
-    const descriptionMeta = document.querySelector('meta[name="description"]')
-    if (descriptionMeta) {
-      descriptionMeta.setAttribute(
-        'content',
-        'Android developer case study: Kotlin, Jetpack Compose, Room, DataStore, Hilt, and CI/CD for Stitch Counter V2.',
-      )
-    }
-
-    onCleanup(() => {
-      document.title = previousTitle
-      if (descriptionMeta && previousDescription) {
-        descriptionMeta.setAttribute('content', previousDescription)
-      }
-    })
-  })
 
   return (
     <>
@@ -66,18 +44,15 @@ function StitchTrackerPage() {
                 stay predictable: CI on every PR, CD to Play internal—same setup I’d use on a team
                 where release discipline matters. The iOS rewrite is in progress toward the same local-first experience.
               </p>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-                <div class="project-detail-stat-tile project-detail-stat-tile--metric">
-                  <p class="project-detail-stat-tile__label">Early usage signal</p>
-                  <p class="project-detail-stat-tile__value">50+ internal testers</p>
-                </div>
-                <div class="project-detail-stat-tile project-detail-stat-tile--metric">
-                  <p class="project-detail-stat-tile__label">Stability (Google Play Console)</p>
-                  <p class="project-detail-stat-tile__value">0 crashes</p>
-                </div>
-                <div class="project-detail-stat-tile project-detail-stat-tile--metric">
-                  <p class="project-detail-stat-tile__label">Test signal · Code coverage</p>
-                  <p class="project-detail-stat-tile__value">
+              <ProjectDetailMetricGrid>
+                <ProjectDetailStatTile label="Early usage signal" value="50+ internal testers" />
+                <ProjectDetailStatTile
+                  label="Stability (Google Play Console)"
+                  value="0 crashes"
+                />
+                <ProjectDetailStatTile
+                  label="Test signal · Code coverage"
+                  value={
                     <a
                       href="https://codecov.io/gh/annaharri89/stitchCounterV2"
                       target="_blank"
@@ -90,46 +65,30 @@ function StitchTrackerPage() {
                         alt="Codecov coverage badge"
                       />
                     </a>
-                  </p>
-                </div>
-              </div>
+                  }
+                />
+              </ProjectDetailMetricGrid>
               <p class="text-sm text-neutral-600 mt-2">
                 Stability figures come from Google Play Console; tester count matches the Android README
                 for this early-stage release.
               </p>
               <h4 class="mt-3">CI/CD status</h4>
               <div class="flex flex-wrap gap-3 mt-3 mb-2">
-                <a
-                  href="https://github.com/annaharri89/stitchCounterV2/actions/workflows/ci.yml"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="https://github.com/annaharri89/stitchCounterV2/actions/workflows/ci.yml/badge.svg"
-                    alt="CI status badge"
-                  />
-                </a>
-                <a
-                  href="https://github.com/annaharri89/stitchCounterV2/actions/workflows/play-internal-cd.yml"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src="https://github.com/annaharri89/stitchCounterV2/actions/workflows/play-internal-cd.yml/badge.svg"
-                    alt="Play internal CD status badge"
-                  />
-                </a>
+                <GithubActionsWorkflowBadge
+                  owner="annaharri89"
+                  repo="stitchCounterV2"
+                  workflowFile="ci.yml"
+                  alt="CI status badge"
+                  ariaLabel="View Stitch Counter V2 CI workflow status"
+                />
+                <GithubActionsWorkflowBadge
+                  owner="annaharri89"
+                  repo="stitchCounterV2"
+                  workflowFile="play-internal-cd.yml"
+                  alt="Play internal CD status badge"
+                  ariaLabel="View Stitch Counter V2 Play internal CD workflow status"
+                />
               </div>
-              <p class="text-neutral-700 leading-relaxed text-base mt-4">
-                CI/CD and testing:{' '}
-                <a
-                  href={`#${STITCH_COUNTER_V2_CASE_STUDY_HASHES.ENGINEERING_DELIVERY}`}
-                  class="text-accent-link"
-                >
-                  see Engineering and delivery
-                </a>
-                .
-              </p>
               <div class="flex flex-wrap gap-3 mt-4">
                 <button
                   type="button"
@@ -248,7 +207,7 @@ function StitchTrackerPage() {
             </div>
             <div class="project-links project-links-vertical">
               <div class="project-links">
-                <a href={ROUTES.STITCH_COUNTER_V2_BETA} class="project-link">
+                <a href={ROUTES.STITCH_COUNTER_V2_BETA} class="project-link project-link--primary">
                   Try Stitch Counter (Android Beta)
                 </a>
                 <a href={ROUTES.STITCH_COUNTER_V2_PRIVACY_POLICY} class="project-link">

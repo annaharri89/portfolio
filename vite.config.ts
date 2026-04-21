@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-
-const isSsrPrerenderBundle = process.env.VITE_SSR_PRERENDER === '1'
+import { seoStaticPrerenderPlugin } from './vite-plugin-seo-static';
 
 export default defineConfig({
-	plugins: [solidPlugin()],
+	plugins: [solidPlugin(), seoStaticPrerenderPlugin()],
 	base: '/',
 	resolve: {
 		tsconfigPaths: true

@@ -2055,6 +2055,25 @@ a:focus-visible {
   box-shadow: var(--shadow-lg);
 }
 
+.project-link--primary {
+  background: var(--md-sys-color-cta);
+  color: var(--md-sys-color-on-cta);
+  border-color: color-mix(in srgb, var(--md-sys-color-on-cta) 22%, transparent);
+  box-shadow: 0 2px 14px color-mix(in srgb, var(--md-sys-color-cta) 32%, transparent);
+}
+
+.project-link--primary:hover {
+  color: var(--md-sys-color-on-cta);
+  background: var(--md-sys-color-cta-hover);
+  border-color: color-mix(in srgb, var(--md-sys-color-on-cta) 18%, transparent);
+  box-shadow: 0 6px 22px color-mix(in srgb, var(--md-sys-color-cta) 42%, transparent);
+}
+
+.project-link--primary:focus-visible {
+  outline: 2px solid var(--md-sys-color-cta-hover);
+  outline-offset: 3px;
+}
+
 .project-link svg {
   width: 18px;
   height: 18px;
@@ -2074,17 +2093,26 @@ a:focus-visible {
   fill: currentColor;
 }
 
+/* GitHub Octocat: always black (overrides .project-link / .btn svg { fill: currentColor }) */
+svg.github-mark,
+svg.github-mark path,
+.project-link svg.github-mark,
+.project-link:hover svg.github-mark,
+.btn svg.github-mark,
+.btn:hover svg.github-mark,
+.btn-secondary svg.github-mark,
+.btn-secondary:hover svg.github-mark,
+.contact-link svg.github-mark,
+.contact-link:hover svg.github-mark {
+  fill: #000000;
+}
+
 .contact-link[href*="linkedin"] svg {
   fill: #0077B5;
 }
 
 .contact-link[href*="linkedin"]:hover svg {
   fill: #0077B5;
-}
-
-.contact-link--github svg,
-.contact-link--github:hover svg {
-  fill: #000000;
 }
 
 .project-link.disabled {
