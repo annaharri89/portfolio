@@ -4,7 +4,7 @@ import Footer from '@components/Footer'
 
 export default function Layout(props: ParentProps) {
   return (
-    <div class="min-h-screen">
+    <div class="min-h-viewport-stable">
       <Navigation />
       <main>{props.children}</main>
       <Footer />
