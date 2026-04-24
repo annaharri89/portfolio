@@ -432,9 +432,40 @@ a:focus-visible {
 }
 
 .hero--compact {
-  height: 40vh;
-  min-height: 300px;
+  height: auto;
+  min-height: clamp(320px, 44vh, 460px);
   padding-bottom: calc(clamp(1rem, 2vh, var(--spacing-lg)) + var(--hero-subtitle-safe-space));
+  clip-path: none;
+}
+
+.hero--compact .site-container {
+  height: auto;
+  min-height: 0;
+}
+
+.hero--compact .hero-content {
+  flex: 0 0 auto;
+  align-content: start;
+  align-items: start;
+  min-height: 0;
+}
+
+@media (max-width: 767px) {
+  .hero--compact {
+    height: auto;
+    min-height: auto;
+    clip-path: none;
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-lg);
+  }
+
+  .hero--compact .hero-content {
+    gap: var(--spacing-sm);
+  }
+
+  .hero--compact .hero-graphic {
+    display: none;
+  }
 }
 
 .hero::before {
@@ -522,6 +553,7 @@ a:focus-visible {
 
 .hero-headline--compact {
   font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.16;
 }
 
 .hero-text-smaller {
@@ -640,7 +672,13 @@ a:focus-visible {
 }
 
 .hero.hero--compact + * {
-  margin-top: calc(-1 * var(--hero-overlap-compact));
+  margin-top: calc(-1 * clamp(1.5rem, 3.5vw, 2.25rem));
+}
+
+@media (max-width: 767px) {
+  .hero.hero--compact + * {
+    margin-top: 0;
+  }
 }
 
 /* Keep this after `.hero + *` so the home bento overlap wins.
