@@ -50,6 +50,9 @@ export default function Hero({
   return (
     <section class={`hero ${isCompact ? 'hero--compact' : ''}`}>
       <div class="site-container">
+        <Show when={showGraphic && isCompact}>
+          <HeroGraphic isCompact />
+        </Show>
         <div class="hero-content">
           <div class="hero-text">
             <div class={leadingIconSrc ? 'hero-text-with-icon' : undefined}>
@@ -73,8 +76,8 @@ export default function Hero({
               </div>
             </div>
           </div>
-          <Show when={showGraphic}>
-            <HeroGraphic isCompact={isCompact} />
+          <Show when={showGraphic && !isCompact}>
+            <HeroGraphic isCompact={false} />
           </Show>
         </div>
         {showScrollHint && !isCompact && (

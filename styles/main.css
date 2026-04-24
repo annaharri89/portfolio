@@ -425,7 +425,7 @@ a:focus-visible {
   isolation: isolate;
   overflow: visible;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   /* Lifts the band off the page; may be partially masked by clip-path in some engines */
   box-shadow: 0 18px 40px -18px rgba(28, 25, 23, 0.07);
   clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 99% 88.5%, 97.5% 89.2%, 95% 90.2%, 92% 91.5%, 88% 93%, 83% 94.3%, 77% 95.3%, 70% 96%, 62% 96.4%, 50% 96.5%, 38% 96.4%, 30% 96%, 23% 95.3%, 17% 94.3%, 12% 93%, 8% 91.5%, 5% 90.2%, 2.5% 89.2%, 1% 88.5%, 0% 88%);
@@ -435,12 +435,16 @@ a:focus-visible {
   height: auto;
   min-height: clamp(320px, 44vh, 460px);
   padding-bottom: calc(clamp(1rem, 2vh, var(--spacing-lg)) + var(--hero-subtitle-safe-space));
-  clip-path: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .hero--compact .site-container {
-  height: auto;
+  flex: 1 1 auto;
+  width: 100%;
   min-height: 0;
+  justify-content: center;
 }
 
 .hero--compact .hero-content {
@@ -453,18 +457,23 @@ a:focus-visible {
 @media (max-width: 767px) {
   .hero--compact {
     height: auto;
-    min-height: auto;
+    min-height: min(44vh, 420px);
     clip-path: none;
-    padding-top: var(--spacing-sm);
-    padding-bottom: var(--spacing-lg);
+    /* Extra air under the sticky nav (hamburger layout); home uses full `.hero` only, unchanged */
+    padding-top: clamp(var(--spacing-lg), 7vw, var(--spacing-2xl));
+    padding-bottom: clamp(var(--spacing-xl), 9vw, var(--spacing-3xl));
   }
 
   .hero--compact .hero-content {
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
   }
 
   .hero--compact .hero-graphic {
     display: none;
+  }
+
+  .hero.hero--compact + * {
+    margin-top: 0;
   }
 }
 
@@ -496,8 +505,8 @@ a:focus-visible {
   display: grid;
   grid-template-columns: 1fr;
   gap: clamp(1rem, 2vh, var(--spacing-2xl));
-  align-items: center;
-  align-content: center;
+  align-items: start;
+  align-content: start;
   width: 100%;
   flex: 1;
   min-height: 0;
@@ -508,6 +517,35 @@ a:focus-visible {
   .hero-content {
     grid-template-columns: 1.5fr 1fr;
     gap: var(--spacing-3xl);
+    align-items: start;
+    align-content: start;
+  }
+
+  .hero--compact .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero--compact .site-container > .hero-graphic {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: var(--spacing-md);
+    width: min(38%, 340px);
+    max-width: 340px;
+    margin: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero--compact .site-container > .hero-graphic svg {
+    max-width: 100%;
+    max-height: min(28vh, 320px);
+  }
+
+  .hero--compact .site-container:has(> .hero-graphic) > .hero-content {
+    position: relative;
+    z-index: 1;
+    padding-right: min(44%, 400px);
   }
 }
 
@@ -672,13 +710,7 @@ a:focus-visible {
 }
 
 .hero.hero--compact + * {
-  margin-top: calc(-1 * clamp(1.5rem, 3.5vw, 2.25rem));
-}
-
-@media (max-width: 767px) {
-  .hero.hero--compact + * {
-    margin-top: 0;
-  }
+  margin-top: calc(-1 * var(--hero-overlap-compact));
 }
 
 /* Keep this after `.hero + *` so the home bento overlap wins.
@@ -934,6 +966,12 @@ a:focus-visible {
   height: auto;
   min-height: min(72vh, 700px);
   max-height: none;
+  align-items: center;
+}
+
+.home-page .hero-content {
+  align-items: center;
+  align-content: center;
 }
 
 @media (max-width: 767px) {
