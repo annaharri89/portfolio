@@ -78,6 +78,7 @@ function StitchTrackerPage() {
                   owner="annaharri89"
                   repo="stitchCounterV2"
                   workflowFile="ci.yml"
+                  workflowName="CI"
                   alt="CI status badge"
                   ariaLabel="View Stitch Counter V2 CI workflow status"
                 />
@@ -85,6 +86,7 @@ function StitchTrackerPage() {
                   owner="annaharri89"
                   repo="stitchCounterV2"
                   workflowFile="play-internal-cd.yml"
+                  workflowName="Play internal CD"
                   alt="Play internal CD status badge"
                   ariaLabel="View Stitch Counter V2 Play internal CD workflow status"
                 />
