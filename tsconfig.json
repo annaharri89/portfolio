@@ -1,41 +1,18 @@
 {
 	"compilerOptions": {
 		"paths": {
-			"@images/*": [
-				"./images/*"
-			],
-			"@videos/*": [
-				"./videos/*"
-			],
-			"@components/*": [
-				"./src/components/*"
-			],
-			"@consts/*": [
-				"./src/constants/*"
-			],
-			"@pages/*": [
-				"./src/pages/*"
-			],
-			"@styles/*": [
-				"./styles/*"
-			],
-			"@icons/*": [
-				"./src/components/icons/*"
-			],
-			"@app": [
-				"./src/App"
-			],
-			"@main": [
-				"./src/main"
-			]
+			"@root/*": ["./src/*"],
+			"@images/*": ["./images/*"],
+			"@videos/*": ["./videos/*"],
+			"@components/*": ["./src/components/*"],
+			"@consts/*": ["./src/constants/*"],
+			"@pages/*": ["./src/pages/*"],
+			"@styles/*": ["./styles/*"],
+			"@icons/*": ["./src/components/icons/*"]
 		},
-		"target": "esnext",
+		"target": "ESNext",
 		"useDefineForClassFields": true,
-		"lib": [
-			"ES2020",
-			"DOM",
-			"DOM.Iterable"
-		],
+		"lib": ["ES2020", "DOM", "DOM.Iterable"],
 		"module": "ESNext",
 		"skipLibCheck": true,
 		"moduleResolution": "bundler",
@@ -50,14 +27,8 @@
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
 		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true
+		"allowSyntheticDefaultImports": true,
+		"types": ["vite/client", "@solidjs/start/env"]
 	},
-	"include": [
-		"src"
-	],
-	"references": [
-		{
-			"path": "./tsconfig.node.json"
-		}
-	]
+	"include": ["src", "vite.config.ts", "node-scripts/**/*.ts"]
 }
