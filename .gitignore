@@ -9,6 +9,10 @@ lerna-debug.log*
 
 node_modules
 dist
+dev
+.nitro
+.output
+.solid-start
 dist-ssr
 *.local
 
