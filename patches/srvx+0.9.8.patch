@@ -1,0 +1,17 @@
+diff --git a/node_modules/srvx/dist/_chunks/_url.mjs b/node_modules/srvx/dist/_chunks/_url.mjs
+index 0db99ae..f44d89f 100644
+--- a/node_modules/srvx/dist/_chunks/_url.mjs
++++ b/node_modules/srvx/dist/_chunks/_url.mjs
+@@ -40,7 +40,11 @@ const FastURL = /* @__PURE__ */ (() => {
+ 		}
+ 		get _url() {
+ 			if (this.#url) return this.#url;
+-			this.#url = new NativeURL(this.href);
++			const hrefString = this.#href !== void 0 ? this.#href : this.href;
++			this.#url =
++				hrefString.startsWith("/") && !hrefString.startsWith("//")
++					? new NativeURL(hrefString, "http://localhost")
++					: new NativeURL(hrefString);
+ 			this.#href = void 0;
+ 			this.#protocol = void 0;
+ 			this.#host = void 0;

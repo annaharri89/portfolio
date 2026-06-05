@@ -25,10 +25,11 @@ const stitchCodecovHref = 'https://codecov.io/gh/annaharri89/stitchCounterV2'
 const stitchCodecovBadgeSrc = `${stitchCodecovHref}/branch/main/graph/badge.svg`
 const stitchCiWorkflowHref =
   'https://github.com/annaharri89/stitchCounterV2/actions/workflows/ci.yml'
-const stitchCiBadgeSrc = `${stitchCiWorkflowHref}/badge.svg`
+const stitchCiBadgeSrc = 'https://github.com/annaharri89/stitchCounterV2/workflows/CI/badge.svg'
 const stitchPlayCdWorkflowHref =
   'https://github.com/annaharri89/stitchCounterV2/actions/workflows/play-internal-cd.yml'
-const stitchPlayCdBadgeSrc = `${stitchPlayCdWorkflowHref}/badge.svg`
+const stitchPlayCdBadgeSrc =
+  'https://github.com/annaharri89/stitchCounterV2/workflows/Play%20internal%20CD/badge.svg'
 
 export default function HomeLayoutBento() {
   return (

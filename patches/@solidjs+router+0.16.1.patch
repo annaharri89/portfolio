@@ -1,0 +1,32 @@
+diff --git a/node_modules/@solidjs/router/dist/index.js b/node_modules/@solidjs/router/dist/index.js
+index 8fba817..b3ec6be 100644
+--- a/node_modules/@solidjs/router/dist/index.js
++++ b/node_modules/@solidjs/router/dist/index.js
+@@ -1038,7 +1038,10 @@ function scrollToHash(hash, fallbackTop) {
+ }
+ 
+ function getPath(url) {
+-  const u = new URL(url);
++  const u =
++    url.startsWith("/") && !url.startsWith("//")
++      ? new URL(url, "http://localhost")
++      : new URL(url);
+   return u.pathname + u.search;
+ }
+ function StaticRouter(props) {
+diff --git a/node_modules/@solidjs/router/dist/routers/StaticRouter.js b/node_modules/@solidjs/router/dist/routers/StaticRouter.js
+index 2c82ac2..4f94b13 100644
+--- a/node_modules/@solidjs/router/dist/routers/StaticRouter.js
++++ b/node_modules/@solidjs/router/dist/routers/StaticRouter.js
+@@ -1,7 +1,10 @@
+ import { getRequestEvent } from "solid-js/web";
+ import { createRouterComponent } from "./components.jsx";
+ function getPath(url) {
+-    const u = new URL(url);
++    const u =
++        url.startsWith("/") && !url.startsWith("//")
++            ? new URL(url, "http://localhost")
++            : new URL(url);
+     return u.pathname + u.search;
+ }
+ export function StaticRouter(props) {
