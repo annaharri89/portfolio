@@ -1,28 +1,25 @@
 import Hero from '@components/Hero'
 import { A } from '@solidjs/router'
-import { ROUTES } from '@consts/routes'
+import { ROUTES, STITCH_COUNTER_V2_PLAY_STORE_URL } from '@consts/routes'
 
 export default function Beta() {
-  const playBetaTestingUrl =
-    'https://play.google.com/apps/testing/dev.harrisonsoftware.stitchCounter'
-
   return (
     <>
       <Hero
-        title="Try Stitch Counter Beta (Android)"
+        title="Stitch Counter on Google Play (Android)"
         subtitle=""
         variant="compact"
       />
       <section class="project-detail">
         <div class="site-container">
           <div class="project-detail-section">
-              <h3>Help shape Stitch Counter before launch</h3>
+              <h3>Stitch Counter is in production</h3>
               <p class="text-neutral-700 leading-relaxed text-base mb-6">
-                I&apos;m opening a beta for knitters and crocheters who want a simple row and stitch counter that is
-                local-first: data stays on your device, with no cloud sync or accounts.
+                A local-first row and stitch counter for knitters and crocheters: data stays on your device, with no
+                cloud sync or accounts.
               </p>
               <p class="text-neutral-700 leading-relaxed text-base mb-6">
-                Availability: Android only via Google Play beta.
+                Availability: Android on Google Play production.
               </p>
 
               <h4>What to expect</h4>
@@ -38,41 +35,36 @@ export default function Beta() {
               </ul>
 
               <p class="text-neutral-700 leading-relaxed text-base mb-6">
-                If you&apos;d like early access and want to share feedback, use the link below and follow Google
-                Play&apos;s prompts to install Stitch Counter.
+                Install from Google Play on an Android phone or tablet with the Play Store.
               </p>
 
-              <h4 class="mb-6">How to join</h4>
+              <h4 class="mb-6">Get the app</h4>
               <div class="project-links project-links-vertical mb-6">
-                <a href={playBetaTestingUrl} target="_blank" rel="noopener noreferrer" class="project-link">
-                  Join the Stitch Counter beta on Google Play
+                <a
+                  href={STITCH_COUNTER_V2_PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link"
+                >
+                  Get Stitch Counter on Google Play
                 </a>
               </div>
 
               <ul class="list-disc list-inside space-y-2 text-neutral-700 mb-6">
                 <li>
-                  Sign in with the Google account you will use to install the app—the testing page often asks for
-                  sign-in.
+                  Sign in with the Google account you will use on the device if Play asks for sign-in.
                 </li>
                 <li>
-                  Complete the flow on an Android phone or tablet with the Play Store. Do not expect a desktop-only web
-                  install to work.
+                  Install on an Android phone or tablet with the Play Store. Do not expect a desktop-only web install to
+                  work.
                 </li>
-                <li>After your first install, updates come through Play like any other app—you do not need this link again.</li>
-                <li>
-                  If Play says the app isn&apos;t available yet, wait 5-15 minutes after enrolling and try opening the
-                  link again from your device.
-                </li>
+                <li>After your first install, updates come through Play like any other app.</li>
               </ul>
-
-              <h4>Beta stability note</h4>
-              <p class="text-neutral-700 leading-relaxed text-base mb-6">
-                You may run into bugs, and data loss is possible while features are being tested.
-              </p>
 
               <h4>Important: Backup note</h4>
               <p class="text-neutral-700 leading-relaxed text-base mb-6">
-                Please back up your projects regularly in Settings &gt; Backup &amp; Restore while the beta is in progress.
+                Please back up your projects regularly in Settings &gt; Backup &amp; Restore, especially before device
+                changes.
               </p>
 
               <h4>Found an issue or have an idea?</h4>

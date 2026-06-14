@@ -64,7 +64,7 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 	[ROUTES.STITCH_COUNTER_V2]: {
 		title: "Stitch Counter V2 — case study (Android, Compose, CI/CD)",
 		description:
-			"Case study: Room, DataStore, Hilt, Jetpack Compose, and CI for a local-first craft counter on Play beta.",
+			"Case study: Room, DataStore, Hilt, Jetpack Compose, and CI for a local-first craft counter on Google Play production.",
 		canonicalPath: ROUTES.STITCH_COUNTER_V2,
 		ogImagePath: "/work/android-feature-development/case1_data_library.png",
 		ogImageAlt:
@@ -144,9 +144,9 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 		twitterCard: "summary",
 	},
 	[STITCH_COUNTER_V2_BETA_PATH]: {
-		title: "Stitch Counter — Android open beta",
+		title: "Stitch Counter — Google Play (Android)",
 		description:
-			"How to join Play open testing for Stitch Counter V2: beta access notes and what to expect in builds.",
+			"Get Stitch Counter V2 on Google Play: production Android app for knitters and crocheters—local-first, no cloud.",
 		canonicalPath: STITCH_COUNTER_V2_BETA_PATH,
 		ogImagePath: DEFAULT_OG_IMAGE_PATH,
 		ogImageAlt: DEFAULT_OG_IMAGE_ALT,
