@@ -6,6 +6,7 @@
 		"dev": "vite dev",
 		"prebuild": "npm run generate:sitemaps",
 		"build": "tsgo --noEmit && vite build",
+		"build:upwork": "VITE_UPWORK_MODE=true VITE_SITE_ORIGIN=https://upwork.harrisonsoftware.dev npm run build",
 		"preview": "sirv dist --port 4173 --cors",
 		"postinstall": "patch-package",
 		"generate:sitemaps": "tsx node-scripts/generate-sitemaps.ts"

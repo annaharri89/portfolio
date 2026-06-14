@@ -1,6 +1,9 @@
 import Hero from '@components/Hero'
+import { isUpworkMode } from '@consts/upwork'
 
 export default function StitchTrackerPrivacyPolicy() {
+  if (isUpworkMode) return null
+
   return (
     <>
       <Hero

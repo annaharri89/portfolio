@@ -1,6 +1,8 @@
-import { createSignal, For } from 'solid-js'
+import { createSignal, For, type Component } from 'solid-js'
 import { A, useLocation } from '@solidjs/router'
 import { ROUTES } from '@consts/routes'
+import UpworkNavCta from './navigation/UpworkNavCta'
+import MainSiteNavCta from './navigation/MainSiteNavCta'
 
 const NAV_ITEMS = [
   { path: ROUTES.ABOUT, label: 'About' },
@@ -8,11 +10,15 @@ const NAV_ITEMS = [
   { path: ROUTES.SKILLS, label: 'Skills' },
 ]
 
+const NavCta: Component<{ onNavigate: () => void }> =
+  import.meta.env.VITE_UPWORK_MODE === 'true' ? UpworkNavCta : MainSiteNavCta
+
 export default function Navigation() {
   const location = useLocation()
   const [isMenuOpen, setIsMenuOpen] = createSignal(false)
 
   const isActive = (path: string) => location.pathname === path
+  const closeMenu = () => setIsMenuOpen(false)
 
   return (
     <nav class="nav" id="nav">
@@ -38,7 +44,7 @@ export default function Navigation() {
                 <A
                   href={item.path}
                   class={`nav-link ${isActive(item.path) ? 'active' : ''}`}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={closeMenu}
                 >
                   {item.label}
                 </A>
@@ -46,9 +52,7 @@ export default function Navigation() {
             )}
           </For>
           <li class="nav-cta-item">
-            <a href={ROUTES.CONTACT} class="nav-cta" onClick={() => setIsMenuOpen(false)}>
-              Get in touch
-            </a>
+            <NavCta onNavigate={closeMenu} />
           </li>
         </ul>
       </div>

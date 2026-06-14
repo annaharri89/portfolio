@@ -13,6 +13,7 @@ export const STITCH_COUNTER_V2_PLAY_STORE_URL =
 	"https://play.google.com/store/apps/details?id=dev.harrisonsoftware.stitchCounter";
 export const HPF_PULSE_PATH = "/hpf-pulse";
 export const SOLITAIRE_PATH = "/solitaire";
+export const DUAL_BRAND_CONSUMER_PLATFORM_PATH = "/dual-brand-consumer-platform";
 
 export const ROUTES = {
 	HOME: HOME_PATH,
@@ -27,6 +28,7 @@ export const ROUTES = {
 	STITCH_COUNTER_V2_BETA: STITCH_COUNTER_V2_BETA_PATH,
 	HPF_PULSE: HPF_PULSE_PATH,
 	SOLITAIRE: SOLITAIRE_PATH,
+	DUAL_BRAND_CONSUMER_PLATFORM: DUAL_BRAND_CONSUMER_PLATFORM_PATH,
 } as const;
 
 /** Hash ids on {@link ROUTES.STITCH_COUNTER_V2} for in-page case studies */

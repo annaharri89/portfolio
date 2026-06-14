@@ -1,3 +1,4 @@
+import { Show } from 'solid-js'
 import stitchCounterV2Icon from '@images/icons/stitch_counter_v2.png'
 import GithubActionsWorkflowBadge from '../components/GithubActionsWorkflowBadge'
 import Hero from '../components/Hero'
@@ -16,6 +17,7 @@ import {
   STITCH_COUNTER_V2_CASE_STUDY_HASHES,
   STITCH_COUNTER_V2_PLAY_STORE_URL,
 } from '../constants/routes'
+import { isUpworkMode } from '../constants/upwork'
 import StitchTrackerCaseStudies from './StitchTrackerCaseStudies'
 
 function StitchTrackerPage() {
@@ -221,12 +223,14 @@ function StitchTrackerPage() {
                 >
                   Get Stitch Counter on Google Play
                 </a>
-                <a href={ROUTES.STITCH_COUNTER_V2_PRIVACY_POLICY} class="project-link">
-                  Privacy Policy
-                </a>
-                <a href={ROUTES.STITCH_COUNTER_V2_EULA} class="project-link">
-                  EULA
-                </a>
+                <Show when={!isUpworkMode}>
+                  <a href={ROUTES.STITCH_COUNTER_V2_PRIVACY_POLICY} class="project-link">
+                    Privacy Policy
+                  </a>
+                  <a href={ROUTES.STITCH_COUNTER_V2_EULA} class="project-link">
+                    EULA
+                  </a>
+                </Show>
               </div>
               <div class="project-links">
               <a
