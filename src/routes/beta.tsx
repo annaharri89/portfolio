@@ -1,1 +1,3 @@
-export { default } from "@pages/Beta";
+import { upworkGatedRoute } from '@root/utils/upworkGatedRoute'
+
+export default upworkGatedRoute(() => import('@pages/Beta'))

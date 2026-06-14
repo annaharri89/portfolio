@@ -1,1 +1,3 @@
-export { default } from "@pages/StitchTrackerPrivacyPolicy";
+import { upworkGatedRoute } from '@root/utils/upworkGatedRoute'
+
+export default upworkGatedRoute(() => import('@pages/StitchTrackerPrivacyPolicy'))

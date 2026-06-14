@@ -1,6 +1,6 @@
 import { Link, Meta, MetaProvider, Title, useHead } from "@solidjs/meta";
 import { useLocation } from "@solidjs/router";
-import { createMemo } from "solid-js";
+import { createMemo, Show } from "solid-js";
 import {
 	buildRouteStructuredData,
 	getRouteSeoForPath,
@@ -11,6 +11,7 @@ import {
 	resolveTwitterCard,
 	SITE_NAME,
 } from "@root/seo";
+import { isUpworkMode } from "@consts/upwork";
 
 export default function RouteSeo() {
 	const location = useLocation();
@@ -44,6 +45,9 @@ export default function RouteSeo() {
 		<>
 			<Title>{routeSeo().title}</Title>
 			<Meta name="description" content={routeSeo().description} />
+			<Show when={isUpworkMode}>
+				<Meta name="robots" content="noindex, nofollow" />
+			</Show>
 			<Link rel="canonical" href={canonicalUrl()} />
 			<Meta property="og:type" content={openGraphType()} />
 			<Meta property="og:site_name" content={SITE_NAME} />

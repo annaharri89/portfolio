@@ -871,6 +871,7 @@ a:focus-visible {
 
 .nav-card-skills .nav-card-action,
 .nav-card-contact .nav-card-action,
+.nav-card-upwork .nav-card-action,
 .nav-card-projects .nav-card-action {
   color: var(--color-accent);
 }
@@ -879,6 +880,8 @@ a:focus-visible {
 .nav-card-skills:focus-visible .nav-card-action,
 .nav-card-contact:hover .nav-card-action,
 .nav-card-contact:focus-visible .nav-card-action,
+.nav-card-upwork:hover .nav-card-action,
+.nav-card-upwork:focus-visible .nav-card-action,
 .nav-card-projects:hover .nav-card-action,
 .nav-card-projects:focus-visible .nav-card-action {
   color: var(--color-accent-hover);
@@ -914,24 +917,29 @@ a:focus-visible {
   transform: scale(1.1);
 }
 
-.nav-card-contact {
+.nav-card-contact,
+.nav-card-upwork {
   background: #e8e4dc;
 }
 
-.nav-card-contact .nav-card-title {
+.nav-card-contact .nav-card-title,
+.nav-card-upwork .nav-card-title {
   color: var(--color-text-primary);
 }
 
-.nav-card-contact .nav-card-description {
+.nav-card-contact .nav-card-description,
+.nav-card-upwork .nav-card-description {
   color: var(--color-text-secondary);
   font-weight: 500;
 }
 
-.nav-card-contact .nav-card-icon {
+.nav-card-contact .nav-card-icon,
+.nav-card-upwork .nav-card-icon {
   color: var(--color-accent);
 }
 
-.nav-card-contact:hover .nav-card-icon {
+.nav-card-contact:hover .nav-card-icon,
+.nav-card-upwork:hover .nav-card-icon {
   color: var(--color-accent-hover);
   transform: scale(1.1);
 }
@@ -1080,7 +1088,8 @@ a:focus-visible {
 .home-page .nav-card,
 .home-page .nav-card-projects,
 .home-page .nav-card-skills,
-.home-page .nav-card-contact {
+.home-page .nav-card-contact,
+.home-page .nav-card-upwork {
   background: var(--gradient-card);
   border: 1px solid var(--color-border);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -1099,7 +1108,8 @@ a:focus-visible {
   border-top: 3px solid var(--md-sys-color-primary);
 }
 
-.home-page .nav-card-contact {
+.home-page .nav-card-contact,
+.home-page .nav-card-upwork {
   border-top: 3px solid var(--md-sys-color-tertiary);
 }
 
@@ -1116,37 +1126,44 @@ a:focus-visible {
 }
 
 .home-page .nav-card-contact:hover,
-.home-page .nav-card-contact:focus-visible {
+.home-page .nav-card-contact:focus-visible,
+.home-page .nav-card-upwork:hover,
+.home-page .nav-card-upwork:focus-visible {
   border-top: 1px solid var(--color-border);
   border-bottom: 3px solid var(--md-sys-color-tertiary);
 }
 
 .home-page .nav-card-skills .nav-card-title,
 .home-page .nav-card-contact .nav-card-title,
+.home-page .nav-card-upwork .nav-card-title,
 .home-page .nav-card-projects .nav-card-title {
   color: var(--color-text-primary);
 }
 
 .home-page .nav-card-skills .nav-card-description,
 .home-page .nav-card-contact .nav-card-description,
+.home-page .nav-card-upwork .nav-card-description,
 .home-page .nav-card-projects .nav-card-description {
   color: var(--color-text-secondary);
 }
 
 .home-page .nav-card-skills .nav-card-icon,
 .home-page .nav-card-contact .nav-card-icon,
+.home-page .nav-card-upwork .nav-card-icon,
 .home-page .nav-card-projects .nav-card-icon {
   color: var(--color-accent);
 }
 
 .home-page .nav-card-skills:hover .nav-card-icon,
 .home-page .nav-card-contact:hover .nav-card-icon,
+.home-page .nav-card-upwork:hover .nav-card-icon,
 .home-page .nav-card-projects:hover .nav-card-icon {
   color: var(--color-accent-hover);
 }
 
 .home-page .nav-card-skills .nav-card-action,
 .home-page .nav-card-contact .nav-card-action,
+.home-page .nav-card-upwork .nav-card-action,
 .home-page .nav-card-projects .nav-card-action {
   color: var(--color-accent);
 }
@@ -1155,6 +1172,8 @@ a:focus-visible {
 .home-page .nav-card-skills:focus-visible .nav-card-action,
 .home-page .nav-card-contact:hover .nav-card-action,
 .home-page .nav-card-contact:focus-visible .nav-card-action,
+.home-page .nav-card-upwork:hover .nav-card-action,
+.home-page .nav-card-upwork:focus-visible .nav-card-action,
 .home-page .nav-card-projects:hover .nav-card-action,
 .home-page .nav-card-projects:focus-visible .nav-card-action {
   color: var(--color-accent-hover);

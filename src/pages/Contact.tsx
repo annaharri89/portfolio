@@ -1,16 +1,11 @@
+import 'altcha'
 import { createSignal, onMount, onCleanup, Show } from 'solid-js'
+import { useNavigate } from '@solidjs/router'
 import Hero from '@components/Hero'
 import GithubIcon from '@components/icons/GithubIcon'
 import { API_CONFIG } from '@consts/api'
+import { isUpworkMode } from '@consts/upwork'
 import { SOCIAL_LINKS } from '../constants/social'
-
-declare module "solid-js" {
-  namespace JSX {
-    interface IntrinsicElements {
-      "altcha-widget": globalThis.JSX.IntrinsicElements['altcha-widget']
-    }
-  }
-}
 
 function LinkedInIcon(props: { class?: string }) {
   return (
@@ -21,6 +16,7 @@ function LinkedInIcon(props: { class?: string }) {
 }
 
 export default function Contact() {
+  const navigate = useNavigate()
   const [name, setName] = createSignal('')
   const [email, setEmail] = createSignal('')
   const [message, setMessage] = createSignal('')
@@ -31,6 +27,11 @@ export default function Contact() {
   let altchaWidgetRef: HTMLElement | undefined
 
   onMount(() => {
+    if (isUpworkMode) {
+      navigate('/', { replace: true })
+      return
+    }
+
     const setupWidgetFromDOM = () => {
       const widget = document.querySelector('altcha-widget') as (HTMLElement & {
         addEventListener: (event: string, handler: (e: CustomEvent) => void) => void
@@ -134,6 +135,8 @@ export default function Contact() {
     }
   }
 
+  if (isUpworkMode) return null
+
   return (
     <>
       <Hero
@@ -202,8 +205,9 @@ export default function Contact() {
                         disabled={isSubmitting()}
                       ></textarea>
                     </div>
+                    {/* @ts-expect-error altcha-widget is a custom element */}
                     <altcha-widget
-                      challengeurl={`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.ALTCHA_CHALLENGE}`}
+                      challenge={`${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS.ALTCHA_CHALLENGE}`}
                       auto="onload"
                       name="altcha"
                     />

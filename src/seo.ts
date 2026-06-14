@@ -8,9 +8,27 @@ import {
 	STITCH_COUNTER_V2_PRIVACY_POLICY_PATH,
 } from "./marketingRoutes";
 import { SOCIAL_LINKS } from "./constants/social";
+import { isUpworkMode } from "./constants/upwork";
 import type { TwitterCardKind } from "./seo/seoTypes";
 
-export const SITE_URL = "https://harrisonsoftware.dev";
+function readSiteOrigin(): string | undefined {
+	if (typeof process !== "undefined" && process.env.VITE_SITE_ORIGIN) {
+		return process.env.VITE_SITE_ORIGIN;
+	}
+	return import.meta.env?.VITE_SITE_ORIGIN;
+}
+
+function defaultSiteOrigin(): string {
+	if (typeof process !== "undefined" && process.env.VITE_UPWORK_MODE === "true") {
+		return "https://upwork.harrisonsoftware.dev";
+	}
+	if (import.meta.env?.VITE_UPWORK_MODE === "true") {
+		return "https://upwork.harrisonsoftware.dev";
+	}
+	return "https://harrisonsoftware.dev";
+}
+
+export const SITE_URL = readSiteOrigin() ?? defaultSiteOrigin();
 export const SITE_NAME = "Anna Harrison";
 export const SITE_LAST_MODIFIED = "2026-05-23";
 
@@ -34,7 +52,7 @@ export interface SitemapEntry {
 	lastmod: string;
 }
 
-export const PORTFOLIO_PRERENDER_PATHS = [
+const MAIN_SITE_PRERENDER_PATHS = [
 	HOME_PATH,
 	ROUTES.ABOUT,
 	ROUTES.PROJECTS,
@@ -47,7 +65,24 @@ export const PORTFOLIO_PRERENDER_PATHS = [
 	STITCH_COUNTER_V2_PRIVACY_POLICY_PATH,
 	STITCH_COUNTER_V2_BETA_PATH,
 	ROUTES.SOLITAIRE,
+	ROUTES.DUAL_BRAND_CONSUMER_PLATFORM,
 ] as const;
+
+const UPWORK_PRERENDER_PATHS = [
+	HOME_PATH,
+	ROUTES.ABOUT,
+	ROUTES.PROJECTS,
+	ROUTES.SKILLS,
+	STITCH_COUNTER_V2_PATH,
+	ROUTES.STITCH_COUNTER,
+	ROUTES.HPF_PULSE,
+	ROUTES.SOLITAIRE,
+	ROUTES.DUAL_BRAND_CONSUMER_PLATFORM,
+] as const;
+
+export const PORTFOLIO_PRERENDER_PATHS = isUpworkMode
+	? UPWORK_PRERENDER_PATHS
+	: MAIN_SITE_PRERENDER_PATHS;
 
 export type PortfolioPrerenderPath = (typeof PORTFOLIO_PRERENDER_PATHS)[number];
 
@@ -161,6 +196,15 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 		ogImageAlt: "Kotlin Multiplatform solitaire app icon",
 		twitterCard: "summary_large_image",
 	},
+	[ROUTES.DUAL_BRAND_CONSUMER_PLATFORM]: {
+		title: "Dual-brand consumer platform — Anna Harrison",
+		description:
+			"Anonymized Android case study: store presence, release discipline, and dual-flavor delivery for a second consumer brand.",
+		canonicalPath: ROUTES.DUAL_BRAND_CONSUMER_PLATFORM,
+		ogImagePath: DEFAULT_OG_IMAGE_PATH,
+		ogImageAlt: DEFAULT_OG_IMAGE_ALT,
+		twitterCard: "summary",
+	},
 };
 
 function normalizePathname(pathname: string): string {
@@ -224,7 +268,10 @@ function personAndWebSiteJsonLd(origin: string) {
 					"Android development",
 					"Kotlin Multiplatform",
 				],
-				sameAs: [SOCIAL_LINKS.linkedin, SOCIAL_LINKS.github],
+				sameAs:
+					import.meta.env.VITE_UPWORK_MODE === "true"
+						? [SOCIAL_LINKS.github]
+						: [SOCIAL_LINKS.linkedin, SOCIAL_LINKS.github],
 			},
 			{
 				"@type": "WebSite",
@@ -266,6 +313,7 @@ const pathTailLabels: Record<string, string> = {
 	"stitch-counter": "Stitch Counter",
 	"hpf-pulse": "HPF Pulse",
 	solitaire: "Solitaire & FreeCell",
+	"dual-brand-consumer-platform": "Dual-brand consumer platform",
 	eula: "EULA",
 	"privacy-policy": "Privacy policy",
 	beta: "Beta",

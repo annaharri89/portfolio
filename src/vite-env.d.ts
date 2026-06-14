@@ -4,6 +4,8 @@ interface ImportMetaEnv {
   readonly VITE_API_BASE_URL?: string
   /** Optional override for canonical and Open Graph base URLs. */
   readonly VITE_SITE_ORIGIN?: string
+  /** Contact-free portfolio build for Upwork proposal links. */
+  readonly VITE_UPWORK_MODE?: string
 }
 
 interface ImportMeta {

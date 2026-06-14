@@ -1,3 +1,4 @@
+import { lazy, type Component } from 'solid-js'
 import Hero from '@components/Hero'
 import { ProjectCardGrid, ProjectCard } from '@components/ProjectCardGrid'
 import GithubIcon from '@icons/GithubIcon'
@@ -5,6 +6,11 @@ import { ROUTES } from '@consts/routes'
 import stitchCounterV2 from '@images/icons/stitch_counter_v2.png';
 import stitchCounter from '@images/icons/application_icon_stitch_counter.png';
 import hpfIcon from '@images/icons/hpf_pulse_google_play_icon.png'
+
+const PortfolioWebsiteProjectCard: Component | null =
+  import.meta.env.VITE_UPWORK_MODE === 'true'
+    ? null
+    : lazy(() => import('./PortfolioWebsiteProjectCard'))
 
 export default function Projects() {
   return (
@@ -37,16 +43,20 @@ export default function Projects() {
         />
 
         <ProjectCard
-          icon="🌐"
-          title="Portfolio Website"
-          description="This portfolio website was built with modern web technologies, showcasing my ability to work with SolidJS and create responsive, modern user interfaces."
-          tags={[[{ year: '2026', tech: 'SolidJS' }, { tech: 'SolidJS Router' }, { tech: 'TypeScript' }, { tech: 'Vite' }, { tech: 'Tailwind CSS' }]]}
-          link={{
-            href: 'https://github.com/annaharri89/portfolio',
-            label: 'View on GitHub',
-            icon: <GithubIcon class="w-4 h-4" />,
-          }}
+          icon="📱"
+          title="Dual-brand consumer platform"
+          description="Anonymized case study: Play ratings from roughly 3★ to above 4★ on a major B2C app, then dual-flavor support to ship a second brand from one codebase."
+          tags={[
+            [
+              { tech: 'Native Android' },
+              { tech: 'Product flavors' },
+              { tech: 'Release engineering' },
+            ],
+          ]}
+          link={{ href: ROUTES.DUAL_BRAND_CONSUMER_PLATFORM, label: 'Learn More' }}
         />
+
+        {PortfolioWebsiteProjectCard ? <PortfolioWebsiteProjectCard /> : null}
       </ProjectCardGrid>
 
       <section class="archived-projects">

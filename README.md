@@ -1,18 +1,41 @@
 
 # portfolio
+
 My portfolio showcasing projects I have worked on.
+
+## Development
+
+SolidStart 2 (static prerender). Requires Node 22+.
+
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # typecheck + static export to dist/
+npm run preview  # serve dist/ on port 4173
+```
 
 ## Production build
 
-`npm run build` runs Vite and a static SEO plugin that:
+`npm run build` runs TypeScript checking, generates `public/sitemap.xml` and `public/robots.txt`, then prerenders all routes in `dist/<path>/index.html` with server-rendered meta tags and JSON-LD via `@solidjs/meta`.
 
-- Writes prerendered HTML to `dist/<path>/index.html` for each route (per-route `<title>`, meta description, canonical link, Open Graph and Twitter tags, and JSON-LD scripts). JSON-LD includes `Person` and `WebSite` on the home route, `WebPage` or `ContactPage` per page, and `BreadcrumbList` on non-home routes (see `src/seo/siteAndRoutes.ts`).
-- Emits `dist/sitemap.xml` and `dist/robots.txt` (with a `Sitemap:` line pointing at your deployed origin).
+Canonical URLs and sitemap entries use `SITE_URL` in [`src/seo.ts`](src/seo.ts), defaulting to `https://harrisonsoftware.dev` or overridden via `VITE_SITE_ORIGIN`.
 
-**Origins:** `SITE_CANONICAL_ORIGIN` in `src/constants/site.ts` is the default site URL for canonical URLs, sitemap locations, and OG URLs. You can override the origin used at build time with the optional env var `VITE_SITE_ORIGIN` (handy for staging or preview deploys).
+## Upwork build
 
-**Hosting:** Configure the host so an existing file is served before the SPA fallback—for example, a request to `/about` should return `dist/about/index.html` if it exists, and only then fall back to the root `index.html`. If every path serves the root `index.html` first, crawlers may not see the prerendered per-route HTML.
+For Upwork proposals (no contact form, LinkedIn, or email), deploy a second static build:
+
+```bash
+npm run build:upwork   # → https://upwork.harrisonsoftware.dev
+```
+
+Set `UPWORK_PROFILE_URL` in [`src/constants/upwork.ts`](src/constants/upwork.ts) before building. The Upwork build adds `noindex`, a restrictive `robots.txt`, and omits `/contact`, `/beta`, EULA, and privacy-policy routes from prerender.
 
 ## Routes
 
-Paths and SEO live in `src/constants/routeRegistry.ts` (single source for `ROUTES`, prerender meta, and sitemap). Page components are wired in `src/constants/routePages.tsx` (`ROUTE_PAGES`). They are split so the Vite SEO plugin can import the registry without pulling Solid pages into the config bundle. Adding a route: append a row to the registry (matching `id` / `path` / SEO), add the same `id` key to `ROUTE_PAGES`, and keep router order consistent with `routeDefinitions` in `App.tsx`.
+Path constants live in [`src/marketingRoutes.ts`](src/marketingRoutes.ts). SEO metadata and the prerender list are in [`src/seo.ts`](src/seo.ts). Page components are in `src/pages/`; file routes in `src/routes/` re-export them.
+
+To add a route: create the page, add a thin file under `src/routes/`, extend `marketingRoutes.ts` / `ROUTE_SEO` / `PORTFOLIO_PRERENDER_PATHS` in `src/seo.ts`.
+
+## Hosting
+
+Deploy the `dist/` folder as static files. Each prerendered path has its own `index.html` (for example `dist/about/index.html` for `/about`).
