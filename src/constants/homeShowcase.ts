@@ -1,5 +1,5 @@
 import stitchCounterV2Icon from '@images/icons/stitch_counter_v2.png'
-import { ROUTES } from './routes'
+import { ROUTES, STITCH_COUNTER_V2_PLAY_STORE_URL } from './routes'
 
 export interface HomeShowcaseSecondaryLink {
   label: string
@@ -33,19 +33,20 @@ export const HOME_SHOWCASE_PROJECTS: readonly HomeShowcaseProject[] = [
     id: 'stitch-v2',
     title: 'Stitch Counter (V2)',
     homeSummary:
-      'Local-first Android app in open testing—Compose, Room library with photos, zip backup to move projects phone-to-phone with no cloud.',
+      'Local-first Android app in production on Google Play—Compose, Room library with photos, zip backup to move projects phone-to-phone with no cloud.',
     summary:
-      'Consumer Android on Play open testing: Jetpack Compose + Material 3 + Hilt, Room project library with Coil-backed photos (capped JPEGs) and DataStore-driven themes. Product stance is privacy-first—no in-app analytics. Zip backup pairs kotlinx.serialization metadata with embedded JPEG bytes so crafters migrate libraries phone-to-phone without cloud infrastructure.',
+      'Consumer Android on Google Play production: Jetpack Compose + Material 3 + Hilt, Room project library with Coil-backed photos (capped JPEGs) and DataStore-driven themes. Product stance is privacy-first—no in-app analytics. Zip backup pairs kotlinx.serialization metadata with embedded JPEG bytes so crafters migrate libraries phone-to-phone without cloud infrastructure.',
     year: '2025–2026',
     tags: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI'],
     highlights: [
-      '50+ internal testers on the current early-stage Play open-testing release.',
-      '0 crashes in Google Play Console (Android vitals) for the current early-stage release.',
+      '500+ installs on the current production release.',
+      '0 crashes in Google Play Console (Android vitals) for the current production release.',
     ],
     secondaryLinks: [
       {
-        label: 'Android beta',
-        to: ROUTES.STITCH_COUNTER_V2_BETA,
+        label: 'Google Play',
+        to: STITCH_COUNTER_V2_PLAY_STORE_URL,
+        external: true,
       },
       {
         label: 'Android repo',

@@ -2,6 +2,7 @@ import Hero from '@components/Hero'
 import ImageCarousel from '@components/Carousel'
 import GithubIcon from '@components/icons/GithubIcon'
 import { getProjectSlides, Project } from '@consts/projects';
+import { ROUTES } from '@consts/routes';
 import stitchCounterIcon from '@images/icons/application_icon_stitch_counter.png';
 
 export default function StitchCounter() {
@@ -19,7 +20,14 @@ export default function StitchCounter() {
           <div class="project-detail-section">
               <div class="project-header">
                 <p class="text-neutral-700 leading-relaxed text-base">
-                  Stitch Counter is an Android app that allows users to keep track of their knitting or crochet projects in two ways: through a single counter for tracking stitches or rows, or through a double counter with separate counters for stitches and rows.
+                  Stitch Counter is an Android app that allows users to keep track of their knitting or crochet projects in two ways: through a single counter for tracking stitches or rows, or through a double counter with separate counters for stitches and rows. I later rebuilt it as{' '}
+                  <a
+                    href={ROUTES.STITCH_COUNTER_V2}
+                    class="text-accent-link"
+                  >
+                    Stitch Counter (V2)
+                  </a>
+                  .
                 </p>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">

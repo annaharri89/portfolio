@@ -9,6 +9,8 @@ export const STITCH_COUNTER_V2_EULA_PATH = "/stitch-counter-v2/eula";
 export const STITCH_COUNTER_V2_PRIVACY_POLICY_PATH =
 	"/stitch-counter-v2/privacy-policy";
 export const STITCH_COUNTER_V2_BETA_PATH = "/beta";
+export const STITCH_COUNTER_V2_PLAY_STORE_URL =
+	"https://play.google.com/store/apps/details?id=dev.harrisonsoftware.stitchCounter";
 export const HPF_PULSE_PATH = "/hpf-pulse";
 export const SOLITAIRE_PATH = "/solitaire";
 

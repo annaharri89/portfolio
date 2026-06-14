@@ -11,7 +11,11 @@ import {
 } from '../components/caseStudy/CaseStudyLightbox'
 import { getProjectSlides, Project } from '@consts/projects'
 import { stitchTrackerDemoDoubleCounter, stitchTrackerDemoSingleCounter } from '../constants/stitchTrackerDemos'
-import { ROUTES, STITCH_COUNTER_V2_CASE_STUDY_HASHES } from '../constants/routes'
+import {
+  ROUTES,
+  STITCH_COUNTER_V2_CASE_STUDY_HASHES,
+  STITCH_COUNTER_V2_PLAY_STORE_URL,
+} from '../constants/routes'
 import StitchTrackerCaseStudies from './StitchTrackerCaseStudies'
 
 function StitchTrackerPage() {
@@ -21,7 +25,7 @@ function StitchTrackerPage() {
     <>
       <Hero
         title="Stitch Counter (V2)"
-        subtitle="One product, two native stacks: Android shipped (Play beta + internal track) and an iOS SwiftUI rewrite in progress toward the same local-first experience."
+        subtitle="One product, two native stacks: Android shipped on Google Play production and an iOS SwiftUI rewrite in progress toward the same local-first experience."
         leadingIconSrc={stitchCounterV2Icon}
         leadingIconAlt="Stitch Counter V2 Icon"
         variant="compact"
@@ -45,7 +49,7 @@ function StitchTrackerPage() {
                 where release discipline matters. The iOS rewrite is in progress toward the same local-first experience.
               </p>
               <ProjectDetailMetricGrid>
-                <ProjectDetailStatTile label="Early usage signal" value="50+ internal testers" />
+                <ProjectDetailStatTile label="Play installs" value="500+ installs" />
                 <ProjectDetailStatTile
                   label="Stability (Google Play Console)"
                   value="0 crashes"
@@ -69,8 +73,8 @@ function StitchTrackerPage() {
                 />
               </ProjectDetailMetricGrid>
               <p class="text-sm text-neutral-600 mt-2">
-                Stability figures come from Google Play Console; tester count matches the Android README
-                for this early-stage release.
+                Stability figures come from Google Play Console; install count matches the Android README
+                for this production release.
               </p>
               <h4 class="mt-3">CI/CD status</h4>
               <div class="flex flex-wrap gap-3 mt-3 mb-2">
@@ -209,8 +213,13 @@ function StitchTrackerPage() {
             </div>
             <div class="project-links project-links-vertical">
               <div class="project-links">
-                <a href={ROUTES.STITCH_COUNTER_V2_BETA} class="project-link project-link--primary">
-                  Try Stitch Counter (Android Beta)
+                <a
+                  href={STITCH_COUNTER_V2_PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="project-link project-link--primary"
+                >
+                  Get Stitch Counter on Google Play
                 </a>
                 <a href={ROUTES.STITCH_COUNTER_V2_PRIVACY_POLICY} class="project-link">
                   Privacy Policy
