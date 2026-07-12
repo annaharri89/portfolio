@@ -65,7 +65,6 @@ const MAIN_SITE_PRERENDER_PATHS = [
 	STITCH_COUNTER_V2_PRIVACY_POLICY_PATH,
 	STITCH_COUNTER_V2_BETA_PATH,
 	ROUTES.SOLITAIRE,
-	ROUTES.DUAL_BRAND_CONSUMER_PLATFORM,
 ] as const;
 
 const UPWORK_PRERENDER_PATHS = [
@@ -77,7 +76,6 @@ const UPWORK_PRERENDER_PATHS = [
 	ROUTES.STITCH_COUNTER,
 	ROUTES.HPF_PULSE,
 	ROUTES.SOLITAIRE,
-	ROUTES.DUAL_BRAND_CONSUMER_PLATFORM,
 ] as const;
 
 export const PORTFOLIO_PRERENDER_PATHS = isUpworkMode
@@ -196,15 +194,6 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 		ogImageAlt: "Kotlin Multiplatform solitaire app icon",
 		twitterCard: "summary_large_image",
 	},
-	[ROUTES.DUAL_BRAND_CONSUMER_PLATFORM]: {
-		title: "Dual-brand consumer platform — Anna Harrison",
-		description:
-			"Anonymized Android case study: store presence, release discipline, and dual-flavor delivery for a second consumer brand.",
-		canonicalPath: ROUTES.DUAL_BRAND_CONSUMER_PLATFORM,
-		ogImagePath: DEFAULT_OG_IMAGE_PATH,
-		ogImageAlt: DEFAULT_OG_IMAGE_ALT,
-		twitterCard: "summary",
-	},
 };
 
 function normalizePathname(pathname: string): string {
@@ -313,7 +302,6 @@ const pathTailLabels: Record<string, string> = {
 	"stitch-counter": "Stitch Counter",
 	"hpf-pulse": "HPF Pulse",
 	solitaire: "Solitaire & FreeCell",
-	"dual-brand-consumer-platform": "Dual-brand consumer platform",
 	eula: "EULA",
 	"privacy-policy": "Privacy policy",
 	beta: "Beta",
