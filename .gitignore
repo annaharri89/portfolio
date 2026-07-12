@@ -16,6 +16,11 @@ dev
 dist-ssr
 *.local
 
+# Generated at build time by node-scripts/generate-sitemaps.ts
+public/sitemap.xml
+public/robots.txt
+public/_redirects
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
