@@ -39,7 +39,7 @@ export const HOME_SHOWCASE_PROJECTS: readonly HomeShowcaseProject[] = [
     year: '2025–2026',
     tags: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI'],
     highlights: [
-      '500+ installs on the current production release.',
+      '1k+ installs on the current production release.',
       '0 crashes in Google Play Console (Android vitals) for the current production release.',
     ],
     secondaryLinks: [

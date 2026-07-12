@@ -42,20 +42,6 @@ export default function Projects() {
           link={{ href: ROUTES.SOLITAIRE, label: 'Learn More' }}
         />
 
-        <ProjectCard
-          icon="📱"
-          title="Dual-brand consumer platform"
-          description="Anonymized case study: Play ratings from roughly 3★ to above 4★ on a major B2C app, then dual-flavor support to ship a second brand from one codebase."
-          tags={[
-            [
-              { tech: 'Native Android' },
-              { tech: 'Product flavors' },
-              { tech: 'Release engineering' },
-            ],
-          ]}
-          link={{ href: ROUTES.DUAL_BRAND_CONSUMER_PLATFORM, label: 'Learn More' }}
-        />
-
         {PortfolioWebsiteProjectCard ? <PortfolioWebsiteProjectCard /> : null}
       </ProjectCardGrid>
 
