@@ -331,6 +331,27 @@ function breadcrumbNameForPath(path: string): string {
 		.join(" ");
 }
 
+export interface BreadcrumbItem {
+	name: string;
+	path: string;
+}
+
+export function getBreadcrumbTrail(pathname: string): BreadcrumbItem[] {
+	const entry = getRouteSeoForPath(pathname);
+
+	if (entry.canonicalPath === HOME_PATH) {
+		return [{ name: "Home", path: HOME_PATH }];
+	}
+
+	return [
+		{ name: "Home", path: HOME_PATH },
+		{
+			name: breadcrumbNameForPath(entry.canonicalPath),
+			path: entry.canonicalPath,
+		},
+	];
+}
+
 function breadcrumbJsonLd(
 	origin: string,
 	canonicalUrl: string,
@@ -339,13 +360,13 @@ function breadcrumbJsonLd(
 	if (entry.canonicalPath === HOME_PATH) {
 		return null;
 	}
-	const crumbs: { name: string; item: string }[] = [
-		{ name: "Home", item: origin },
-		{
-			name: breadcrumbNameForPath(entry.canonicalPath),
-			item: canonicalUrl,
-		},
-	];
+	const crumbs = getBreadcrumbTrail(entry.canonicalPath).map((crumb, index, trail) => ({
+		name: crumb.name,
+		item:
+			index === trail.length - 1
+				? canonicalUrl
+				: new URL(crumb.path, origin).toString(),
+	}));
 	return {
 		"@context": "https://schema.org",
 		"@type": "BreadcrumbList",
