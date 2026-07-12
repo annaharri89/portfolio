@@ -4,12 +4,13 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"prebuild": "npm run generate:sitemaps",
+		"prebuild": "npm run generate:sitemaps && npm run check:breadcrumbs",
 		"build": "tsgo --noEmit && vite build",
 		"build:upwork": "VITE_UPWORK_MODE=true VITE_SITE_ORIGIN=https://upwork.harrisonsoftware.dev npm run build",
 		"preview": "sirv dist --port 4173 --cors",
 		"postinstall": "patch-package",
-		"generate:sitemaps": "tsx node-scripts/generate-sitemaps.ts"
+		"generate:sitemaps": "tsx node-scripts/generate-sitemaps.ts",
+		"check:breadcrumbs": "tsx node-scripts/check-breadcrumbs.ts"
 	},
 	"dependencies": {
 		"@solidjs/meta": "^0.29.4",
