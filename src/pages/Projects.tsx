@@ -33,7 +33,7 @@ export default function Projects() {
         <ProjectCard
           icon="/korge-solitaire/kmp-solitaire-app-icon.png"
           title="KMP Card Games"
-          description="Kotlin Multiplatform sample: Solitaire and FreeCell rules and tests in a shared module, with a lightweight KorGE client exercising the same logic on desktop, web, Android, and iOS."
+          description="Built for Batteries Included, LLC: Solitaire and FreeCell rules and tests in a shared Kotlin Multiplatform module, with a lightweight KorGE client exercising the same logic on desktop, web, Android, and iOS."
           tags={[[{ year: '2026', tech: 'Kotlin Multiplatform' }, { tech: 'Kotlin' }, { tech: 'KorGE' }]]}
           link={{ href: ROUTES.SOLITAIRE, label: 'Learn More' }}
         />

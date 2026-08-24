@@ -68,9 +68,10 @@ export const HOME_SHOWCASE_PROJECTS: readonly HomeShowcaseProject[] = [
   {
     id: 'solitaire',
     title: 'Solitaire & FreeCell (KMP)',
-    homeSummary: 'Shared Kotlin rules for Solitaire/FreeCell; KorGE clients over one KMP module for every target.',
+    homeSummary:
+      'Batteries Included, LLC — shared Kotlin rules for Solitaire/FreeCell; KorGE clients over one KMP module for every target.',
     summary:
-      'Card games need identical rules everywhere you ship. This project shares Solitaire/FreeCell logic in Kotlin Multiplatform so desktop, web, Android, and iOS stay in sync—KorGE is a thin client over one domain module.',
+      'Built for Batteries Included, LLC. Card games need identical rules everywhere you ship. This project shares Solitaire/FreeCell logic in Kotlin Multiplatform so desktop, web, Android, and iOS stay in sync—KorGE is a thin client over one domain module.',
     year: '2026',
     tags: ['Kotlin Multiplatform', 'KorGE', 'Kotlin'],
     highlights: [
