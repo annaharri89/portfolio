@@ -1462,6 +1462,10 @@ a:focus-visible {
   margin-bottom: var(--spacing-md);
 }
 
+.project-tag-pair {
+  display: contents;
+}
+
 .chip-groups {
   display: grid;
   grid-template-columns: 1fr;

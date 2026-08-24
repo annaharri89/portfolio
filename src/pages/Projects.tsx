@@ -1,16 +1,12 @@
-import { lazy, type Component } from 'solid-js'
 import Hero from '@components/Hero'
 import { ProjectCardGrid, ProjectCard } from '@components/ProjectCardGrid'
-import GithubIcon from '@icons/GithubIcon'
 import { ROUTES } from '@consts/routes'
+import PortfolioWebsiteProjectCard from './PortfolioWebsiteProjectCard'
 import stitchCounterV2 from '@images/icons/stitch_counter_v2.png';
 import stitchCounter from '@images/icons/application_icon_stitch_counter.png';
 import hpfIcon from '@images/icons/hpf_pulse_google_play_icon.png'
 
-const PortfolioWebsiteProjectCard: Component | null =
-  import.meta.env.VITE_UPWORK_MODE === 'true'
-    ? null
-    : lazy(() => import('./PortfolioWebsiteProjectCard'))
+const showPortfolioWebsiteProjectCard = import.meta.env.VITE_UPWORK_MODE !== 'true'
 
 export default function Projects() {
   return (
@@ -42,7 +38,7 @@ export default function Projects() {
           link={{ href: ROUTES.SOLITAIRE, label: 'Learn More' }}
         />
 
-        {PortfolioWebsiteProjectCard ? <PortfolioWebsiteProjectCard /> : null}
+        {showPortfolioWebsiteProjectCard ? <PortfolioWebsiteProjectCard /> : null}
       </ProjectCardGrid>
 
       <section class="archived-projects">
@@ -58,8 +54,8 @@ export default function Projects() {
               description="A socket-based math game with a global scoreboard demonstrating real-time communication between client and server using WebSockets."
               tags={[[{ year: '2018', tech: 'HTML' }, { tech: 'JavaScript' }, { tech: 'WebSockets' }]]}
               link={[
-                { href: 'https://github.com/annaharri89/math-game-client', label: 'Client Repo', icon: <GithubIcon class="w-4 h-4" /> },
-                { href: 'https://github.com/annaharri89/math-game-server', label: 'Server Repo', icon: <GithubIcon class="w-4 h-4" /> },
+                { href: 'https://github.com/annaharri89/math-game-client', label: 'Client Repo', icon: 'github' as const },
+                { href: 'https://github.com/annaharri89/math-game-server', label: 'Server Repo', icon: 'github' as const },
               ]}
             />
 
@@ -87,7 +83,7 @@ export default function Projects() {
               title="Crochet Central"
               description="iPad app created for Student Capstone Project at Indiana University East, demonstrating experience with Objective-C and iOS development."
               tags={[[{ year: '2013', tech: 'Native iOS' }, { tech: 'Objective-C' }]]}
-              link={{ href: 'https://github.com/annaharri89/crochet-central', label: 'View on GitHub', icon: <GithubIcon class="w-4 h-4" /> }}
+              link={{ href: 'https://github.com/annaharri89/crochet-central', label: 'View on GitHub', icon: 'github' }}
             />
           </div>
         </div>
