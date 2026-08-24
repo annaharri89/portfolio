@@ -97,7 +97,7 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 	[ROUTES.STITCH_COUNTER_V2]: {
 		title: "Stitch Counter V2 — case study (Android, Compose, CI/CD)",
 		description:
-			"Case study: Room, DataStore, Hilt, Jetpack Compose, and CI for a local-first craft counter on Google Play production.",
+			"How Stitch Counter V2 ships on Google Play: Room architecture, zip backup phone-to-phone, adaptive Compose counter UI, and themes built for long craft sessions.",
 		canonicalPath: ROUTES.STITCH_COUNTER_V2,
 		ogImagePath: "/work/android-feature-development/case1_data_library.png",
 		ogImageAlt:
