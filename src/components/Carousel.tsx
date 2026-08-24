@@ -1,4 +1,4 @@
-import { createSignal, createEffect, onCleanup, For } from 'solid-js'
+import { createSignal, createEffect, onCleanup, For, Show } from 'solid-js'
 import type { Slide } from '@consts/projects'
 
 interface ImageCarouselProps {
@@ -12,6 +12,63 @@ interface ImageCarouselProps {
 
 function slideHasVideoSource(slide: Slide): boolean {
   return Boolean(slide.videoSources?.webm || slide.videoSources?.mp4)
+}
+
+interface CarouselSlideMediaProps {
+  slide: Slide
+  slideIndex: number
+  activeIndex: () => number
+  onActivateSlide?: (slide: Slide) => void
+  onActiveVideoPlaybackEnded: () => void
+  registerVideoElement: (slideId: number, element: HTMLVideoElement) => void
+}
+
+function CarouselSlideMedia(props: CarouselSlideMediaProps) {
+  const imageAlt = () => (props.onActivateSlide ? '' : props.slide.text)
+
+  const media = (
+    <Show
+      when={slideHasVideoSource(props.slide)}
+      fallback={
+        <img class="carousel-media" src={props.slide.image} alt={imageAlt()} />
+      }
+    >
+      <video
+        ref={(element) => props.registerVideoElement(props.slide.id, element)}
+        class="carousel-media"
+        muted
+        playsinline
+        preload="metadata"
+        aria-hidden={props.onActivateSlide ? true : undefined}
+        onEnded={() => {
+          if (props.slideIndex === props.activeIndex()) props.onActiveVideoPlaybackEnded()
+        }}
+      >
+        <Show when={props.slide.videoSources?.webm}>
+          <source src={props.slide.videoSources!.webm!} type="video/webm" />
+        </Show>
+        <Show when={props.slide.videoSources?.mp4}>
+          <source src={props.slide.videoSources!.mp4!} type="video/mp4" />
+        </Show>
+      </video>
+    </Show>
+  )
+
+  return (
+    <Show
+      when={props.onActivateSlide}
+      fallback={media}
+    >
+      <button
+        type="button"
+        class="carousel-media-trigger"
+        aria-label={`View larger: ${props.slide.text}`}
+        onClick={() => props.onActivateSlide!(props.slide)}
+      >
+        {media}
+      </button>
+    </Show>
+  )
 }
 
 export default function ImageCarousel(props: ImageCarouselProps) {
@@ -56,43 +113,8 @@ export default function ImageCarousel(props: ImageCarouselProps) {
 
   const fixedViewportStyle = { "min-height": '570px', height: '570px' } as const
 
-  const renderMedia = (slide: Slide, slideIndex: number) => {
-    const video = (
-      <video
-        ref={(el) => videoElementBySlideId.set(slide.id, el)}
-        class="carousel-media"
-        muted
-        playsinline
-        preload="metadata"
-        aria-hidden={props.onActivateSlide ? true : undefined}
-        onEnded={() => {
-          if (slideIndex === activeIndex()) handleActiveVideoPlaybackEnded()
-        }}
-      >
-        {slide.videoSources?.webm ? <source src={slide.videoSources.webm} type="video/webm" /> : null}
-        {slide.videoSources?.mp4 ? <source src={slide.videoSources.mp4} type="video/mp4" /> : null}
-      </video>
-    )
-
-    const image = (
-      <img class="carousel-media" src={slide.image} alt={props.onActivateSlide ? '' : slide.text} />
-    )
-
-    const core = slideHasVideoSource(slide) ? video : image
-
-    const activate = props.onActivateSlide
-    if (!activate) return core
-
-    return (
-      <button
-        type="button"
-        class="carousel-media-trigger"
-        aria-label={`View larger: ${slide.text}`}
-        onClick={() => activate(slide)}
-      >
-        {core}
-      </button>
-    )
+  const registerVideoElement = (slideId: number, element: HTMLVideoElement) => {
+    videoElementBySlideId.set(slideId, element)
   }
 
   return (
@@ -106,7 +128,14 @@ export default function ImageCarousel(props: ImageCarouselProps) {
             class={`carousel-slide ${index() === activeIndex() ? 'active' : ''}`}
             style={{ position: 'absolute', top: '0', left: '0', right: '0', bottom: '0', width: '100%', height: '100%' }}
           >
-            {renderMedia(slide, index())}
+            <CarouselSlideMedia
+              slide={slide}
+              slideIndex={index()}
+              activeIndex={activeIndex}
+              onActivateSlide={props.onActivateSlide}
+              onActiveVideoPlaybackEnded={handleActiveVideoPlaybackEnded}
+              registerVideoElement={registerVideoElement}
+            />
           </div>
         )}</For>
       </div>
