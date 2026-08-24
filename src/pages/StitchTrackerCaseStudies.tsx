@@ -19,18 +19,18 @@ export default function StitchTrackerCaseStudies() {
               <h3 class="case-study__doc-intro-title">
                 Feature development:{' '}
                 <span class="case-study__headline-accent">
-                  Layers that survive real growth
+                  Architecture, data, and reliability
                 </span>
               </h3>
               <p class="case-study__section-lead" style={{ 'margin-top': 'var(--spacing-sm)' }}>
                 Stitch Counter V2 is a local-first craft app on Google Play. These
-                notes cover how architecture, Room data, zip backup, and UI state
-                were shaped so features stay shippable without fragile glue.
+                notes cover how I set up architecture, Room, zip backup, and UI
+                state so new features do not turn into one-off fixes.
               </p>
               <div class="case-study__hero-chips">
                 <span class="case-study__chip">Kotlin · Compose · Room</span>
-                <span class="case-study__chip">Local-first · no cloud</span>
-                <span class="case-study__chip">Backup that moves phone-to-phone</span>
+                <span class="case-study__chip">Local-first, no cloud account</span>
+                <span class="case-study__chip">Zip backup and restore</span>
               </div>
             </div>
           </div>
@@ -58,8 +58,7 @@ export default function StitchTrackerCaseStudies() {
                     <span class="case-study__bullet-dot" aria-hidden />
                     <span>
                       <strong>Reliability by design: </strong>Validation and typed
-                      failures on paths like backup and restore, not only the happy
-                      path.
+                      failures on backup and restore, not just the happy path.
                     </span>
                   </div>
                   <div class="case-study__bullet">
@@ -86,7 +85,7 @@ export default function StitchTrackerCaseStudies() {
           <section class="case-study__section">
             <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Feature work gets expensive when every screen owns its own rules
+              Business rules were ending up in every screen
             </h3>
             <p class="case-study__section-lead">
               A craft counter looks simple until you add a project library, photos,
@@ -100,18 +99,17 @@ export default function StitchTrackerCaseStudies() {
                 Thin screens over use cases and Room
               </h4>
               <div class="case-study__block">
-                <h4>What I built</h4>
+                <h4>What it does</h4>
                 <p>
                   Compose and ViewModels on top; small use-case classes for
                   validation and orchestration; Room underneath with Flow-backed
-                  queries so lists refresh when the database changes. This is
-                  MVVM-style: Compose + ViewModels over use cases and Room. Hilt
-                  wires the DB, repository, and use cases once so feature code only
-                  pulls what it needs.
+                  queries so lists refresh when the database changes. Hilt wires
+                  the DB, repository, and use cases once so feature code only pulls
+                  what it needs.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Why this shape</h4>
+                <h4>Why I built it this way</h4>
                 <ul>
                   <li>
                     Domain models and mappers sit between Room entities and the UI,
@@ -128,18 +126,17 @@ export default function StitchTrackerCaseStudies() {
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Results</h4>
+                <h4>Outcome</h4>
                 <p>
                   Most changes stay in one layer. Reviews stay smaller, and new
                   features do not require re-threading the whole codebase.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Lesson</h4>
+                <h4>Takeaway</h4>
                 <p>
-                  For production Android apps, the payoff is not “more architecture.”
-                  It is knowing where a bug or schema change lives before you open
-                  the IDE.
+                  The win is not “more architecture.” It is knowing where a bug or
+                  schema change lives before you open the IDE.
                 </p>
               </div>
               <div class="case-study__row--2">
@@ -162,7 +159,7 @@ export default function StitchTrackerCaseStudies() {
           <section class="case-study__section">
             <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Crafters need projects that survive app restarts and new features
+              Project data has to survive restarts and new features
             </h3>
             <p class="case-study__section-lead">
               Stitch counts and project notes only matter if they are still there
@@ -176,16 +173,15 @@ export default function StitchTrackerCaseStudies() {
                 Room-backed project library with clear relationships
               </h4>
               <div class="case-study__block">
-                <h4>What I built</h4>
+                <h4>What it does</h4>
                 <p>
-                  A structured system for creating, editing, and organizing
-                  projects with persistent local storage through Room. Preferences
-                  and active theme state live in DataStore so UI settings stay
-                  separate from project rows.
+                  Create, edit, and organize projects with persistent local storage
+                  through Room. Preferences and active theme state live in DataStore
+                  so UI settings stay separate from project rows.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Why this shape</h4>
+                <h4>Why I built it this way</h4>
                 <ul>
                   <li>Data persists across sessions; no cloud account required</li>
                   <li>
@@ -199,18 +195,17 @@ export default function StitchTrackerCaseStudies() {
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Results</h4>
+                <h4>Outcome</h4>
                 <p>
-                  Users keep long-running projects locally. New features can read
-                  and write through the same foundation instead of inventing a
-                  second store.
+                  Users keep long-running projects locally. New features read and
+                  write through the same foundation instead of adding a second store.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Lesson</h4>
+                <h4>Takeaway</h4>
                 <p>
-                  Local-first products win trust when the schema is boring and
-                  durable. Fancy sync can wait; lost stitches cannot.
+                  For a local-first app, a boring durable schema matters more than
+                  fancy sync on day one.
                 </p>
               </div>
               <div class="case-study__strip">
@@ -239,7 +234,7 @@ export default function StitchTrackerCaseStudies() {
           <section class="case-study__section">
             <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Phone upgrades should not strand years of project history
+              Users need to move their library to a new phone
             </h3>
             <p class="case-study__section-lead">
               Privacy-first meant no cloud sync. Users still needed a way to move
@@ -252,15 +247,15 @@ export default function StitchTrackerCaseStudies() {
                 Zip backup and restore with validation
               </h4>
               <div class="case-study__block">
-                <h4>What I built</h4>
+                <h4>What it does</h4>
                 <p>
-                  Local export and restore of full app data: zip metadata paired
-                  with embedded image bytes, plus typed failures and clear success
-                  or error messaging in Settings. No cloud account in the path.
+                  Export and restore full app data locally: zip metadata with
+                  embedded image bytes, typed failures, and clear success or error
+                  messaging in Settings. No cloud account required.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Why this shape</h4>
+                <h4>Details</h4>
                 <ul>
                   <li>
                     Validation before restore so invalid payloads fail safely
@@ -271,25 +266,23 @@ export default function StitchTrackerCaseStudies() {
                     the library landed
                   </li>
                   <li>
-                    Edge cases handled so behavior stays predictable when files are
-                    missing or malformed
+                    Missing or malformed files handled so behavior stays predictable
                   </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Results</h4>
+                <h4>Outcome</h4>
                 <p>
-                  Crafters can move projects phone-to-phone while the app stays
-                  offline-first. Support paths stay simpler: the backup file is the
-                  portable record.
+                  Users can export a zip and restore on another device. The app
+                  stays offline-first, and support has one file to ask about when
+                  something goes wrong.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Lesson</h4>
+                <h4>Takeaway</h4>
                 <p>
-                  For local-first apps, backup is a product feature, not a power-user
-                  afterthought. Typed failure modes matter as much as the happy
-                  export.
+                  Backup is a product feature for a local-first app. Invalid
+                  restores need the same attention as the happy-path export.
                 </p>
               </div>
               <div class="case-study__row--2">
@@ -312,7 +305,7 @@ export default function StitchTrackerCaseStudies() {
           <section class="case-study__section">
             <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Large libraries and multi-tab navigation fall apart without shared state
+              Big libraries and tabs need one source of truth for state
             </h3>
             <p class="case-study__section-lead">
               As the project list grows, scrolling and tab selection have to stay
@@ -325,7 +318,7 @@ export default function StitchTrackerCaseStudies() {
                 Lazy lists, controlled scrolling, navigation-derived selection
               </h4>
               <div class="case-study__block">
-                <h4>What I built</h4>
+                <h4>What it does</h4>
                 <p>
                   LazyColumn-based lists with controlled scrolling for large
                   libraries, debounced autosave where rapid edits would otherwise
@@ -335,24 +328,21 @@ export default function StitchTrackerCaseStudies() {
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Why this shape</h4>
+                <h4>Why I built it this way</h4>
                 <ul>
                   <li>
-                    Efficient list rendering so large libraries stay usable as
-                    projects accumulate
+                    Lazy lists keep large libraries usable as projects accumulate
                   </li>
                   <li>
-                    UI selection stays in sync with navigation instead of a
-                    separate source of truth
+                    Tab selection follows navigation instead of a separate flag
                   </li>
                   <li>
-                    Autosave timing reduces unnecessary writes during fast editing
-                    sessions
+                    Debounced autosave cuts down writes during fast editing
                   </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Results</h4>
+                <h4>Outcome</h4>
                 <p>
                   Library browsing and tab switches stay predictable as the catalog
                   grows. State comes from the database and navigation graph, not
@@ -360,10 +350,10 @@ export default function StitchTrackerCaseStudies() {
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Lesson</h4>
+                <h4>Takeaway</h4>
                 <p>
-                  “Smooth UI” is easier to keep when lists observe Flow and chrome
-                  observes the back stack. Shared sources beat syncing by hand.
+                  Lists observe Flow; chrome observes the back stack. That was
+                  less work than keeping screen flags in sync by hand.
                 </p>
               </div>
               <div class="case-study__row--2">
@@ -390,13 +380,13 @@ export default function StitchTrackerCaseStudies() {
               <h3 class="case-study__doc-intro-title">
                 Android UI/UX:{' '}
                 <span class="case-study__headline-accent">
-                  Built for long sessions on real devices
+                  Built for real devices
                 </span>
               </h3>
               <p class="case-study__section-lead" style={{ 'margin-top': 'var(--spacing-sm)' }}>
                 Knitters and crocheters tap counters for a long time, rotate the
-                phone, switch themes, and manage projects in bulk. The UI work
-                below is about holding up under that use, not demo-day screenshots.
+                phone, switch themes, and manage projects in bulk. This section
+                covers UI that still works in those conditions.
               </p>
               <div class="case-study__hero-chips">
                 <span class="case-study__chip">Adaptive Compose layouts</span>
@@ -449,12 +439,12 @@ export default function StitchTrackerCaseStudies() {
           <section class="case-study__section">
             <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              A counter that breaks in landscape is unusable mid-project
+              The counter has to work in landscape with big numbers
             </h3>
             <p class="case-study__section-lead">
               The primary action is rapid, repeated input. Numbers get large.
               Devices rotate. Layouts that look fine in a portrait mock often
-              overflow or shrink into unreadable type when the session is real.
+              overflow or shrink into unreadable type once someone is mid-project.
             </p>
             <div class="case-study__card">
               <div class="case-study__case-split">
@@ -476,40 +466,39 @@ export default function StitchTrackerCaseStudies() {
                   <p class="case-study__kicker">Approach · UI / interaction</p>
                   <h4 class="case-study__block-title">Smart counter system</h4>
                   <div class="case-study__block">
-                    <h4>What I built</h4>
+                    <h4>What it does</h4>
                     <p>
-                      A real-time counter interaction system with dynamic text
-                      scaling so large counts stay readable in portrait and
-                      landscape on phones and tablets.
+                      Real-time counter input with dynamic text scaling so large
+                      counts stay readable in portrait and landscape on phones and
+                      tablets.
                     </p>
                   </div>
                   <div class="case-study__block">
-                    <h4>Why this shape</h4>
+                    <h4>Why I built it this way</h4>
                     <ul>
                       <li>Input stays responsive during long counting sessions</li>
                       <li>
-                        Layout adapts as content changes so counts do not overflow
-                        or break the screen
+                        Layout adapts as counts grow so text does not overflow or
+                        break the screen
                       </li>
                       <li>
                         Portrait and landscape share one adaptive approach instead
-                        of two frozen designs
+                        of two separate layouts
                       </li>
                     </ul>
                   </div>
                   <div class="case-study__block">
-                    <h4>Results</h4>
+                    <h4>Outcome</h4>
                     <p>
-                      The counter remains usable when numbers grow and when the
-                      device rotates, which is when craft sessions actually happen.
+                      The counter stays usable when numbers get large and when the
+                      device rotates.
                     </p>
                   </div>
                   <div class="case-study__block">
-                    <h4>Lesson</h4>
+                    <h4>Takeaway</h4>
                     <p>
-                      Design the primary control for the worst realistic content
-                      size and orientation first. Everything else is easier after
-                      that.
+                      I designed the primary control for large counts and landscape
+                      first. Other screens were easier after that.
                     </p>
                   </div>
                 </div>
@@ -520,7 +509,7 @@ export default function StitchTrackerCaseStudies() {
           <section class="case-study__section">
             <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Themes feel cheap when dark mode and icons disagree with the rest of the app
+              Themes only work if dark mode and launcher icons match
             </h3>
             <p class="case-study__section-lead">
               Personalization is part of the product for this audience. Multiple
@@ -531,41 +520,40 @@ export default function StitchTrackerCaseStudies() {
               <p class="case-study__kicker">Approach · UI / UX</p>
               <h4 class="case-study__block-title">Dynamic theme system</h4>
               <div class="case-study__block">
-                <h4>What I built</h4>
+                <h4>What it does</h4>
                 <p>
-                  A theming system built by overriding Material Design 3: six
-                  shipped visual styles, dark mode for each, and custom launcher
-                  icons that match the active theme. Theme preference is stored in
-                  DataStore so it survives restarts.
+                  Theming by overriding Material Design 3: six shipped visual
+                  styles, dark mode for each, and custom launcher icons that match
+                  the active theme. Theme preference is stored in DataStore so it
+                  survives restarts.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Why this shape</h4>
+                <h4>Details</h4>
                 <ul>
                   <li>
                     Centralized styling keeps screens consistent as features grow
                   </li>
                   <li>Dark mode is first-class for every theme, not a one-off</li>
                   <li>
-                    Per-theme icons make the choice feel complete on the home
-                    screen, not only inside the app
+                    Per-theme launcher icons so the choice shows on the home screen
+                    too
                   </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Results</h4>
+                <h4>Outcome</h4>
                 <p>
-                  Users can switch themes without layout breakage, and the app
-                  reads as one designed product instead of a pile of screens with
-                  mismatched colors.
+                  Users can switch themes without layout breakage. The app reads
+                  as one product instead of unrelated screens with mismatched
+                  colors.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Lesson</h4>
+                <h4>Takeaway</h4>
                 <p>
-                  Theme work pays off when it is a system: tokens, dark variants,
-                  and icons together. Isolated palette swaps rarely survive the
-                  next feature.
+                  Theme work needs tokens, dark variants, and icons together.
+                  One-off palette swaps did not survive the next feature.
                 </p>
               </div>
               <div class="case-study__strip">
@@ -606,7 +594,7 @@ export default function StitchTrackerCaseStudies() {
           <section class="case-study__section">
             <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Bulk edits and deletes get clumsy when every action needs a new screen
+              Library edits get slow when every flow uses different gestures
             </h3>
             <p class="case-study__section-lead">
               Managing a project library means multi-select, swipe, confirmations,
@@ -619,18 +607,17 @@ export default function StitchTrackerCaseStudies() {
                 Shared interaction patterns across the app
               </h4>
               <div class="case-study__block">
-                <h4>What I built</h4>
+                <h4>What it does</h4>
                 <p>
-                  A set of interaction patterns used throughout the app and adapted
-                  per feature: swipe and multi-select for bulk delete, bottom sheets
-                  for quick edits without leaving the screen, expandable sections for
-                  dense settings, structured detail screens for titles, notes,
+                  Shared patterns used across the app: swipe and multi-select for
+                  bulk delete, bottom sheets for quick edits, expandable sections
+                  for dense settings, structured detail screens for titles, notes,
                   images, and progress, plus modal confirmations for destructive
                   choices.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Why this shape</h4>
+                <h4>Why I built it this way</h4>
                 <ul>
                   <li>
                     Common tasks stay on or near the current screen instead of
@@ -641,24 +628,23 @@ export default function StitchTrackerCaseStudies() {
                     hiding the action
                   </li>
                   <li>
-                    Visual feedback for selection and state changes keeps bulk
-                    operations understandable
+                    Selection and state feedback keeps bulk operations readable
                   </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Results</h4>
+                <h4>Outcome</h4>
                 <p>
                   Library management stays fast as the catalog grows. Users learn
-                  one gesture vocabulary and reuse it across screens.
+                  the same gestures once and reuse them across screens.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Lesson</h4>
+                <h4>Takeaway</h4>
                 <p>
-                  Interaction systems compound. Investing once in swipe,
-                  multi-select, sheets, and confirmations is cheaper than teaching
-                  a new pattern per feature.
+                  Swipe, multi-select, sheets, and confirmations were worth doing
+                  once. A new pattern per feature would have been slower to build
+                  and harder to use.
                 </p>
               </div>
               <div class="case-study__strip">

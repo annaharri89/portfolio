@@ -97,7 +97,7 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 	[ROUTES.STITCH_COUNTER_V2]: {
 		title: "Stitch Counter V2 — case study (Android, Compose, CI/CD)",
 		description:
-			"How Stitch Counter V2 ships on Google Play: Room architecture, zip backup phone-to-phone, adaptive Compose counter UI, and themes built for long craft sessions.",
+			"Stitch Counter V2 on Google Play: Room, zip backup, Compose UI, themes, and CI.",
 		canonicalPath: ROUTES.STITCH_COUNTER_V2,
 		ogImagePath: "/work/android-feature-development/case1_data_library.png",
 		ogImageAlt:
@@ -188,7 +188,7 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 	[ROUTES.SOLITAIRE]: {
 		title: "Solitaire & FreeCell (Kotlin Multiplatform)",
 		description:
-			"Shared rules and tests in KMP; KorGE client runs the same logic on web, desktop, Android, and iOS.",
+			"Built for Batteries Included, LLC: shared rules and tests in KMP; KorGE client runs the same logic on web, desktop, Android, and iOS.",
 		canonicalPath: ROUTES.SOLITAIRE,
 		ogImagePath: "/korge-solitaire/kmp-solitaire-app-icon.png",
 		ogImageAlt: "Kotlin Multiplatform solitaire app icon",
