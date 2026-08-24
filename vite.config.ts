@@ -38,4 +38,8 @@ export default defineConfig({
 	build: {
 		target: "esnext",
 	},
+	optimizeDeps: {
+		// SolidStart dev overlay (get-source-map.js) needs CJS pre-bundled — see solidjs/solid-start#2282
+		include: ["source-map-js", "error-stack-parser"],
+	},
 });
