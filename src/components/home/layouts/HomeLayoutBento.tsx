@@ -10,6 +10,13 @@ import {
   ShowcaseVisual,
 } from '../showcaseShared'
 import BentoHireNavCard from './BentoHireNavCard'
+import {
+  stitchCiBadgeSrc,
+  stitchCodecovBadgeSrc,
+  stitchCodecovHref,
+  stitchIosCiBadgeSrc,
+  stitchPlayCdBadgeSrc,
+} from '../../../constants/stitchStatusBadges'
 
 const stitch = HOME_SHOWCASE_PROJECTS[0]
 const solitaire = HOME_SHOWCASE_PROJECTS[1]
@@ -22,15 +29,7 @@ const stitchHomeHighlights = stitch.highlights?.slice(0, 2) ?? []
 const stitchHomeTags = stitch.tags.slice(0, 4)
 const solitaireHomeTags = solitaire.tags.slice(0, 3)
 
-const stitchCodecovHref = 'https://codecov.io/gh/annaharri89/stitchCounterV2'
-const stitchCodecovBadgeSrc = `${stitchCodecovHref}/branch/main/graph/badge.svg`
-const stitchCiWorkflowHref =
-  'https://github.com/annaharri89/stitchCounterV2/actions/workflows/ci.yml'
-const stitchCiBadgeSrc = 'https://github.com/annaharri89/stitchCounterV2/workflows/CI/badge.svg'
-const stitchPlayCdWorkflowHref =
-  'https://github.com/annaharri89/stitchCounterV2/actions/workflows/play-internal-cd.yml'
-const stitchPlayCdBadgeSrc =
-  'https://github.com/annaharri89/stitchCounterV2/workflows/Play%20internal%20CD/badge.svg'
+const stitchCaseStudyHref = ROUTES.STITCH_COUNTER_V2
 
 export default function HomeLayoutBento() {
   return (
@@ -58,27 +57,40 @@ export default function HomeLayoutBento() {
                 <div
                   class="home-layout-bento-badge-row"
                   role="group"
-                  aria-label="CI, Play internal delivery, and code coverage"
+                  aria-label="Android CI, iOS CI, Play internal delivery, and code coverage"
                 >
-                  <a
-                    href={stitchCiWorkflowHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <A
+                    href={stitchCaseStudyHref}
                     class="home-layout-bento-badge-link"
+                    aria-label="Stitch Counter V2 case study — Android CI status"
                   >
                     <img
                       src={stitchCiBadgeSrc}
-                      alt="CI workflow status"
+                      alt="Android CI workflow status"
                       class="home-layout-bento-badge-img"
                       loading="lazy"
                       decoding="async"
                     />
-                  </a>
-                  <a
-                    href={stitchPlayCdWorkflowHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  </A>
+                  {stitchIosCiBadgeSrc ? (
+                    <A
+                      href={stitchCaseStudyHref}
+                      class="home-layout-bento-badge-link"
+                      aria-label="Stitch Counter V2 case study — iOS CI status"
+                    >
+                      <img
+                        src={stitchIosCiBadgeSrc}
+                        alt="iOS CI workflow status"
+                        class="home-layout-bento-badge-img"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </A>
+                  ) : null}
+                  <A
+                    href={stitchCaseStudyHref}
                     class="home-layout-bento-badge-link"
+                    aria-label="Stitch Counter V2 case study — Play internal CD status"
                   >
                     <img
                       src={stitchPlayCdBadgeSrc}
@@ -87,7 +99,7 @@ export default function HomeLayoutBento() {
                       loading="lazy"
                       decoding="async"
                     />
-                  </a>
+                  </A>
                   <a
                     href={stitchCodecovHref}
                     target="_blank"

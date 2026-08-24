@@ -18,16 +18,19 @@ export default function StitchTrackerCaseStudies() {
             <div class="case-study__hero-band-inner">
               <h3 class="case-study__doc-intro-title">
                 Feature development:{' '}
-                <span class="case-study__headline-accent">Architecture, data, reliability</span>
+                <span class="case-study__headline-accent">
+                  Architecture, data, and reliability
+                </span>
               </h3>
               <p class="case-study__section-lead" style={{ 'margin-top': 'var(--spacing-sm)' }}>
-                Selected work from this production app: data layer, backup/restore, and stable UI tied
-                to real state.
+                Stitch Counter V2 is a local-first craft app on Google Play. These
+                notes cover how I set up architecture, Room, zip backup, and UI
+                state so new features do not turn into one-off fixes.
               </p>
               <div class="case-study__hero-chips">
-                <span class="case-study__chip">Structured local data</span>
-                <span class="case-study__chip">Data safety &amp; portability</span>
-                <span class="case-study__chip">Layered, maintainable code</span>
+                <span class="case-study__chip">Kotlin · Compose · Room</span>
+                <span class="case-study__chip">Local-first, no cloud account</span>
+                <span class="case-study__chip">Zip backup and restore</span>
               </div>
             </div>
           </div>
@@ -40,27 +43,30 @@ export default function StitchTrackerCaseStudies() {
                   <div class="case-study__bullet">
                     <span class="case-study__bullet-dot" aria-hidden />
                     <span>
-                      <strong>Separation of concerns: </strong>UI, logic, and data stay apart.
+                      <strong>Separation of concerns: </strong>UI, domain rules, and
+                      persistence stay in different layers.
                     </span>
                   </div>
                   <div class="case-study__bullet">
                     <span class="case-study__bullet-dot" aria-hidden />
                     <span>
-                      <strong>Data as a stable foundation: </strong>Clear persistence; survives growth.
+                      <strong>Data as a stable foundation: </strong>Room models and
+                      Flow queries so lists refresh from real storage.
                     </span>
                   </div>
                   <div class="case-study__bullet">
                     <span class="case-study__bullet-dot" aria-hidden />
                     <span>
-                      <strong>Reliability by design: </strong>Validates and fails safely, not only the
-                      happy path.
+                      <strong>Reliability by design: </strong>Validation and typed
+                      failures on backup and restore, not just the happy path.
                     </span>
                   </div>
                   <div class="case-study__bullet">
                     <span class="case-study__bullet-dot" aria-hidden />
                     <span>
-                      <strong>UI that follows real state: </strong>Clear loading states and errors;
-                      smooth lists.
+                      <strong>UI that follows real state: </strong>Navigation and
+                      lists stay tied to the back stack and database, not one-off
+                      flags.
                     </span>
                   </div>
                 </div>
@@ -77,51 +83,60 @@ export default function StitchTrackerCaseStudies() {
           </section>
 
           <section class="case-study__section">
+            <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Proof: One app, clear layers (UI, domain, data)
+              Business rules were ending up in every screen
             </h3>
             <p class="case-study__section-lead">
-              Stitch Counter V2 keeps screens thin and puts rules and persistence where
-              they are easier to test and change.
+              A craft counter looks simple until you add a project library, photos,
+              deletes that must clean up files, and phone plus tablet navigation.
+              Without clear layers, schema tweaks and new screens start rewriting
+              the same logic in three places.
             </p>
             <div class="case-study__card">
-              <p class="case-study__kicker">Case study 1 · App architecture</p>
-              <h4 class="case-study__block-title">How the app is wired</h4>
+              <p class="case-study__kicker">Approach · App architecture</p>
+              <h4 class="case-study__block-title">
+                Thin screens over use cases and Room
+              </h4>
               <div class="case-study__block">
                 <h4>What it does</h4>
                 <p>
-                  Compose and ViewModels on top; small use-case classes for validation
-                  and orchestration; Room underneath with Flow-backed queries so lists
-                  refresh when the database changes. This is MVVM-style: Compose +
-                  ViewModels over use cases and Room.
+                  Compose and ViewModels on top; small use-case classes for
+                  validation and orchestration; Room underneath with Flow-backed
+                  queries so lists refresh when the database changes. Hilt wires
+                  the DB, repository, and use cases once so feature code only pulls
+                  what it needs.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Why it is built this way</h4>
+                <h4>Why I built it this way</h4>
                 <ul>
                   <li>
-                    Hilt wires the DB, repository, and use cases once; feature code
-                    only pulls what it needs
-                  </li>
-                  <li>
-                    Domain models and mappers sit between Room entities and the UI, so
-                    schema tweaks do not ripple through every screen
+                    Domain models and mappers sit between Room entities and the UI,
+                    so schema tweaks do not ripple through every screen
                   </li>
                   <li>
                     Deletes run through use cases that remove image files and rows
                     together so files and rows stay in sync
                   </li>
                   <li>
-                    Compose Destinations plus one root scaffold keeps tabs, rail, and
-                    sheets aligned on phones and tablets
+                    Compose Destinations plus one root scaffold keeps tabs, rail,
+                    and sheets aligned on phones and tablets
                   </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>What you get from it</h4>
+                <h4>Outcome</h4>
                 <p>
-                  Most changes stay in one layer. Reviews stay smaller, and you ship
-                  without re-threading the whole codebase.
+                  Most changes stay in one layer. Reviews stay smaller, and new
+                  features do not require re-threading the whole codebase.
+                </p>
+              </div>
+              <div class="case-study__block">
+                <h4>Takeaway</h4>
+                <p>
+                  The win is not “more architecture.” It is knowing where a bug or
+                  schema change lives before you open the IDE.
                 </p>
               </div>
               <div class="case-study__row--2">
@@ -142,37 +157,55 @@ export default function StitchTrackerCaseStudies() {
           </section>
 
           <section class="case-study__section">
+            <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Proof: Scalable data schema that won’t break as your app grows
+              Project data has to survive restarts and new features
             </h3>
             <p class="case-study__section-lead">
-              Your data is structured, persistent, and built to scale; so your app stays reliable as
-              features grow.
+              Stitch counts and project notes only matter if they are still there
+              next week. The data model had to support a growing library of
+              projects, counters, and related fields without turning every screen
+              into a special case.
             </p>
             <div class="case-study__card">
-              <p class="case-study__kicker">Case study 2 · Data architecture</p>
-              <h4 class="case-study__block-title">Project management system</h4>
+              <p class="case-study__kicker">Approach · Data architecture</p>
+              <h4 class="case-study__block-title">
+                Room-backed project library with clear relationships
+              </h4>
               <div class="case-study__block">
                 <h4>What it does</h4>
                 <p>
-                  A structured system for creating, editing, and organizing projects with persistent
-                  local storage through Room.
+                  Create, edit, and organize projects with persistent local storage
+                  through Room. Preferences and active theme state live in DataStore
+                  so UI settings stay separate from project rows.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>What makes it valuable</h4>
+                <h4>Why I built it this way</h4>
                 <ul>
-                  <li>Data is safely stored and persists across sessions (no loss, no resets)</li>
-                  <li>Well structured relationships between features and data</li>
-                  <li>Built to handle growth without performance issues</li>
-                  <li>Clear separation of UI and logic for easier updates and fewer bugs</li>
+                  <li>Data persists across sessions; no cloud account required</li>
+                  <li>
+                    Relationships between projects, counters, and related fields
+                    stay explicit in the schema
+                  </li>
+                  <li>
+                    UI and persistence stay separated so list and detail screens
+                    can evolve without rewriting storage
+                  </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Why this matters for your app</h4>
+                <h4>Outcome</h4>
                 <p>
-                  Your app is built on a solid foundation, so it stays stable, scalable, and easy to
-                  expand over time. No rebuilds. No fragile code.
+                  Users keep long-running projects locally. New features read and
+                  write through the same foundation instead of adding a second store.
+                </p>
+              </div>
+              <div class="case-study__block">
+                <h4>Takeaway</h4>
+                <p>
+                  For a local-first app, a boring durable schema matters more than
+                  fancy sync on day one.
                 </p>
               </div>
               <div class="case-study__strip">
@@ -199,34 +232,57 @@ export default function StitchTrackerCaseStudies() {
           </section>
 
           <section class="case-study__section">
+            <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Proof: Keep user data safe and transferable across devices
+              Users need to move their library to a new phone
             </h3>
             <p class="case-study__section-lead">
-              Back up and restore app data locally without loss, so users can move to a new device
-              and keep their progress.
+              Privacy-first meant no cloud sync. Users still needed a way to move
+              a full library (metadata plus images) to a new device without
+              corruption or a silent half-restore.
             </p>
             <div class="case-study__card">
-              <p class="case-study__kicker">Case study 3 · Data safety &amp; reliability</p>
-              <h4 class="case-study__block-title">Backup &amp; restore system</h4>
+              <p class="case-study__kicker">Approach · Data safety</p>
+              <h4 class="case-study__block-title">
+                Zip backup and restore with validation
+              </h4>
               <div class="case-study__block">
                 <h4>What it does</h4>
-                <p>Safely export and restore full app data with validation and error handling.</p>
+                <p>
+                  Export and restore full app data locally: zip metadata with
+                  embedded image bytes, typed failures, and clear success or error
+                  messaging in Settings. No cloud account required.
+                </p>
               </div>
               <div class="case-study__block">
-                <h4>What makes it valuable</h4>
+                <h4>Details</h4>
                 <ul>
-                  <li>Data can be backed up and restored without corruption or loss</li>
-                  <li>Invalid data is handled safely to prevent crashes</li>
-                  <li>Clear feedback for success and failure states</li>
-                  <li>Edge cases handled to keep behavior predictable</li>
+                  <li>
+                    Validation before restore so invalid payloads fail safely
+                    instead of crashing mid-import
+                  </li>
+                  <li>
+                    Clear feedback for success and failure so users know whether
+                    the library landed
+                  </li>
+                  <li>
+                    Missing or malformed files handled so behavior stays predictable
+                  </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Why this matters for your app</h4>
+                <h4>Outcome</h4>
                 <p>
-                  Protects user data and prevents crashes, so your app stays reliable even when things
-                  go wrong.
+                  Users can export a zip and restore on another device. The app
+                  stays offline-first, and support has one file to ask about when
+                  something goes wrong.
+                </p>
+              </div>
+              <div class="case-study__block">
+                <h4>Takeaway</h4>
+                <p>
+                  Backup is a product feature for a local-first app. Invalid
+                  restores need the same attention as the happy-path export.
                 </p>
               </div>
               <div class="case-study__row--2">
@@ -247,40 +303,57 @@ export default function StitchTrackerCaseStudies() {
           </section>
 
           <section class="case-study__section">
+            <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Proof: Fast, stable UI that stays in sync as your app grows
+              Big libraries and tabs need one source of truth for state
             </h3>
             <p class="case-study__section-lead">
-              Keep scrolling, updates, and navigation smooth without lag, dropped frames, or out-of-sync
-              state.
+              As the project list grows, scrolling and tab selection have to stay
+              tied to real data and the navigation back stack. One-off UI flags
+              drift; Flow queries and a root scaffold do not.
             </p>
             <div class="case-study__card">
-              <p class="case-study__kicker">Case study 4 · Performance &amp; state handling</p>
+              <p class="case-study__kicker">Approach · Performance &amp; state</p>
               <h4 class="case-study__block-title">
-                Fast, stable UI and state handling that stays in sync
+                Lazy lists, controlled scrolling, navigation-derived selection
               </h4>
               <div class="case-study__block">
                 <h4>What it does</h4>
                 <p>
-                  Keeps UI, navigation, and state updates fast and in sync across complex screens.
+                  LazyColumn-based lists with controlled scrolling for large
+                  libraries, debounced autosave where rapid edits would otherwise
+                  thrash storage, and a root navigation shell that derives the
+                  selected tab from the NavController back stack for the bottom bar
+                  and rail.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Performance and state handling in real usage</h4>
+                <h4>Why I built it this way</h4>
                 <ul>
-                  <li>Smooth scrolling and interaction with large datasets</li>
-                  <li>No UI freezing or dropped frames</li>
-                  <li>UI stays in sync with navigation and app state</li>
                   <li>
-                    Efficient rendering that avoids unnecessary work and reduces battery usage
+                    Lazy lists keep large libraries usable as projects accumulate
+                  </li>
+                  <li>
+                    Tab selection follows navigation instead of a separate flag
+                  </li>
+                  <li>
+                    Debounced autosave cuts down writes during fast editing
                   </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Why this matters for your app</h4>
+                <h4>Outcome</h4>
                 <p>
-                  Keeps your app fast and predictable, even as data and complexity grow, without lag
-                  or inconsistent behavior.
+                  Library browsing and tab switches stay predictable as the catalog
+                  grows. State comes from the database and navigation graph, not
+                  duplicated screen flags.
+                </p>
+              </div>
+              <div class="case-study__block">
+                <h4>Takeaway</h4>
+                <p>
+                  Lists observe Flow; chrome observes the back stack. That was
+                  less work than keeping screen flags in sync by hand.
                 </p>
               </div>
               <div class="case-study__row--2">
@@ -306,16 +379,19 @@ export default function StitchTrackerCaseStudies() {
             <div class="case-study__hero-band-inner">
               <h3 class="case-study__doc-intro-title">
                 Android UI/UX:{' '}
-                <span class="case-study__headline-accent">Built for real devices</span>
+                <span class="case-study__headline-accent">
+                  Built for real devices
+                </span>
               </h3>
               <p class="case-study__section-lead" style={{ 'margin-top': 'var(--spacing-sm)' }}>
-                Fast, reliable feature work for existing Android apps. Interfaces and experience that
-                hold up under real use.
+                Knitters and crocheters tap counters for a long time, rotate the
+                phone, switch themes, and manage projects in bulk. This section
+                covers UI that still works in those conditions.
               </p>
               <div class="case-study__hero-chips">
-                <span class="case-study__chip">Real app systems</span>
-                <span class="case-study__chip">Responsive UI</span>
-                <span class="case-study__chip">Smart UX</span>
+                <span class="case-study__chip">Adaptive Compose layouts</span>
+                <span class="case-study__chip">Six themes · dark mode</span>
+                <span class="case-study__chip">Swipe · multi-select · sheets</span>
               </div>
             </div>
           </div>
@@ -327,20 +403,24 @@ export default function StitchTrackerCaseStudies() {
                 <div class="case-study__bullet-list">
                   <div class="case-study__bullet">
                     <span class="case-study__bullet-dot" aria-hidden />
-                    <span>New features added to your existing Android app</span>
+                    <span>New features added into an existing Android app</span>
                   </div>
                   <div class="case-study__bullet">
                     <span class="case-study__bullet-dot" aria-hidden />
-                    <span>Responsive Compose UI that works across devices</span>
-                  </div>
-                  <div class="case-study__bullet">
-                    <span class="case-study__bullet-dot" aria-hidden />
-                    <span>UX that increases user engagement</span>
+                    <span>Responsive Compose UI across phones and tablets</span>
                   </div>
                   <div class="case-study__bullet">
                     <span class="case-study__bullet-dot" aria-hidden />
                     <span>
-                      Clean, maintainable feature architecture (MVVM / separation of concerns)
+                      Interaction patterns that keep common tasks fast (edit,
+                      delete, navigate)
+                    </span>
+                  </div>
+                  <div class="case-study__bullet">
+                    <span class="case-study__bullet-dot" aria-hidden />
+                    <span>
+                      Maintainable feature architecture (MVVM / separation of
+                      concerns)
                     </span>
                   </div>
                 </div>
@@ -357,12 +437,14 @@ export default function StitchTrackerCaseStudies() {
           </section>
 
           <section class="case-study__section">
+            <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Proof: Production-ready UI that works flawlessly across devices
+              The counter has to work in landscape with big numbers
             </h3>
             <p class="case-study__section-lead">
-              Get instant, lag-free input and a layout that scales cleanly across phones and tablets:
-              no broken screens, no performance issues.
+              The primary action is rapid, repeated input. Numbers get large.
+              Devices rotate. Layouts that look fine in a portrait mock often
+              overflow or shrink into unreadable type once someone is mid-project.
             </p>
             <div class="case-study__card">
               <div class="case-study__case-split">
@@ -381,29 +463,42 @@ export default function StitchTrackerCaseStudies() {
                   />
                 </div>
                 <div class="case-study__case-split-copy">
-                  <p class="case-study__kicker">Case study 1 · UI / interaction</p>
+                  <p class="case-study__kicker">Approach · UI / interaction</p>
                   <h4 class="case-study__block-title">Smart counter system</h4>
                   <div class="case-study__block">
                     <h4>What it does</h4>
                     <p>
-                      A real-time counter interaction system designed for fast input and long-running
-                      usage sessions.
+                      Real-time counter input with dynamic text scaling so large
+                      counts stay readable in portrait and landscape on phones and
+                      tablets.
                     </p>
                   </div>
                   <div class="case-study__block">
-                    <h4>What makes it valuable</h4>
+                    <h4>Why I built it this way</h4>
                     <ul>
-                      <li>Instant input response with no visible UI lag</li>
-                      <li>UI that adapts cleanly as content changes (no overflow or layout breakage)</li>
-                      <li>Seamless experience across portrait and landscape on phones and tablets</li>
-                      <li>Consistent, stable layout across different screen sizes</li>
+                      <li>Input stays responsive during long counting sessions</li>
+                      <li>
+                        Layout adapts as counts grow so text does not overflow or
+                        break the screen
+                      </li>
+                      <li>
+                        Portrait and landscape share one adaptive approach instead
+                        of two separate layouts
+                      </li>
                     </ul>
                   </div>
                   <div class="case-study__block">
-                    <h4>Why this matters for your app</h4>
+                    <h4>Outcome</h4>
                     <p>
-                      Designed to hold up under real usage, not just ideal conditions, so your app
-                      stays stable as users interact with it over time.
+                      The counter stays usable when numbers get large and when the
+                      device rotates.
+                    </p>
+                  </div>
+                  <div class="case-study__block">
+                    <h4>Takeaway</h4>
+                    <p>
+                      I designed the primary control for large counts and landscape
+                      first. Other screens were easier after that.
                     </p>
                   </div>
                 </div>
@@ -412,38 +507,53 @@ export default function StitchTrackerCaseStudies() {
           </section>
 
           <section class="case-study__section">
+            <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Proof: Consistent, polished UI across every screen and theme
+              Themes only work if dark mode and launcher icons match
             </h3>
             <p class="case-study__section-lead">
-              Switch between themes and dark modes without visual bugs, broken layouts, or
-              inconsistent styling.
+              Personalization is part of the product for this audience. Multiple
+              color styles only work if every screen, dark mode, and launcher icon
+              stay on the same system.
             </p>
             <div class="case-study__card">
-              <p class="case-study__kicker">Case study 2 · UI / UX</p>
+              <p class="case-study__kicker">Approach · UI / UX</p>
               <h4 class="case-study__block-title">Dynamic theme system</h4>
               <div class="case-study__block">
                 <h4>What it does</h4>
                 <p>
-                  A flexible theming system that supports multiple visual styles with consistent
-                  behavior across the entire app by overriding Material Design 3.
+                  Theming by overriding Material Design 3: six shipped visual
+                  styles, dark mode for each, and custom launcher icons that match
+                  the active theme. Theme preference is stored in DataStore so it
+                  survives restarts.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>What makes it valuable</h4>
+                <h4>Details</h4>
                 <ul>
-                  <li>Multiple fully designed themes with consistent styling across all screens</li>
-                  <li>Dark mode support for every theme</li>
-                  <li>Custom app icons that match each theme for a cohesive experience</li>
-                  <li>Centralized styling system that keeps UI consistent as features grow</li>
-                  <li>Theme switching without layout issues</li>
+                  <li>
+                    Centralized styling keeps screens consistent as features grow
+                  </li>
+                  <li>Dark mode is first-class for every theme, not a one-off</li>
+                  <li>
+                    Per-theme launcher icons so the choice shows on the home screen
+                    too
+                  </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Why this matters for your app</h4>
+                <h4>Outcome</h4>
                 <p>
-                  Creates a polished, cohesive experience across your entire app, so it feels
-                  intentional and production-ready instead of pieced together.
+                  Users can switch themes without layout breakage. The app reads
+                  as one product instead of unrelated screens with mismatched
+                  colors.
+                </p>
+              </div>
+              <div class="case-study__block">
+                <h4>Takeaway</h4>
+                <p>
+                  Theme work needs tokens, dark variants, and icons together.
+                  One-off palette swaps did not survive the next feature.
                 </p>
               </div>
               <div class="case-study__strip">
@@ -482,43 +592,59 @@ export default function StitchTrackerCaseStudies() {
           </section>
 
           <section class="case-study__section">
+            <p class="case-study__kicker">Problem</p>
             <h3 class="case-study__section-title case-study__section-title--accent">
-              Proof: Intuitive interactions that stay fast and predictable as your app grows
+              Library edits get slow when every flow uses different gestures
             </h3>
             <p class="case-study__section-lead">
-              Handle complex actions like editing, deleting, and navigation without confusion, lag, or
-              clunky workflows.
+              Managing a project library means multi-select, swipe, confirmations,
+              quick edits, and dense detail. Without shared patterns, each flow
+              invents its own gestures and users slow down.
             </p>
             <div class="case-study__card">
-              <p class="case-study__kicker">Case study 3 · UI / UX</p>
-              <h4 class="case-study__block-title">UI interaction &amp; usability system</h4>
+              <p class="case-study__kicker">Approach · UI / UX</p>
+              <h4 class="case-study__block-title">
+                Shared interaction patterns across the app
+              </h4>
               <div class="case-study__block">
                 <h4>What it does</h4>
                 <p>
-                  A set of interaction patterns and screen designs that handle complex user actions
-                  while keeping the app fast, clear, and easy to use.
+                  Shared patterns used across the app: swipe and multi-select for
+                  bulk delete, bottom sheets for quick edits, expandable sections
+                  for dense settings, structured detail screens for titles, notes,
+                  images, and progress, plus modal confirmations for destructive
+                  choices.
                 </p>
               </div>
               <div class="case-study__block">
-                <h4>Real interaction patterns used in the app</h4>
-                <p>These patterns are used throughout the app and can be adapted to different features.</p>
+                <h4>Why I built it this way</h4>
                 <ul>
-                  <li>Swipe actions and multi-select for fast bulk delete operations</li>
-                  <li>Bottom sheets for quick edits without leaving the current screen</li>
-                  <li>Expandable UI that handles complex content without clutter</li>
-                  <li>Structured detail screens for editing titles, notes, images, and progress</li>
-                  <li>Clear visual feedback for user actions and state changes</li>
                   <li>
-                    Modal dialogs for important decisions or confirmations to prevent accidental
-                    actions and user errors
+                    Common tasks stay on or near the current screen instead of
+                    deep navigation chains
+                  </li>
+                  <li>
+                    Confirmations protect against accidental deletes without
+                    hiding the action
+                  </li>
+                  <li>
+                    Selection and state feedback keeps bulk operations readable
                   </li>
                 </ul>
               </div>
               <div class="case-study__block">
-                <h4>Why this matters for your app</h4>
+                <h4>Outcome</h4>
                 <p>
-                  Prevents confusing or clunky interactions, so users can move through your app
-                  quickly without friction as features and data grow.
+                  Library management stays fast as the catalog grows. Users learn
+                  the same gestures once and reuse them across screens.
+                </p>
+              </div>
+              <div class="case-study__block">
+                <h4>Takeaway</h4>
+                <p>
+                  Swipe, multi-select, sheets, and confirmations were worth doing
+                  once. A new pattern per feature would have been slower to build
+                  and harder to use.
                 </p>
               </div>
               <div class="case-study__strip">

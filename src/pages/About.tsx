@@ -14,7 +14,9 @@ export default function About() {
             <h3>My Background</h3>
             <p class="about-text">
             I'm an Android developer focused on Kotlin and Jetpack Compose. I build production-ready apps with clear architecture, testing, and reliable release workflows.
-            I also have professional iOS experience with Swift and SwiftUI. I'm currently exploring Kotlin Multiplatform through personal projects.
+            I also have professional iOS experience with Swift and SwiftUI. As Managing Member at
+            Batteries Included, LLC, I ship Kotlin Multiplatform work—including multi-target card games
+            with shared rules across Android, iOS, web, and desktop.
             I have a passion for learning and creating impactful applications. I graduated from
               Indiana University East with a degree in Informatics, and I have 10 years of professional experience with a wide range of
               programming technologies. 

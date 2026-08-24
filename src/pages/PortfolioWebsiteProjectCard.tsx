@@ -1,5 +1,4 @@
 import { ProjectCard } from '@components/ProjectCardGrid'
-import GithubIcon from '@icons/GithubIcon'
 
 export default function PortfolioWebsiteProjectCard() {
   return (
@@ -11,7 +10,7 @@ export default function PortfolioWebsiteProjectCard() {
       link={{
         href: 'https://github.com/annaharri89/portfolio',
         label: 'View on GitHub',
-        icon: <GithubIcon class="w-4 h-4" />,
+        icon: 'github',
       }}
     />
   )

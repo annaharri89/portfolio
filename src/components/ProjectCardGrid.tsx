@@ -1,6 +1,7 @@
 import { Show, For } from 'solid-js'
 import type { JSX, ParentProps } from 'solid-js'
 import { A } from '@solidjs/router'
+import GithubIcon from '@icons/GithubIcon'
 import { classStringToClassList } from '../utils/classStringToClassList'
 
 export function ProjectCardGrid(props: ParentProps) {
@@ -13,10 +14,12 @@ export function ProjectCardGrid(props: ParentProps) {
   )
 }
 
+export type ProjectLinkIcon = 'github'
+
 interface LinkItem {
   href: string
   label: string
-  icon?: JSX.Element
+  icon?: ProjectLinkIcon
 }
 
 interface ProjectCardProps {
@@ -29,6 +32,14 @@ interface ProjectCardProps {
   tagGroupHeaders?: (string | undefined)[]
 }
 
+function ProjectLinkIconView(props: { icon?: ProjectLinkIcon }) {
+  return (
+    <Show when={props.icon === 'github'}>
+      <GithubIcon class="w-4 h-4" />
+    </Show>
+  )
+}
+
 function ProjectLinkButton(props: { link: LinkItem; style?: JSX.CSSProperties }) {
   const isExternal = () => props.link.href.startsWith('http://') || props.link.href.startsWith('https://')
 
@@ -37,13 +48,13 @@ function ProjectLinkButton(props: { link: LinkItem; style?: JSX.CSSProperties })
       when={isExternal()}
       fallback={
         <A href={props.link.href} classList={classStringToClassList('btn btn-secondary')} style={props.style}>
-          {props.link.icon}
+          <ProjectLinkIconView icon={props.link.icon} />
           {props.link.label}
         </A>
       }
     >
       <a href={props.link.href} target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style={props.style}>
-        {props.link.icon}
+        <ProjectLinkIconView icon={props.link.icon} />
         {props.link.label}
       </a>
     </Show>
@@ -83,12 +94,12 @@ export function ProjectCard(props: ProjectCardProps) {
             </Show>
             <div class="project-tags">
               <For each={tagGroup}>{(tag) => (
-                <>
+                <span class="project-tag-pair">
                   <Show when={tag.year}>
                     <span class="year-chip">{tag.year}</span>
                   </Show>
                   <span class="tech-tag">{tag.tech}</span>
-                </>
+                </span>
               )}</For>
             </div>
           </div>
