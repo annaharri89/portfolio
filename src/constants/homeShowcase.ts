@@ -1,5 +1,6 @@
 import stitchCounterV2Icon from '@images/icons/stitch_counter_v2.png'
 import { ROUTES, STITCH_COUNTER_V2_PLAY_STORE_URL } from './routes'
+import { isUpworkMode, UPWORK_PROFILE_URL } from './upwork'
 
 export interface HomeShowcaseSecondaryLink {
   label: string
@@ -39,7 +40,7 @@ export const HOME_SHOWCASE_PROJECTS: readonly HomeShowcaseProject[] = [
     year: '2025–2026',
     tags: ['Kotlin', 'Jetpack Compose', 'Swift', 'SwiftUI'],
     highlights: [
-      '1k+ installs on the current production release.',
+      '2k+ installs on the current production release.',
       '0 crashes in Google Play Console (Android vitals) for the current production release.',
     ],
     secondaryLinks: [
@@ -48,16 +49,17 @@ export const HOME_SHOWCASE_PROJECTS: readonly HomeShowcaseProject[] = [
         to: STITCH_COUNTER_V2_PLAY_STORE_URL,
         external: true,
       },
-      {
-        label: 'Android repo',
-        to: 'https://github.com/annaharri89/stitchCounterV2',
-        external: true,
-      },
-      {
-        label: 'iOS repo',
-        to: 'https://github.com/annaharri89/stitchCounterV2.ios',
-        external: true,
-      },
+      isUpworkMode
+        ? {
+            label: 'Source available on request',
+            to: UPWORK_PROFILE_URL,
+            external: true,
+          }
+        : {
+            label: 'Source available on request',
+            to: ROUTES.CONTACT,
+            external: false,
+          },
     ],
     imageUrl: stitchCounterV2Icon,
     primaryHref: ROUTES.STITCH_COUNTER_V2,

@@ -1,11 +1,10 @@
 import { Show } from 'solid-js'
+import { A } from '@solidjs/router'
 import stitchCounterV2Icon from '@images/icons/stitch_counter_v2.png'
-import GithubActionsWorkflowBadge from '../components/GithubActionsWorkflowBadge'
 import Hero from '../components/Hero'
 import ImageCarousel from '@components/Carousel'
 import ProjectDetailMetricGrid from '../components/ProjectDetailMetricGrid'
 import ProjectDetailStatTile from '../components/ProjectDetailStatTile'
-import GithubIcon from '../components/icons/GithubIcon'
 import {
   CaseStudyLightboxProvider,
   useCaseStudyLightboxOpen,
@@ -17,7 +16,14 @@ import {
   STITCH_COUNTER_V2_CASE_STUDY_HASHES,
   STITCH_COUNTER_V2_PLAY_STORE_URL,
 } from '../constants/routes'
-import { isUpworkMode } from '../constants/upwork'
+import { isUpworkMode, UPWORK_PROFILE_URL } from '../constants/upwork'
+import {
+  stitchCiBadgeSrc,
+  stitchCodecovBadgeSrc,
+  stitchCodecovHref,
+  stitchIosCiBadgeSrcShortLabel,
+  stitchPlayCdBadgeSrc,
+} from '../constants/stitchStatusBadges'
 import StitchTrackerCaseStudies from './StitchTrackerCaseStudies'
 
 function StitchTrackerPage() {
@@ -50,52 +56,71 @@ function StitchTrackerPage() {
                 stay predictable: CI on every PR, CD to Play internal—same setup I’d use on a team
                 where release discipline matters. The iOS rewrite is in progress toward the same local-first experience.
               </p>
-              <ProjectDetailMetricGrid>
-                <ProjectDetailStatTile label="Play installs" value="1k+ installs" />
+              <ProjectDetailMetricGrid columns="2">
+                <ProjectDetailStatTile label="Play installs" value="2k+ installs" />
                 <ProjectDetailStatTile
-                  label="Stability (Google Play Console)"
+                  label="Stability"
                   value="0 crashes"
                 />
-                <ProjectDetailStatTile
-                  label="Test signal · Code coverage"
-                  value={
+              </ProjectDetailMetricGrid>
+              <p class="text-sm text-neutral-600 mt-2">
+                Stability figures and install count come from Google Play Console.
+              </p>
+              <div class="chip-groups">
+                <div class="chip-group">
+                  <h4 class="chip-group-title">Native Android · Shipped</h4>
+                  <div class="chip-group-badges" role="group" aria-label="Android CI, Play internal CD, and code coverage">
+                    <img
+                      src={stitchCiBadgeSrc}
+                      alt="Android CI status badge"
+                    />
+                    <img
+                      src={stitchPlayCdBadgeSrc}
+                      alt="Play internal CD status badge"
+                    />
                     <a
-                      href="https://codecov.io/gh/annaharri89/stitchCounterV2"
+                      href={stitchCodecovHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="inline-block"
                       aria-label="Stitch Counter V2 code coverage on Codecov"
                     >
                       <img
-                        src="https://codecov.io/gh/annaharri89/stitchCounterV2/branch/main/graph/badge.svg"
+                        src={stitchCodecovBadgeSrc}
                         alt="Codecov coverage badge"
                       />
                     </a>
-                  }
-                />
-              </ProjectDetailMetricGrid>
-              <p class="text-sm text-neutral-600 mt-2">
-                Stability figures come from Google Play Console; install count matches the Android README
-                for this production release.
-              </p>
-              <h4 class="mt-3">CI/CD status</h4>
-              <div class="flex flex-wrap gap-3 mt-3 mb-2">
-                <GithubActionsWorkflowBadge
-                  owner="annaharri89"
-                  repo="stitchCounterV2"
-                  workflowFile="ci.yml"
-                  workflowName="CI"
-                  alt="CI status badge"
-                  ariaLabel="View Stitch Counter V2 CI workflow status"
-                />
-                <GithubActionsWorkflowBadge
-                  owner="annaharri89"
-                  repo="stitchCounterV2"
-                  workflowFile="play-internal-cd.yml"
-                  workflowName="Play internal CD"
-                  alt="Play internal CD status badge"
-                  ariaLabel="View Stitch Counter V2 Play internal CD workflow status"
-                />
+                  </div>
+                  <div class="project-tags">
+                    <span class="tech-tag">Kotlin</span>
+                    <span class="tech-tag">Jetpack Compose</span>
+                    <span class="tech-tag">Material3</span>
+                    <span class="tech-tag">Room</span>
+                    <span class="tech-tag">Hilt</span>
+                    <span class="tech-tag">DataStore</span>
+                    <span class="tech-tag">Coil</span>
+                    <span class="tech-tag">Ramcosta Compose Destinations</span>
+                  </div>
+                </div>
+                <div class="chip-group">
+                  <h4 class="chip-group-title">Native iOS · In Progress</h4>
+                  {stitchIosCiBadgeSrcShortLabel ? (
+                    <div class="chip-group-badges" role="group" aria-label="iOS CI status">
+                      <img
+                        src={stitchIosCiBadgeSrcShortLabel}
+                        alt="CI status badge"
+                      />
+                    </div>
+                  ) : null}
+                  <div class="project-tags">
+                    <span class="tech-tag">Swift</span>
+                    <span class="tech-tag">SwiftUI</span>
+                    <span class="tech-tag">SwiftData</span>
+                    <span class="tech-tag">Combine</span>
+                    <span class="tech-tag">PhotosUI</span>
+                    <span class="tech-tag">ZIPFoundation</span>
+                  </div>
+                </div>
               </div>
               <div class="flex flex-wrap gap-3 mt-4">
                 <button
@@ -187,32 +212,6 @@ function StitchTrackerPage() {
                 />
               </div>
             </div>
-            <div class="chip-groups">
-              <div class="chip-group">
-                <h4 class="chip-group-title">Native Android · Shipped</h4>
-                <div class="project-tags">
-                  <span class="tech-tag">Kotlin</span>
-                  <span class="tech-tag">Jetpack Compose</span>
-                  <span class="tech-tag">Material3</span>
-                  <span class="tech-tag">Room</span>
-                  <span class="tech-tag">Hilt</span>
-                  <span class="tech-tag">DataStore</span>
-                  <span class="tech-tag">Coil</span>
-                  <span class="tech-tag">Ramcosta Compose Destinations</span>
-                </div>
-              </div>
-              <div class="chip-group">
-                <h4 class="chip-group-title">Native iOS · In Progress</h4>
-                <div class="project-tags">
-                  <span class="tech-tag">Swift</span>
-                  <span class="tech-tag">SwiftUI</span>
-                  <span class="tech-tag">SwiftData</span>
-                  <span class="tech-tag">Combine</span>
-                  <span class="tech-tag">PhotosUI</span>
-                  <span class="tech-tag">ZIPFoundation</span>
-                </div>
-              </div>
-            </div>
             <div class="project-links project-links-vertical">
               <div class="project-links">
                 <a
@@ -233,24 +232,23 @@ function StitchTrackerPage() {
                 </Show>
               </div>
               <div class="project-links">
-              <a
-                href="https://github.com/annaharri89/stitchCounterV2"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-link"
-              >
-                <GithubIcon />
-                View Android codebase on GitHub
-              </a>
-              <a
-                href="https://github.com/annaharri89/stitchCounterV2.ios"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="project-link"
-              >
-                <GithubIcon />
-                View iOS codebase on GitHub
-              </a>
+                <Show
+                  when={isUpworkMode}
+                  fallback={
+                    <A href={ROUTES.CONTACT} class="project-link">
+                      Source available on request
+                    </A>
+                  }
+                >
+                  <a
+                    href={UPWORK_PROFILE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="project-link"
+                  >
+                    Source available on request
+                  </a>
+                </Show>
               </div>
             </div>
           </div>
