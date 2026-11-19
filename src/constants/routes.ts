@@ -1,5 +1,4 @@
 export {
 	ROUTES,
-	STITCH_COUNTER_V2_CASE_STUDY_HASHES,
 	STITCH_COUNTER_V2_PLAY_STORE_URL,
 } from "@root/marketingRoutes";

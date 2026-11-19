@@ -7,6 +7,7 @@ import MainSiteNavCta from './navigation/MainSiteNavCta'
 const NAV_ITEMS = [
   { path: ROUTES.ABOUT, label: 'About' },
   { path: ROUTES.PROJECTS, label: 'Projects' },
+  { path: ROUTES.CASE_STUDIES, label: 'Case Studies' },
   { path: ROUTES.SKILLS, label: 'Skills' },
 ]
 

@@ -1,8 +1,13 @@
 import {
+	CASE_STUDIES_PATH,
 	CONTACT_PATH,
 	HOME_PATH,
 	ROUTES,
+	SOLITAIRE_CASE_STUDY_SHARED_ARCHITECTURE_PATH,
 	STITCH_COUNTER_V2_BETA_PATH,
+	STITCH_COUNTER_V2_CASE_STUDY_BACKUP_RESTORE_PATH,
+	STITCH_COUNTER_V2_CASE_STUDY_FEATURE_DEVELOPMENT_PATH,
+	STITCH_COUNTER_V2_CASE_STUDY_UI_UX_PATH,
 	STITCH_COUNTER_V2_EULA_PATH,
 	STITCH_COUNTER_V2_PATH,
 	STITCH_COUNTER_V2_PRIVACY_POLICY_PATH,
@@ -56,26 +61,36 @@ const MAIN_SITE_PRERENDER_PATHS = [
 	HOME_PATH,
 	ROUTES.ABOUT,
 	ROUTES.PROJECTS,
+	CASE_STUDIES_PATH,
 	ROUTES.SKILLS,
 	ROUTES.CONTACT,
 	STITCH_COUNTER_V2_PATH,
+	STITCH_COUNTER_V2_CASE_STUDY_FEATURE_DEVELOPMENT_PATH,
+	STITCH_COUNTER_V2_CASE_STUDY_BACKUP_RESTORE_PATH,
+	STITCH_COUNTER_V2_CASE_STUDY_UI_UX_PATH,
 	ROUTES.STITCH_COUNTER,
 	ROUTES.HPF_PULSE,
 	STITCH_COUNTER_V2_EULA_PATH,
 	STITCH_COUNTER_V2_PRIVACY_POLICY_PATH,
 	STITCH_COUNTER_V2_BETA_PATH,
 	ROUTES.SOLITAIRE,
+	SOLITAIRE_CASE_STUDY_SHARED_ARCHITECTURE_PATH,
 ] as const;
 
 const UPWORK_PRERENDER_PATHS = [
 	HOME_PATH,
 	ROUTES.ABOUT,
 	ROUTES.PROJECTS,
+	CASE_STUDIES_PATH,
 	ROUTES.SKILLS,
 	STITCH_COUNTER_V2_PATH,
+	STITCH_COUNTER_V2_CASE_STUDY_FEATURE_DEVELOPMENT_PATH,
+	STITCH_COUNTER_V2_CASE_STUDY_BACKUP_RESTORE_PATH,
+	STITCH_COUNTER_V2_CASE_STUDY_UI_UX_PATH,
 	ROUTES.STITCH_COUNTER,
 	ROUTES.HPF_PULSE,
 	ROUTES.SOLITAIRE,
+	SOLITAIRE_CASE_STUDY_SHARED_ARCHITECTURE_PATH,
 ] as const;
 
 export const PORTFOLIO_PRERENDER_PATHS = isUpworkMode
@@ -104,6 +119,35 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 			"Stitch Counter library screen showing project list and navigation",
 		twitterCard: "summary_large_image",
 	},
+	[STITCH_COUNTER_V2_CASE_STUDY_FEATURE_DEVELOPMENT_PATH]: {
+		title: "Stitch Counter V2 case study — feature development",
+		description:
+			"How Stitch Counter V2 is structured: layered Compose architecture, Room data, zip backup and restore with typed failures, and state-driven UI.",
+		canonicalPath: STITCH_COUNTER_V2_CASE_STUDY_FEATURE_DEVELOPMENT_PATH,
+		ogImagePath: "/work/android-feature-development/case1_data_library.png",
+		ogImageAlt:
+			"Stitch Counter library screen showing project list and navigation",
+		twitterCard: "summary_large_image",
+	},
+	[STITCH_COUNTER_V2_CASE_STUDY_BACKUP_RESTORE_PATH]: {
+		title: "Stitch Counter V2 case study — backup and restore",
+		description:
+			"How Stitch Counter V2 backs up a local-first library: project photos stored as self-contained files in a versioned zip, safe extraction, and typed restore failures.",
+		canonicalPath: STITCH_COUNTER_V2_CASE_STUDY_BACKUP_RESTORE_PATH,
+		ogImagePath: "/work/android-feature-development/case2_backup_restore_settings.png",
+		ogImageAlt:
+			"Stitch Counter Settings screen with Backup and Restore export and import buttons",
+		twitterCard: "summary_large_image",
+	},
+	[STITCH_COUNTER_V2_CASE_STUDY_UI_UX_PATH]: {
+		title: "Stitch Counter V2 case study — Android UI/UX",
+		description:
+			"Compose UI built for real devices: adaptive layouts, six themes with dark mode, swipe, multi-select, and bottom sheets.",
+		canonicalPath: STITCH_COUNTER_V2_CASE_STUDY_UI_UX_PATH,
+		ogImagePath: DEFAULT_OG_IMAGE_PATH,
+		ogImageAlt: DEFAULT_OG_IMAGE_ALT,
+		twitterCard: "summary_large_image",
+	},
 	[ROUTES.STITCH_COUNTER]: {
 		title: "Stitch Counter (original) — Anna Harrison",
 		description:
@@ -127,6 +171,15 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 		description:
 			"Selected mobile and web work: shipped Android, Kotlin Multiplatform games, and supporting portfolio engineering.",
 		canonicalPath: ROUTES.PROJECTS,
+		ogImagePath: DEFAULT_OG_IMAGE_PATH,
+		ogImageAlt: DEFAULT_OG_IMAGE_ALT,
+		twitterCard: "summary_large_image",
+	},
+	[CASE_STUDIES_PATH]: {
+		title: "Case studies — Anna Harrison",
+		description:
+			"Engineering case studies: Android architecture and UI/UX, Kotlin Multiplatform shared rules, and the decisions behind shipped apps.",
+		canonicalPath: CASE_STUDIES_PATH,
 		ogImagePath: DEFAULT_OG_IMAGE_PATH,
 		ogImageAlt: DEFAULT_OG_IMAGE_ALT,
 		twitterCard: "summary_large_image",
@@ -184,6 +237,15 @@ export const ROUTE_SEO: Record<string, RouteSeoEntry> = {
 		ogImagePath: DEFAULT_OG_IMAGE_PATH,
 		ogImageAlt: DEFAULT_OG_IMAGE_ALT,
 		twitterCard: "summary",
+	},
+	[SOLITAIRE_CASE_STUDY_SHARED_ARCHITECTURE_PATH]: {
+		title: "Solitaire & FreeCell case study — shared Kotlin Multiplatform architecture",
+		description:
+			"How one Kotlin Multiplatform module holds Solitaire and FreeCell rules and tests while a thin KorGE client runs them on Android, iOS, web, and desktop JVM.",
+		canonicalPath: SOLITAIRE_CASE_STUDY_SHARED_ARCHITECTURE_PATH,
+		ogImagePath: "/korge-solitaire/kmp-solitaire-app-icon.png",
+		ogImageAlt: "Kotlin Multiplatform solitaire app icon",
+		twitterCard: "summary_large_image",
 	},
 	[ROUTES.SOLITAIRE]: {
 		title: "Solitaire & FreeCell (Kotlin Multiplatform)",
@@ -297,6 +359,7 @@ const pathTailLabels: Record<string, string> = {
 	about: "About",
 	projects: "Projects",
 	skills: "Skills",
+	"case-studies": "Case studies",
 	contact: "Contact",
 	"stitch-counter-v2": "Stitch Counter V2",
 	"stitch-counter": "Stitch Counter",
@@ -305,6 +368,10 @@ const pathTailLabels: Record<string, string> = {
 	eula: "EULA",
 	"privacy-policy": "Privacy policy",
 	beta: "Beta",
+	"feature-development": "Feature development",
+	"backup-and-restore": "Backup and restore",
+	"ui-ux": "Android UI/UX",
+	"shared-kmp-architecture": "Shared KMP architecture",
 };
 
 function breadcrumbNameForPath(path: string): string {
@@ -319,6 +386,19 @@ function breadcrumbNameForPath(path: string): string {
 		.join(" ");
 }
 
+const CASE_STUDY_PARENTS = [
+	{
+		prefix: `${STITCH_COUNTER_V2_PATH}/case-studies/`,
+		name: "Stitch Counter V2",
+		path: STITCH_COUNTER_V2_PATH,
+	},
+	{
+		prefix: `${ROUTES.SOLITAIRE}/case-studies/`,
+		name: "Solitaire & FreeCell",
+		path: ROUTES.SOLITAIRE,
+	},
+];
+
 export interface BreadcrumbItem {
 	name: string;
 	path: string;
@@ -331,8 +411,13 @@ export function getBreadcrumbTrail(pathname: string): BreadcrumbItem[] {
 		return [{ name: "Home", path: HOME_PATH }];
 	}
 
+	const parent = CASE_STUDY_PARENTS.find(({ prefix }) =>
+		entry.canonicalPath.startsWith(prefix),
+	);
+
 	return [
 		{ name: "Home", path: HOME_PATH },
+		...(parent ? [{ name: parent.name, path: parent.path }] : []),
 		{
 			name: breadcrumbNameForPath(entry.canonicalPath),
 			path: entry.canonicalPath,
