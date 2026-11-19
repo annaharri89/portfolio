@@ -57,7 +57,7 @@ function StitchTrackerPage() {
                 where release discipline matters. The iOS rewrite is in progress toward the same local-first experience.
               </p>
               <ProjectDetailMetricGrid columns="2">
-                <ProjectDetailStatTile label="Play installs" value="2k+ installs" />
+                <ProjectDetailStatTile label="Play installs" value="4k+ installs" />
                 <ProjectDetailStatTile
                   label="Stability"
                   value="0 crashes"
