@@ -13,7 +13,6 @@ import { getProjectSlides, Project } from '@consts/projects'
 import { stitchTrackerDemoDoubleCounter, stitchTrackerDemoSingleCounter } from '../constants/stitchTrackerDemos'
 import {
   ROUTES,
-  STITCH_COUNTER_V2_CASE_STUDY_HASHES,
   STITCH_COUNTER_V2_PLAY_STORE_URL,
 } from '../constants/routes'
 import { isUpworkMode, UPWORK_PROFILE_URL } from '../constants/upwork'
@@ -24,7 +23,7 @@ import {
   stitchIosCiBadgeSrcShortLabel,
   stitchPlayCdBadgeSrc,
 } from '../constants/stitchStatusBadges'
-import StitchTrackerCaseStudies from './StitchTrackerCaseStudies'
+import ProjectCaseStudyCards from '../components/caseStudy/ProjectCaseStudyCards'
 
 function StitchTrackerPage() {
   const openLightbox = useCaseStudyLightboxOpen()
@@ -123,6 +122,9 @@ function StitchTrackerPage() {
                 </div>
               </div>
               <div class="flex flex-wrap gap-3 mt-4">
+                <a href="#stitch-counter-case-studies" class="project-link">
+                  Case studies: architecture, UI/UX
+                </a>
                 <button
                   type="button"
                   class="project-link"
@@ -153,15 +155,6 @@ function StitchTrackerPage() {
                 </button>
               </div>
             
-              <p class="text-neutral-700 leading-relaxed text-base mt-4">
-                <a
-                  href={`#${STITCH_COUNTER_V2_CASE_STUDY_HASHES.OVERVIEW}`}
-                  class="text-accent-link"
-                >
-                  Case studies
-                </a>{' '}
-                (architecture, UI/UX, screenshots) for this app are below on this page.
-              </p>
             </div>
             <div class="engineering-snapshot-row mb-6">
               <div class="engineering-snapshot-col-text">
@@ -175,7 +168,10 @@ function StitchTrackerPage() {
                     Six shipped themes with per-theme launcher icon updates and dark mode support.
                   </li>
                   <li>
-                    Local backup and restore uses zip metadata + images, with typed failures and safe user messaging—no cloud sync.
+                    Local backup and restore uses a zip of JSON metadata plus each project photo as its own file, with typed failures and safe user messaging—no cloud sync.{' '}
+                    <A href={ROUTES.STITCH_COUNTER_V2_CASE_STUDY_BACKUP_RESTORE} class="text-accent-link">
+                      Backup and restore case study
+                    </A>
                   </li>
                   <li>
                     CI runs on pull requests and pushes to <code class="text-sm bg-neutral-100 px-1 py-0.5 rounded">main</code>; CD publishes signed AABs to Play internal after successful CI on <code class="text-sm bg-neutral-100 px-1 py-0.5 rounded">main</code>.
@@ -254,7 +250,7 @@ function StitchTrackerPage() {
           </div>
         </div>
       </section>
-      <StitchTrackerCaseStudies />
+      <ProjectCaseStudyCards project="stitch-counter-v2" />
     </>
   )
 }
