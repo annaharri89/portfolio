@@ -5,6 +5,7 @@ import { UPWORK_PROFILE_URL } from '@consts/upwork'
 const SITE_PAGE_LINKS = [
   { path: ROUTES.ABOUT, label: 'About' },
   { path: ROUTES.PROJECTS, label: 'Projects' },
+  { path: ROUTES.CASE_STUDIES, label: 'Case Studies' },
   { path: ROUTES.SKILLS, label: 'Skills' },
 ] as const
 

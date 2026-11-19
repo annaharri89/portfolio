@@ -4,6 +4,7 @@ import { SOCIAL_LINKS } from '@consts/social'
 const SITE_PAGE_LINKS = [
   { path: ROUTES.ABOUT, label: 'About' },
   { path: ROUTES.PROJECTS, label: 'Projects' },
+  { path: ROUTES.CASE_STUDIES, label: 'Case Studies' },
   { path: ROUTES.SKILLS, label: 'Skills' },
   { path: ROUTES.CONTACT, label: 'Contact' },
 ] as const
